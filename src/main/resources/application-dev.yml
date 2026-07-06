@@ -1,0 +1,4 @@
+logging:
+  level:
+    com.school.app: DEBUG
+    org.hibernate.SQL: DEBUG
