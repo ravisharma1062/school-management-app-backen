@@ -5,7 +5,23 @@
       "PowerShell(Get-Command *)",
       "PowerShell(winget install *)",
       "PowerShell(gh *)",
-      "PowerShell(gh auth *)"
+      "PowerShell(gh auth *)",
+      "Bash(docker pull postgres:16 *)",
+      "Bash(docker pull *)",
+      "Bash(docker info *)",
+      "Read(//c/Users/ravis/.docker/**)",
+      "Read(//c/ProgramData/Docker/config/**)",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code}, time %{time_total}s, size %{size_download}\\\\n\" \"https://production.cloudfront.docker.com\")",
+      "Bash(nslookup production.cloudfront.docker.com)",
+      "Bash(rm -f /tmp/spring_boot.log)",
+      "Bash(mvn spring-boot:run)",
+      "Bash(echo \"Started with PID $!\")",
+      "Bash(curl -s -o /dev/null -w \"Swagger UI: HTTP %{http_code}\\\\n\" http://localhost:8080/swagger-ui/index.html)",
+      "Bash(curl -s -o /dev/null -w \"OpenAPI JSON: HTTP %{http_code}\\\\n\" http://localhost:8080/v3/api-docs)",
+      "Bash(curl -s -w '\\\\nHTTP %{http_code}\\\\n' -X POST http://localhost:8080/auth/login -H 'Content-Type: application/json' -d '{\"email\":\"admin@school.app\",\"password\":\"Admin@123\"}')",
+      "Bash(curl -s http://localhost:8080/v3/api-docs)",
+      "Bash(python3 -c ' *)",
+      "Bash(curl *)"
     ]
   }
 }
