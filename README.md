@@ -87,10 +87,11 @@ mvn test
 
 ## Known gaps (tracked for follow-up, not blocking)
 
-- There is no `POST /users` (or teacher-provisioning) endpoint in the v1 API spec — teacher and
-  parent `User`/`Teacher` rows must currently be created directly against the database (or via
-  a future admin user-management endpoint). The admin account is seeded via Flyway for this
-  reason.
+- `POST /api/v1/users` creates the `users` row for a Teacher/Parent account but does not create
+  a corresponding `teachers` row. The timetable teacher-picker needs a `teachers.id` (see
+  `TimetableCreateRequest.teacherId`), so a `TEACHER`-role user created via this endpoint isn't
+  assignable to a timetable slot until a separate teacher-profile endpoint (subjects,
+  classes assigned) creates that row.
 - The full "one success + one denial per endpoint" role matrix is covered for the
   security-sensitive paths (student/attendance/exam-result/fee access by role, parent
   same-child checks) but not exhaustively duplicated for every single route — extend
