@@ -58,6 +58,18 @@ mvn test
   run with plain JUnit/Mockito — no Docker required.
 - Integration tests (`*IntegrationTest`) spin up a real Postgres container via Testcontainers —
   Docker must be running.
+- Cucumber acceptance tests (`RunCucumberTest`) drive the whole REST API end-to-end against a
+  single Testcontainers Postgres. Feature files live in `src/test/resources/features/` (one per
+  module) and step definitions in `com.school.app.cucumber`. Run just these with:
+  ```
+  mvn -Dtest=RunCucumberTest test
+  ```
+  A readable HTML report is written to `target/cucumber-report.html`.
+
+> **Note:** the Surefire config pins `-Duser.timezone=UTC` (some hosts default to the legacy
+> `Asia/Calcutta` zone id, which Postgres 16 rejects on connect) and the Docker Engine API version
+> (`-Ddocker.api.version`, default `1.43`) so Testcontainers can talk to very new local daemons.
+> Override the Docker API version with `-Ddocker.api.version=<value>` if your daemon needs it.
 
 ## Architecture notes
 

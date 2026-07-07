@@ -62,8 +62,12 @@ public class JwtService {
     }
 
     public boolean isRefreshToken(String token) {
-        String type = extractClaim(token, claims -> claims.get("type", String.class));
-        return "refresh".equals(type);
+        try {
+            String type = extractClaim(token, claims -> claims.get("type", String.class));
+            return "refresh".equals(type);
+        } catch (JwtException | IllegalArgumentException e) {
+            return false;
+        }
     }
 
     private boolean isTokenExpired(String token) {
