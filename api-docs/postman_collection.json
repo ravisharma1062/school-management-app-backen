@@ -1,0 +1,2568 @@
+{
+    "item": [
+        {
+            "name": "api",
+            "description": "",
+            "item": [
+                {
+                    "name": "v1",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "timetable",
+                            "description": "",
+                            "item": [
+                                {
+                                    "id": "568d281e-b234-4335-81a8-7683f5316ed1",
+                                    "name": "Create a timetable entry",
+                                    "request": {
+                                        "name": "Create a timetable entry",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "timetable"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"dayOfWeek\": \"SUNDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "3d165980-4df7-425e-992a-a2d1418f3402",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "timetable"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"dayOfWeek\": \"SUNDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"studentClass\": \"<string>\",\n  \"section\": \"<string>\",\n  \"dayOfWeek\": \"THURSDAY\",\n  \"period\": \"<integer>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                },
+                                {
+                                    "name": "{studentClass}",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "name": "{section}",
+                                            "description": "",
+                                            "item": [
+                                                {
+                                                    "id": "d1eb277b-5535-4343-81ef-e6c756c38d09",
+                                                    "name": "View the weekly timetable for a class/section",
+                                                    "request": {
+                                                        "name": "View the weekly timetable for a class/section",
+                                                        "description": {},
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "timetable",
+                                                                ":studentClass",
+                                                                ":section"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "type": "any",
+                                                                    "value": "<string>",
+                                                                    "key": "studentClass",
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "any",
+                                                                    "value": "<string>",
+                                                                    "key": "section",
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {},
+                                                        "auth": null
+                                                    },
+                                                    "response": [
+                                                        {
+                                                            "id": "a3f33696-26ba-42a0-be27-9c53eef5ca59",
+                                                            "name": "OK",
+                                                            "originalRequest": {
+                                                                "url": {
+                                                                    "path": [
+                                                                        "api",
+                                                                        "v1",
+                                                                        "timetable",
+                                                                        ":studentClass",
+                                                                        ":section"
+                                                                    ],
+                                                                    "host": [
+                                                                        "{{baseUrl}}"
+                                                                    ],
+                                                                    "query": [],
+                                                                    "variable": [
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "type": "any",
+                                                                            "value": "<string>",
+                                                                            "key": "studentClass"
+                                                                        },
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "type": "any",
+                                                                            "value": "<string>",
+                                                                            "key": "section"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "header": [
+                                                                    {
+                                                                        "key": "Accept",
+                                                                        "value": "*/*"
+                                                                    },
+                                                                    {
+                                                                        "description": {
+                                                                            "content": "Added as a part of security scheme: bearer",
+                                                                            "type": "text/plain"
+                                                                        },
+                                                                        "key": "Authorization",
+                                                                        "value": "Bearer <token>"
+                                                                    }
+                                                                ],
+                                                                "method": "GET",
+                                                                "body": {}
+                                                            },
+                                                            "status": "OK",
+                                                            "code": 200,
+                                                            "header": [
+                                                                {
+                                                                    "key": "Content-Type",
+                                                                    "value": "*/*"
+                                                                }
+                                                            ],
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"FRIDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"SUNDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\"\n  }\n]",
+                                                            "cookie": [],
+                                                            "_postman_previewlanguage": "text"
+                                                        }
+                                                    ],
+                                                    "event": [],
+                                                    "protocolProfileBehavior": {
+                                                        "disableBodyPruning": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "students",
+                            "description": "",
+                            "item": [
+                                {
+                                    "id": "31eaae28-e07a-49a7-9168-4083e31792a1",
+                                    "name": "List students (paginated)",
+                                    "request": {
+                                        "name": "List students (paginated)",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "students"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "page",
+                                                    "value": "<integer>"
+                                                },
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "size",
+                                                    "value": "<integer>"
+                                                },
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "sort",
+                                                    "value": "<string>,<string>"
+                                                }
+                                            ],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {},
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "c58f4dea-de8c-4ad5-ae62-09595de79e06",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "students"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "page",
+                                                            "value": "<integer>"
+                                                        },
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "size",
+                                                            "value": "<integer>"
+                                                        },
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "sort",
+                                                            "value": "<string>,<string>"
+                                                        }
+                                                    ],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {}
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"pageable\": {\n    \"paged\": \"<boolean>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ]\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                },
+                                {
+                                    "id": "6fc7018e-9150-469a-8657-5d901f75e218",
+                                    "name": "Create a student",
+                                    "request": {
+                                        "name": "Create a student",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "students"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"dob\": \"<date>\",\n  \"name\": \"<string>\",\n  \"rollNo\": \"<string>\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"parentId\": \"<uuid>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "fd943c34-6da4-4db7-b910-cd374ee27e06",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "students"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"dob\": \"<date>\",\n  \"name\": \"<string>\",\n  \"rollNo\": \"<string>\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"parentId\": \"<uuid>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"rollNo\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"section\": \"<string>\",\n  \"dob\": \"<date>\",\n  \"parentId\": \"<uuid>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                },
+                                {
+                                    "name": "{id}",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "f013b10b-7765-4ef6-94a7-21091ec81797",
+                                            "name": "Get a student by id (parents may only view their own child)",
+                                            "request": {
+                                                "name": "Get a student by id (parents may only view their own child)",
+                                                "description": {},
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "students",
+                                                        ":id"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": [
+                                                        {
+                                                            "type": "any",
+                                                            "value": "<uuid>",
+                                                            "key": "id",
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {},
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "be595179-ffa7-40a1-baf2-f81c7ed2a48c",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "students",
+                                                                ":id"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<uuid>",
+                                                                    "key": "id"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            },
+                                                            {
+                                                                "description": {
+                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                    "type": "text/plain"
+                                                                },
+                                                                "key": "Authorization",
+                                                                "value": "Bearer <token>"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"rollNo\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"section\": \"<string>\",\n  \"dob\": \"<date>\",\n  \"parentId\": \"<uuid>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        },
+                                        {
+                                            "id": "eca0b6d0-d9ce-4000-a391-b858b407f257",
+                                            "name": "Update a student",
+                                            "request": {
+                                                "name": "Update a student",
+                                                "description": {},
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "students",
+                                                        ":id"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": [
+                                                        {
+                                                            "type": "any",
+                                                            "value": "<uuid>",
+                                                            "key": "id",
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "PATCH",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"name\": \"<string>\",\n  \"rollNo\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"section\": \"<string>\",\n  \"dob\": \"<date>\",\n  \"parentId\": \"<uuid>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                },
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "56ccafe2-ceaf-45a4-a2ae-0fd35957b9b0",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "students",
+                                                                ":id"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<uuid>",
+                                                                    "key": "id"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Content-Type",
+                                                                "value": "application/json"
+                                                            },
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            },
+                                                            {
+                                                                "description": {
+                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                    "type": "text/plain"
+                                                                },
+                                                                "key": "Authorization",
+                                                                "value": "Bearer <token>"
+                                                            }
+                                                        ],
+                                                        "method": "PATCH",
+                                                        "body": {
+                                                            "mode": "raw",
+                                                            "raw": "{\n  \"name\": \"<string>\",\n  \"rollNo\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"section\": \"<string>\",\n  \"dob\": \"<date>\",\n  \"parentId\": \"<uuid>\"\n}",
+                                                            "options": {
+                                                                "raw": {
+                                                                    "headerFamily": "json",
+                                                                    "language": "json"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"rollNo\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"section\": \"<string>\",\n  \"dob\": \"<date>\",\n  \"parentId\": \"<uuid>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "notices",
+                            "description": "",
+                            "item": [
+                                {
+                                    "id": "0ae1d2f7-1769-44eb-a7a9-636be703739d",
+                                    "name": "List notices visible to the current user, optionally filtered by target role",
+                                    "request": {
+                                        "name": "List notices visible to the current user, optionally filtered by target role",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "notices"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": " (This can only be one of ADMIN,TEACHER,PARENT,ALL)",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "role",
+                                                    "value": "PARENT"
+                                                },
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "page",
+                                                    "value": "<integer>"
+                                                },
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "size",
+                                                    "value": "<integer>"
+                                                },
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "sort",
+                                                    "value": "<string>,<string>"
+                                                }
+                                            ],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {},
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "c4d3eeef-5b12-484a-bb82-254a0c4c8fe0",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "notices"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": " (This can only be one of ADMIN,TEACHER,PARENT,ALL)",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "role",
+                                                            "value": "PARENT"
+                                                        },
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "page",
+                                                            "value": "<integer>"
+                                                        },
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "size",
+                                                            "value": "<integer>"
+                                                        },
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "sort",
+                                                            "value": "<string>,<string>"
+                                                        }
+                                                    ],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {}
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"pageable\": {\n    \"paged\": \"<boolean>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ]\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"ADMIN\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"PARENT\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                },
+                                {
+                                    "id": "719917c3-916e-44ab-9978-8720283e958a",
+                                    "name": "Post a notice",
+                                    "request": {
+                                        "name": "Post a notice",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "notices"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"targetRole\": \"TEACHER\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "471c0dd2-0dbb-473a-aef7-0dd2c85cb565",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "notices"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"targetRole\": \"TEACHER\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"TEACHER\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "name": "homework",
+                            "description": "",
+                            "item": [
+                                {
+                                    "id": "7d993ecd-6a84-4b05-a9b1-455fa430290b",
+                                    "name": "Post homework for a class/section",
+                                    "request": {
+                                        "name": "Post homework for a class/section",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "homework"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"dueDate\": \"<date>\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "e026cc00-45cb-4687-991b-28461726a433",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "homework"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"dueDate\": \"<date>\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"studentClass\": \"<string>\",\n  \"section\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueDate\": \"<date>\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                },
+                                {
+                                    "name": "{studentClass}",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "name": "{section}",
+                                            "description": "",
+                                            "item": [
+                                                {
+                                                    "id": "a5465eaa-aa39-4bab-acee-201372d058e8",
+                                                    "name": "List homework for a class/section (paginated)",
+                                                    "request": {
+                                                        "name": "List homework for a class/section (paginated)",
+                                                        "description": {},
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "homework",
+                                                                ":studentClass",
+                                                                ":section"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "key": "page",
+                                                                    "value": "<integer>"
+                                                                },
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "key": "size",
+                                                                    "value": "<integer>"
+                                                                },
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "key": "sort",
+                                                                    "value": "<string>,<string>"
+                                                                }
+                                                            ],
+                                                            "variable": [
+                                                                {
+                                                                    "type": "any",
+                                                                    "value": "<string>",
+                                                                    "key": "studentClass",
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "any",
+                                                                    "value": "<string>",
+                                                                    "key": "section",
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {},
+                                                        "auth": null
+                                                    },
+                                                    "response": [
+                                                        {
+                                                            "id": "bdd497d6-0830-4515-8e63-2a317ade67e0",
+                                                            "name": "OK",
+                                                            "originalRequest": {
+                                                                "url": {
+                                                                    "path": [
+                                                                        "api",
+                                                                        "v1",
+                                                                        "homework",
+                                                                        ":studentClass",
+                                                                        ":section"
+                                                                    ],
+                                                                    "host": [
+                                                                        "{{baseUrl}}"
+                                                                    ],
+                                                                    "query": [
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "key": "page",
+                                                                            "value": "<integer>"
+                                                                        },
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "key": "size",
+                                                                            "value": "<integer>"
+                                                                        },
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "key": "sort",
+                                                                            "value": "<string>,<string>"
+                                                                        }
+                                                                    ],
+                                                                    "variable": [
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "type": "any",
+                                                                            "value": "<string>",
+                                                                            "key": "studentClass"
+                                                                        },
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "type": "any",
+                                                                            "value": "<string>",
+                                                                            "key": "section"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "header": [
+                                                                    {
+                                                                        "key": "Accept",
+                                                                        "value": "*/*"
+                                                                    },
+                                                                    {
+                                                                        "description": {
+                                                                            "content": "Added as a part of security scheme: bearer",
+                                                                            "type": "text/plain"
+                                                                        },
+                                                                        "key": "Authorization",
+                                                                        "value": "Bearer <token>"
+                                                                    }
+                                                                ],
+                                                                "method": "GET",
+                                                                "body": {}
+                                                            },
+                                                            "status": "OK",
+                                                            "code": 200,
+                                                            "header": [
+                                                                {
+                                                                    "key": "Content-Type",
+                                                                    "value": "*/*"
+                                                                }
+                                                            ],
+                                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"pageable\": {\n    \"paged\": \"<boolean>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ]\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
+                                                            "cookie": [],
+                                                            "_postman_previewlanguage": "text"
+                                                        }
+                                                    ],
+                                                    "event": [],
+                                                    "protocolProfileBehavior": {
+                                                        "disableBodyPruning": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "exam-results",
+                            "description": "",
+                            "item": [
+                                {
+                                    "id": "1f02a732-6aef-40cc-929f-24cf310c2789",
+                                    "name": "Record an exam result (grade is computed server-side)",
+                                    "request": {
+                                        "name": "Record an exam result (grade is computed server-side)",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "exam-results"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"examName\": \"<string>\",\n  \"marksObtained\": \"<number>\",\n  \"maxMarks\": \"<number>\",\n  \"studentId\": \"<uuid>\",\n  \"subject\": \"<string>\",\n  \"term\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "739347c2-7a0d-45df-af35-1ae160ef3b19",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "exam-results"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"examName\": \"<string>\",\n  \"marksObtained\": \"<number>\",\n  \"maxMarks\": \"<number>\",\n  \"studentId\": \"<uuid>\",\n  \"subject\": \"<string>\",\n  \"term\": \"<string>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"studentId\": \"<uuid>\",\n  \"subject\": \"<string>\",\n  \"examName\": \"<string>\",\n  \"marksObtained\": \"<number>\",\n  \"maxMarks\": \"<number>\",\n  \"grade\": \"<string>\",\n  \"term\": \"<string>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                },
+                                {
+                                    "name": "student",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "name": "{studentId}",
+                                            "description": "",
+                                            "item": [
+                                                {
+                                                    "id": "3caeed6e-ccde-49ff-81fe-fe57b3604c65",
+                                                    "name": "View exam results for a student",
+                                                    "request": {
+                                                        "name": "View exam results for a student",
+                                                        "description": {},
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "exam-results",
+                                                                "student",
+                                                                ":studentId"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "type": "any",
+                                                                    "value": "<uuid>",
+                                                                    "key": "studentId",
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {},
+                                                        "auth": null
+                                                    },
+                                                    "response": [
+                                                        {
+                                                            "id": "f9e1712c-e059-4235-8886-9346e913c235",
+                                                            "name": "OK",
+                                                            "originalRequest": {
+                                                                "url": {
+                                                                    "path": [
+                                                                        "api",
+                                                                        "v1",
+                                                                        "exam-results",
+                                                                        "student",
+                                                                        ":studentId"
+                                                                    ],
+                                                                    "host": [
+                                                                        "{{baseUrl}}"
+                                                                    ],
+                                                                    "query": [],
+                                                                    "variable": [
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "type": "any",
+                                                                            "value": "<uuid>",
+                                                                            "key": "studentId"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "header": [
+                                                                    {
+                                                                        "key": "Accept",
+                                                                        "value": "*/*"
+                                                                    },
+                                                                    {
+                                                                        "description": {
+                                                                            "content": "Added as a part of security scheme: bearer",
+                                                                            "type": "text/plain"
+                                                                        },
+                                                                        "key": "Authorization",
+                                                                        "value": "Bearer <token>"
+                                                                    }
+                                                                ],
+                                                                "method": "GET",
+                                                                "body": {}
+                                                            },
+                                                            "status": "OK",
+                                                            "code": 200,
+                                                            "header": [
+                                                                {
+                                                                    "key": "Content-Type",
+                                                                    "value": "*/*"
+                                                                }
+                                                            ],
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"subject\": \"<string>\",\n    \"examName\": \"<string>\",\n    \"marksObtained\": \"<number>\",\n    \"maxMarks\": \"<number>\",\n    \"grade\": \"<string>\",\n    \"term\": \"<string>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"subject\": \"<string>\",\n    \"examName\": \"<string>\",\n    \"marksObtained\": \"<number>\",\n    \"maxMarks\": \"<number>\",\n    \"grade\": \"<string>\",\n    \"term\": \"<string>\"\n  }\n]",
+                                                            "cookie": [],
+                                                            "_postman_previewlanguage": "text"
+                                                        }
+                                                    ],
+                                                    "event": [],
+                                                    "protocolProfileBehavior": {
+                                                        "disableBodyPruning": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "auth",
+                            "description": "",
+                            "item": [
+                                {
+                                    "name": "refresh",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "8677ab3e-73d5-4323-95dd-cf28ca6d201d",
+                                            "name": "Exchange a valid refresh token for a new token pair",
+                                            "request": {
+                                                "name": "Exchange a valid refresh token for a new token pair",
+                                                "description": {},
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "auth",
+                                                        "refresh"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"refreshToken\": \"<string>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                },
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "123e93ec-c8f4-4dc5-b4bf-b28271aa5098",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "auth",
+                                                                "refresh"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": []
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Content-Type",
+                                                                "value": "application/json"
+                                                            },
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            },
+                                                            {
+                                                                "description": {
+                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                    "type": "text/plain"
+                                                                },
+                                                                "key": "Authorization",
+                                                                "value": "Bearer <token>"
+                                                            }
+                                                        ],
+                                                        "method": "POST",
+                                                        "body": {
+                                                            "mode": "raw",
+                                                            "raw": "{\n  \"refreshToken\": \"<string>\"\n}",
+                                                            "options": {
+                                                                "raw": {
+                                                                    "headerFamily": "json",
+                                                                    "language": "json"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\",\n  \"role\": \"ADMIN\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "login",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "6a1cdbf9-197b-4711-8214-3fa543a27c1c",
+                                            "name": "Authenticate with email/password and receive access + refresh tokens",
+                                            "request": {
+                                                "name": "Authenticate with email/password and receive access + refresh tokens",
+                                                "description": {},
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "auth",
+                                                        "login"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                },
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "be044dcc-aedf-4851-b0a4-0804bab25e9a",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "auth",
+                                                                "login"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": []
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Content-Type",
+                                                                "value": "application/json"
+                                                            },
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            },
+                                                            {
+                                                                "description": {
+                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                    "type": "text/plain"
+                                                                },
+                                                                "key": "Authorization",
+                                                                "value": "Bearer <token>"
+                                                            }
+                                                        ],
+                                                        "method": "POST",
+                                                        "body": {
+                                                            "mode": "raw",
+                                                            "raw": "{\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                                                            "options": {
+                                                                "raw": {
+                                                                    "headerFamily": "json",
+                                                                    "language": "json"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\",\n  \"role\": \"ADMIN\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "me",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "1eca94da-40e0-42e9-816f-2078a6164b74",
+                                            "name": "Get the currently authenticated user's profile",
+                                            "request": {
+                                                "name": "Get the currently authenticated user's profile",
+                                                "description": {},
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "auth",
+                                                        "me"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {},
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "8cc1fae4-5c5a-4ef8-ad20-f5066debfeb1",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "auth",
+                                                                "me"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": []
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            },
+                                                            {
+                                                                "description": {
+                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                    "type": "text/plain"
+                                                                },
+                                                                "key": "Authorization",
+                                                                "value": "Bearer <token>"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"TEACHER\",\n  \"phone\": \"<string>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "attendance",
+                            "description": "",
+                            "item": [
+                                {
+                                    "id": "942b66f9-54e4-4515-9406-267808606d48",
+                                    "name": "Mark (or update) attendance for a student on a given date",
+                                    "request": {
+                                        "name": "Mark (or update) attendance for a student on a given date",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "attendance"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"PRESENT\",\n  \"studentId\": \"<uuid>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "c89cc393-2332-476e-ba45-f9d4df8dbb21",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "attendance"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"PRESENT\",\n  \"studentId\": \"<uuid>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"studentId\": \"<uuid>\",\n  \"date\": \"<date>\",\n  \"status\": \"EXCUSED\",\n  \"markedBy\": \"<uuid>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                },
+                                {
+                                    "name": "student",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "name": "{studentId}",
+                                            "description": "",
+                                            "item": [
+                                                {
+                                                    "id": "f837a092-2066-4dc8-9c69-8b57737651c0",
+                                                    "name": "View attendance history for a student",
+                                                    "request": {
+                                                        "name": "View attendance history for a student",
+                                                        "description": {},
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "attendance",
+                                                                "student",
+                                                                ":studentId"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "type": "any",
+                                                                    "value": "<uuid>",
+                                                                    "key": "studentId",
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {},
+                                                        "auth": null
+                                                    },
+                                                    "response": [
+                                                        {
+                                                            "id": "7276f014-b19f-41bb-b9be-0b0c76650c69",
+                                                            "name": "OK",
+                                                            "originalRequest": {
+                                                                "url": {
+                                                                    "path": [
+                                                                        "api",
+                                                                        "v1",
+                                                                        "attendance",
+                                                                        "student",
+                                                                        ":studentId"
+                                                                    ],
+                                                                    "host": [
+                                                                        "{{baseUrl}}"
+                                                                    ],
+                                                                    "query": [],
+                                                                    "variable": [
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "type": "any",
+                                                                            "value": "<uuid>",
+                                                                            "key": "studentId"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "header": [
+                                                                    {
+                                                                        "key": "Accept",
+                                                                        "value": "*/*"
+                                                                    },
+                                                                    {
+                                                                        "description": {
+                                                                            "content": "Added as a part of security scheme: bearer",
+                                                                            "type": "text/plain"
+                                                                        },
+                                                                        "key": "Authorization",
+                                                                        "value": "Bearer <token>"
+                                                                    }
+                                                                ],
+                                                                "method": "GET",
+                                                                "body": {}
+                                                            },
+                                                            "status": "OK",
+                                                            "code": 200,
+                                                            "header": [
+                                                                {
+                                                                    "key": "Content-Type",
+                                                                    "value": "*/*"
+                                                                }
+                                                            ],
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"EXCUSED\",\n    \"markedBy\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"EXCUSED\",\n    \"markedBy\": \"<uuid>\"\n  }\n]",
+                                                            "cookie": [],
+                                                            "_postman_previewlanguage": "text"
+                                                        }
+                                                    ],
+                                                    "event": [],
+                                                    "protocolProfileBehavior": {
+                                                        "disableBodyPruning": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "class",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "name": "{studentClass}",
+                                            "description": "",
+                                            "item": [
+                                                {
+                                                    "name": "{section}",
+                                                    "description": "",
+                                                    "item": [
+                                                        {
+                                                            "name": "{date}",
+                                                            "description": "",
+                                                            "item": [
+                                                                {
+                                                                    "id": "9d6dca84-b1ef-4e3c-9e70-3603e33c58c0",
+                                                                    "name": "View attendance for a whole class/section on a given date",
+                                                                    "request": {
+                                                                        "name": "View attendance for a whole class/section on a given date",
+                                                                        "description": {},
+                                                                        "url": {
+                                                                            "path": [
+                                                                                "api",
+                                                                                "v1",
+                                                                                "attendance",
+                                                                                "class",
+                                                                                ":studentClass",
+                                                                                ":section",
+                                                                                ":date"
+                                                                            ],
+                                                                            "host": [
+                                                                                "{{baseUrl}}"
+                                                                            ],
+                                                                            "query": [],
+                                                                            "variable": [
+                                                                                {
+                                                                                    "type": "any",
+                                                                                    "value": "<string>",
+                                                                                    "key": "studentClass",
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) ",
+                                                                                        "type": "text/plain"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "any",
+                                                                                    "value": "<string>",
+                                                                                    "key": "section",
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) ",
+                                                                                        "type": "text/plain"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "any",
+                                                                                    "value": "<date>",
+                                                                                    "key": "date",
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) ",
+                                                                                        "type": "text/plain"
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "header": [
+                                                                            {
+                                                                                "key": "Accept",
+                                                                                "value": "*/*"
+                                                                            }
+                                                                        ],
+                                                                        "method": "GET",
+                                                                        "body": {},
+                                                                        "auth": null
+                                                                    },
+                                                                    "response": [
+                                                                        {
+                                                                            "id": "5a54ba91-5845-4454-9b9e-13a5008c648b",
+                                                                            "name": "OK",
+                                                                            "originalRequest": {
+                                                                                "url": {
+                                                                                    "path": [
+                                                                                        "api",
+                                                                                        "v1",
+                                                                                        "attendance",
+                                                                                        "class",
+                                                                                        ":studentClass",
+                                                                                        ":section",
+                                                                                        ":date"
+                                                                                    ],
+                                                                                    "host": [
+                                                                                        "{{baseUrl}}"
+                                                                                    ],
+                                                                                    "query": [],
+                                                                                    "variable": [
+                                                                                        {
+                                                                                            "disabled": false,
+                                                                                            "description": {
+                                                                                                "content": "(Required) ",
+                                                                                                "type": "text/plain"
+                                                                                            },
+                                                                                            "type": "any",
+                                                                                            "value": "<string>",
+                                                                                            "key": "studentClass"
+                                                                                        },
+                                                                                        {
+                                                                                            "disabled": false,
+                                                                                            "description": {
+                                                                                                "content": "(Required) ",
+                                                                                                "type": "text/plain"
+                                                                                            },
+                                                                                            "type": "any",
+                                                                                            "value": "<string>",
+                                                                                            "key": "section"
+                                                                                        },
+                                                                                        {
+                                                                                            "disabled": false,
+                                                                                            "description": {
+                                                                                                "content": "(Required) ",
+                                                                                                "type": "text/plain"
+                                                                                            },
+                                                                                            "type": "any",
+                                                                                            "value": "<date>",
+                                                                                            "key": "date"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "header": [
+                                                                                    {
+                                                                                        "key": "Accept",
+                                                                                        "value": "*/*"
+                                                                                    },
+                                                                                    {
+                                                                                        "description": {
+                                                                                            "content": "Added as a part of security scheme: bearer",
+                                                                                            "type": "text/plain"
+                                                                                        },
+                                                                                        "key": "Authorization",
+                                                                                        "value": "Bearer <token>"
+                                                                                    }
+                                                                                ],
+                                                                                "method": "GET",
+                                                                                "body": {}
+                                                                            },
+                                                                            "status": "OK",
+                                                                            "code": 200,
+                                                                            "header": [
+                                                                                {
+                                                                                    "key": "Content-Type",
+                                                                                    "value": "*/*"
+                                                                                }
+                                                                            ],
+                                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"EXCUSED\",\n    \"markedBy\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"EXCUSED\",\n    \"markedBy\": \"<uuid>\"\n  }\n]",
+                                                                            "cookie": [],
+                                                                            "_postman_previewlanguage": "text"
+                                                                        }
+                                                                    ],
+                                                                    "event": [],
+                                                                    "protocolProfileBehavior": {
+                                                                        "disableBodyPruning": true
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "fees",
+                            "description": "",
+                            "item": [
+                                {
+                                    "name": "{id}",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "ce345f66-3baa-4338-97fb-a350c9c23f01",
+                                            "name": "Update a fee record's paid amount/status",
+                                            "request": {
+                                                "name": "Update a fee record's paid amount/status",
+                                                "description": {},
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "fees",
+                                                        ":id"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": [
+                                                        {
+                                                            "type": "any",
+                                                            "value": "<uuid>",
+                                                            "key": "id",
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "PATCH",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PARTIAL\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                },
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "7fd805b4-d1b6-4350-b4ce-4c161cc87358",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "fees",
+                                                                ":id"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    },
+                                                                    "type": "any",
+                                                                    "value": "<uuid>",
+                                                                    "key": "id"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Content-Type",
+                                                                "value": "application/json"
+                                                            },
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            },
+                                                            {
+                                                                "description": {
+                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                    "type": "text/plain"
+                                                                },
+                                                                "key": "Authorization",
+                                                                "value": "Bearer <token>"
+                                                            }
+                                                        ],
+                                                        "method": "PATCH",
+                                                        "body": {
+                                                            "mode": "raw",
+                                                            "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PARTIAL\"\n}",
+                                                            "options": {
+                                                                "raw": {
+                                                                    "headerFamily": "json",
+                                                                    "language": "json"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"studentId\": \"<uuid>\",\n  \"term\": \"<string>\",\n  \"amountDue\": \"<number>\",\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PENDING\",\n  \"dueDate\": \"<date>\"\n}",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "student",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "name": "{studentId}",
+                                            "description": "",
+                                            "item": [
+                                                {
+                                                    "id": "47730613-9d0d-4e9f-9341-02a65c49fb9b",
+                                                    "name": "View fee status for a student",
+                                                    "request": {
+                                                        "name": "View fee status for a student",
+                                                        "description": {},
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "fees",
+                                                                "student",
+                                                                ":studentId"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": [
+                                                                {
+                                                                    "type": "any",
+                                                                    "value": "<uuid>",
+                                                                    "key": "studentId",
+                                                                    "disabled": false,
+                                                                    "description": {
+                                                                        "content": "(Required) ",
+                                                                        "type": "text/plain"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {},
+                                                        "auth": null
+                                                    },
+                                                    "response": [
+                                                        {
+                                                            "id": "5351118d-6ccd-47cb-ade5-7022f954b9c1",
+                                                            "name": "OK",
+                                                            "originalRequest": {
+                                                                "url": {
+                                                                    "path": [
+                                                                        "api",
+                                                                        "v1",
+                                                                        "fees",
+                                                                        "student",
+                                                                        ":studentId"
+                                                                    ],
+                                                                    "host": [
+                                                                        "{{baseUrl}}"
+                                                                    ],
+                                                                    "query": [],
+                                                                    "variable": [
+                                                                        {
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "type": "any",
+                                                                            "value": "<uuid>",
+                                                                            "key": "studentId"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "header": [
+                                                                    {
+                                                                        "key": "Accept",
+                                                                        "value": "*/*"
+                                                                    },
+                                                                    {
+                                                                        "description": {
+                                                                            "content": "Added as a part of security scheme: bearer",
+                                                                            "type": "text/plain"
+                                                                        },
+                                                                        "key": "Authorization",
+                                                                        "value": "Bearer <token>"
+                                                                    }
+                                                                ],
+                                                                "method": "GET",
+                                                                "body": {}
+                                                            },
+                                                            "status": "OK",
+                                                            "code": 200,
+                                                            "header": [
+                                                                {
+                                                                    "key": "Content-Type",
+                                                                    "value": "*/*"
+                                                                }
+                                                            ],
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"PENDING\",\n    \"dueDate\": \"<date>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"PENDING\",\n    \"dueDate\": \"<date>\"\n  }\n]",
+                                                            "cookie": [],
+                                                            "_postman_previewlanguage": "text"
+                                                        }
+                                                    ],
+                                                    "event": [],
+                                                    "protocolProfileBehavior": {
+                                                        "disableBodyPruning": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "type": "any",
+                "value": "{{bearerToken}}",
+                "key": "token"
+            }
+        ]
+    },
+    "event": [],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ],
+    "info": {
+        "_postman_id": "6ee4892b-9c87-4e56-8acf-8e1ac5375900",
+        "name": "School Management App API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "REST API for login, students, attendance, timetable, homework, exam results, notices, and fees",
+            "type": "text/plain"
+        }
+    }
+}
