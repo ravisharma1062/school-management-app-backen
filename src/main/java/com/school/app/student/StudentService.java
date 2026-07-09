@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -47,6 +48,12 @@ public class StudentService {
                 .build();
 
         return studentMapper.toDto(studentRepository.save(student));
+    }
+
+    public List<StudentDto> getMyChildren(User currentUser) {
+        return studentRepository.findByParentId(currentUser.getId()).stream()
+                .map(studentMapper::toDto)
+                .toList();
     }
 
     public StudentDto getById(UUID id, User currentUser) {

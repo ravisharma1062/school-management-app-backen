@@ -9,11 +9,277 @@
                     "description": "",
                     "item": [
                         {
+                            "name": "users",
+                            "description": "",
+                            "item": [
+                                {
+                                    "id": "a7e0d2ff-5e65-4cf1-a7de-5b8e143b95f6",
+                                    "name": "List users (paginated), optionally filtered by role",
+                                    "request": {
+                                        "name": "List users (paginated), optionally filtered by role",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "users"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": " (This can only be one of ADMIN,TEACHER,PARENT)",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "role",
+                                                    "value": "TEACHER"
+                                                },
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "page",
+                                                    "value": "<integer>"
+                                                },
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "size",
+                                                    "value": "<integer>"
+                                                },
+                                                {
+                                                    "disabled": false,
+                                                    "description": {
+                                                        "content": "(Required) ",
+                                                        "type": "text/plain"
+                                                    },
+                                                    "key": "sort",
+                                                    "value": "<string>,<string>"
+                                                }
+                                            ],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "GET",
+                                        "body": {},
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "2f9a9492-ab42-4201-982d-d806e872f138",
+                                            "name": "OK",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "users"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": " (This can only be one of ADMIN,TEACHER,PARENT)",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "role",
+                                                            "value": "TEACHER"
+                                                        },
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "page",
+                                                            "value": "<integer>"
+                                                        },
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "size",
+                                                            "value": "<integer>"
+                                                        },
+                                                        {
+                                                            "disabled": false,
+                                                            "description": {
+                                                                "content": "(Required) ",
+                                                                "type": "text/plain"
+                                                            },
+                                                            "key": "sort",
+                                                            "value": "<string>,<string>"
+                                                        }
+                                                    ],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {}
+                                            },
+                                            "status": "OK",
+                                            "code": 200,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"totalElements\": \"<long>\",\n  \"totalPages\": \"<integer>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"numberOfElements\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"role\": \"PARENT\",\n      \"phone\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"role\": \"TEACHER\",\n      \"phone\": \"<string>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageSize\": \"<integer>\",\n    \"pageNumber\": \"<integer>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"empty\": \"<boolean>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                },
+                                {
+                                    "id": "cf4e17f4-1d8f-4b7f-9c4c-871c4aa2c29d",
+                                    "name": "Create a Teacher or Parent user account",
+                                    "request": {
+                                        "name": "Create a Teacher or Parent user account",
+                                        "description": {},
+                                        "url": {
+                                            "path": [
+                                                "api",
+                                                "v1",
+                                                "users"
+                                            ],
+                                            "host": [
+                                                "{{baseUrl}}"
+                                            ],
+                                            "query": [],
+                                            "variable": []
+                                        },
+                                        "header": [
+                                            {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                            },
+                                            {
+                                                "key": "Accept",
+                                                "value": "*/*"
+                                            }
+                                        ],
+                                        "method": "POST",
+                                        "body": {
+                                            "mode": "raw",
+                                            "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": \"ADMIN\",\n  \"phone\": \"<string>\"\n}",
+                                            "options": {
+                                                "raw": {
+                                                    "headerFamily": "json",
+                                                    "language": "json"
+                                                }
+                                            }
+                                        },
+                                        "auth": null
+                                    },
+                                    "response": [
+                                        {
+                                            "id": "ab49d255-f688-4895-851c-a6042fa4ade6",
+                                            "name": "Created",
+                                            "originalRequest": {
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "users"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                    },
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    },
+                                                    {
+                                                        "description": {
+                                                            "content": "Added as a part of security scheme: bearer",
+                                                            "type": "text/plain"
+                                                        },
+                                                        "key": "Authorization",
+                                                        "value": "Bearer <token>"
+                                                    }
+                                                ],
+                                                "method": "POST",
+                                                "body": {
+                                                    "mode": "raw",
+                                                    "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": \"ADMIN\",\n  \"phone\": \"<string>\"\n}",
+                                                    "options": {
+                                                        "raw": {
+                                                            "headerFamily": "json",
+                                                            "language": "json"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "status": "Created",
+                                            "code": 201,
+                                            "header": [
+                                                {
+                                                    "key": "Content-Type",
+                                                    "value": "*/*"
+                                                }
+                                            ],
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"TEACHER\",\n  \"phone\": \"<string>\"\n}",
+                                            "cookie": [],
+                                            "_postman_previewlanguage": "text"
+                                        }
+                                    ],
+                                    "event": [],
+                                    "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                    }
+                                }
+                            ]
+                        },
+                        {
                             "name": "timetable",
                             "description": "",
                             "item": [
                                 {
-                                    "id": "568d281e-b234-4335-81a8-7683f5316ed1",
+                                    "id": "0293c856-bb72-4559-932f-df39bd5b8028",
                                     "name": "Create a timetable entry",
                                     "request": {
                                         "name": "Create a timetable entry",
@@ -43,7 +309,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"dayOfWeek\": \"SUNDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
+                                            "raw": "{\n  \"dayOfWeek\": \"TUESDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "headerFamily": "json",
@@ -55,7 +321,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "3d165980-4df7-425e-992a-a2d1418f3402",
+                                            "id": "958b96f7-480d-4637-abac-a85c8aaf3b88",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -91,7 +357,7 @@
                                                 "method": "POST",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"dayOfWeek\": \"SUNDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
+                                                    "raw": "{\n  \"dayOfWeek\": \"TUESDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -127,7 +393,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "d1eb277b-5535-4343-81ef-e6c756c38d09",
+                                                    "id": "d4024a18-ea76-4cef-8ed6-34053e5fec28",
                                                     "name": "View the weekly timetable for a class/section",
                                                     "request": {
                                                         "name": "View the weekly timetable for a class/section",
@@ -179,7 +445,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "a3f33696-26ba-42a0-be27-9c53eef5ca59",
+                                                            "id": "9ab938a8-b182-415f-89d1-ce082d62acb6",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -242,7 +508,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"FRIDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"SUNDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\"\n  }\n]",
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"WEDNESDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"THURSDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\"\n  }\n]",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -263,7 +529,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "31eaae28-e07a-49a7-9168-4083e31792a1",
+                                    "id": "775d6913-b3e3-47fc-9440-0b1c981b84f8",
                                     "name": "List students (paginated)",
                                     "request": {
                                         "name": "List students (paginated)",
@@ -320,7 +586,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "c58f4dea-de8c-4ad5-ae62-09595de79e06",
+                                            "id": "7fe77ecd-65c1-44f0-b763-4858af9151d2",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -388,7 +654,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"pageable\": {\n    \"paged\": \"<boolean>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ]\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
+                                            "body": "{\n  \"totalElements\": \"<long>\",\n  \"totalPages\": \"<integer>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"numberOfElements\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageSize\": \"<integer>\",\n    \"pageNumber\": \"<integer>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"empty\": \"<boolean>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -399,7 +665,7 @@
                                     }
                                 },
                                 {
-                                    "id": "6fc7018e-9150-469a-8657-5d901f75e218",
+                                    "id": "73d756eb-b378-4abe-b23d-3871175a42ec",
                                     "name": "Create a student",
                                     "request": {
                                         "name": "Create a student",
@@ -441,7 +707,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "fd943c34-6da4-4db7-b910-cd374ee27e06",
+                                            "id": "ccefa603-4ded-4677-ba4b-ff1ba378f718",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -509,7 +775,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "f013b10b-7765-4ef6-94a7-21091ec81797",
+                                            "id": "15f379df-aa12-4e59-a45f-281c4df3e956",
                                             "name": "Get a student by id (parents may only view their own child)",
                                             "request": {
                                                 "name": "Get a student by id (parents may only view their own child)",
@@ -550,7 +816,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "be595179-ffa7-40a1-baf2-f81c7ed2a48c",
+                                                    "id": "d5340596-ca14-4184-a41d-f22e0b74d4d0",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -613,7 +879,7 @@
                                             }
                                         },
                                         {
-                                            "id": "eca0b6d0-d9ce-4000-a391-b858b407f257",
+                                            "id": "7fd1cd86-69d1-4e2f-985b-3851961d20a4",
                                             "name": "Update a student",
                                             "request": {
                                                 "name": "Update a student",
@@ -667,7 +933,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "56ccafe2-ceaf-45a4-a2ae-0fd35957b9b0",
+                                                    "id": "4ef3d039-670b-4618-8317-f6fd2b04da07",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -743,6 +1009,94 @@
                                             }
                                         }
                                     ]
+                                },
+                                {
+                                    "name": "my-children",
+                                    "description": "",
+                                    "item": [
+                                        {
+                                            "id": "46d787b2-1a8a-4d5a-9d33-b8f676b2e4ed",
+                                            "name": "List the authenticated parent's own children",
+                                            "request": {
+                                                "name": "List the authenticated parent's own children",
+                                                "description": {},
+                                                "url": {
+                                                    "path": [
+                                                        "api",
+                                                        "v1",
+                                                        "students",
+                                                        "my-children"
+                                                    ],
+                                                    "host": [
+                                                        "{{baseUrl}}"
+                                                    ],
+                                                    "query": [],
+                                                    "variable": []
+                                                },
+                                                "header": [
+                                                    {
+                                                        "key": "Accept",
+                                                        "value": "*/*"
+                                                    }
+                                                ],
+                                                "method": "GET",
+                                                "body": {},
+                                                "auth": null
+                                            },
+                                            "response": [
+                                                {
+                                                    "id": "dc9b9a81-d128-4ff6-9250-6d77222eb0ca",
+                                                    "name": "OK",
+                                                    "originalRequest": {
+                                                        "url": {
+                                                            "path": [
+                                                                "api",
+                                                                "v1",
+                                                                "students",
+                                                                "my-children"
+                                                            ],
+                                                            "host": [
+                                                                "{{baseUrl}}"
+                                                            ],
+                                                            "query": [],
+                                                            "variable": []
+                                                        },
+                                                        "header": [
+                                                            {
+                                                                "key": "Accept",
+                                                                "value": "*/*"
+                                                            },
+                                                            {
+                                                                "description": {
+                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                    "type": "text/plain"
+                                                                },
+                                                                "key": "Authorization",
+                                                                "value": "Bearer <token>"
+                                                            }
+                                                        ],
+                                                        "method": "GET",
+                                                        "body": {}
+                                                    },
+                                                    "status": "OK",
+                                                    "code": 200,
+                                                    "header": [
+                                                        {
+                                                            "key": "Content-Type",
+                                                            "value": "*/*"
+                                                        }
+                                                    ],
+                                                    "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"rollNo\": \"<string>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dob\": \"<date>\",\n    \"parentId\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"rollNo\": \"<string>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dob\": \"<date>\",\n    \"parentId\": \"<uuid>\"\n  }\n]",
+                                                    "cookie": [],
+                                                    "_postman_previewlanguage": "text"
+                                                }
+                                            ],
+                                            "event": [],
+                                            "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                            }
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -751,7 +1105,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "0ae1d2f7-1769-44eb-a7a9-636be703739d",
+                                    "id": "62ce9bbc-d2ce-4933-a17d-1a5905c0f2e4",
                                     "name": "List notices visible to the current user, optionally filtered by target role",
                                     "request": {
                                         "name": "List notices visible to the current user, optionally filtered by target role",
@@ -773,7 +1127,7 @@
                                                         "type": "text/plain"
                                                     },
                                                     "key": "role",
-                                                    "value": "PARENT"
+                                                    "value": "TEACHER"
                                                 },
                                                 {
                                                     "disabled": false,
@@ -817,7 +1171,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "c4d3eeef-5b12-484a-bb82-254a0c4c8fe0",
+                                            "id": "f9d88eaa-858e-4da0-bdc2-834281c28e7f",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -837,7 +1191,7 @@
                                                                 "type": "text/plain"
                                                             },
                                                             "key": "role",
-                                                            "value": "PARENT"
+                                                            "value": "TEACHER"
                                                         },
                                                         {
                                                             "disabled": false,
@@ -894,7 +1248,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"pageable\": {\n    \"paged\": \"<boolean>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ]\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"ADMIN\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"PARENT\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
+                                            "body": "{\n  \"totalElements\": \"<long>\",\n  \"totalPages\": \"<integer>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"numberOfElements\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"ADMIN\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"ADMIN\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageSize\": \"<integer>\",\n    \"pageNumber\": \"<integer>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"empty\": \"<boolean>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -905,7 +1259,7 @@
                                     }
                                 },
                                 {
-                                    "id": "719917c3-916e-44ab-9978-8720283e958a",
+                                    "id": "06156939-1d86-4c21-ba27-086603933317",
                                     "name": "Post a notice",
                                     "request": {
                                         "name": "Post a notice",
@@ -947,7 +1301,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "471c0dd2-0dbb-473a-aef7-0dd2c85cb565",
+                                            "id": "17f6b8c6-43c8-4b4d-ad1f-1b3be6e18ba5",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -1000,7 +1354,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"TEACHER\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"PARENT\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -1017,7 +1371,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "7d993ecd-6a84-4b05-a9b1-455fa430290b",
+                                    "id": "e03af0a2-e60d-4685-9c3e-7204035fa925",
                                     "name": "Post homework for a class/section",
                                     "request": {
                                         "name": "Post homework for a class/section",
@@ -1059,7 +1413,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "e026cc00-45cb-4687-991b-28461726a433",
+                                            "id": "0e7fdde1-5f48-4817-a1f5-5d027f3a25a8",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -1131,7 +1485,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "a5465eaa-aa39-4bab-acee-201372d058e8",
+                                                    "id": "b38e00f7-1652-4301-9123-ef136073d667",
                                                     "name": "List homework for a class/section (paginated)",
                                                     "request": {
                                                         "name": "List homework for a class/section (paginated)",
@@ -1211,7 +1565,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "bdd497d6-0830-4515-8e63-2a317ade67e0",
+                                                            "id": "40f9fcf2-4058-4dec-aef1-f58291603623",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -1302,7 +1656,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"pageable\": {\n    \"paged\": \"<boolean>\",\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ]\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
+                                                            "body": "{\n  \"totalElements\": \"<long>\",\n  \"totalPages\": \"<integer>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"numberOfElements\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"unpaged\": \"<boolean>\",\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageSize\": \"<integer>\",\n    \"pageNumber\": \"<integer>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"empty\": \"<boolean>\"\n}",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -1323,7 +1677,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "1f02a732-6aef-40cc-929f-24cf310c2789",
+                                    "id": "a28ca193-31e9-4c3e-8807-aecbefde0990",
                                     "name": "Record an exam result (grade is computed server-side)",
                                     "request": {
                                         "name": "Record an exam result (grade is computed server-side)",
@@ -1365,7 +1719,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "739347c2-7a0d-45df-af35-1ae160ef3b19",
+                                            "id": "9945f7bd-370c-4c5f-8117-2942f1c51b99",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -1437,7 +1791,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "3caeed6e-ccde-49ff-81fe-fe57b3604c65",
+                                                    "id": "8997d516-eee5-4cf3-a430-b8a2954bd9d5",
                                                     "name": "View exam results for a student",
                                                     "request": {
                                                         "name": "View exam results for a student",
@@ -1479,7 +1833,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "f9e1712c-e059-4235-8886-9346e913c235",
+                                                            "id": "a52ff64e-c079-4478-9439-710473c426f3",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -1557,7 +1911,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "8677ab3e-73d5-4323-95dd-cf28ca6d201d",
+                                            "id": "36a8b7e1-1c47-4d94-8aae-eaab663809cb",
                                             "name": "Exchange a valid refresh token for a new token pair",
                                             "request": {
                                                 "name": "Exchange a valid refresh token for a new token pair",
@@ -1600,7 +1954,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "123e93ec-c8f4-4dc5-b4bf-b28271aa5098",
+                                                    "id": "3addc0fd-ddc4-4c63-8c7d-2871b035fa27",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -1671,7 +2025,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "6a1cdbf9-197b-4711-8214-3fa543a27c1c",
+                                            "id": "12893293-32b4-4269-94a2-4331a3133712",
                                             "name": "Authenticate with email/password and receive access + refresh tokens",
                                             "request": {
                                                 "name": "Authenticate with email/password and receive access + refresh tokens",
@@ -1714,7 +2068,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "be044dcc-aedf-4851-b0a4-0804bab25e9a",
+                                                    "id": "4dacc1ce-87d4-43a2-a1c7-dede5549a9f6",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -1785,7 +2139,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "1eca94da-40e0-42e9-816f-2078a6164b74",
+                                            "id": "db522807-a158-41ad-9507-af017d5876c7",
                                             "name": "Get the currently authenticated user's profile",
                                             "request": {
                                                 "name": "Get the currently authenticated user's profile",
@@ -1815,7 +2169,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "8cc1fae4-5c5a-4ef8-ad20-f5066debfeb1",
+                                                    "id": "125428c8-e3f2-40d4-9e0a-0cf61ead4dc7",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -1875,7 +2229,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "942b66f9-54e4-4515-9406-267808606d48",
+                                    "id": "2fde5005-e629-4190-8de8-4ce6203c208c",
                                     "name": "Mark (or update) attendance for a student on a given date",
                                     "request": {
                                         "name": "Mark (or update) attendance for a student on a given date",
@@ -1905,7 +2259,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"PRESENT\",\n  \"studentId\": \"<uuid>\"\n}",
+                                            "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"ABSENT\",\n  \"studentId\": \"<uuid>\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "headerFamily": "json",
@@ -1917,7 +2271,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "c89cc393-2332-476e-ba45-f9d4df8dbb21",
+                                            "id": "4aaa4ac6-6636-4bdb-897b-b185f81c53ab",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -1953,7 +2307,7 @@
                                                 "method": "POST",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"PRESENT\",\n  \"studentId\": \"<uuid>\"\n}",
+                                                    "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"ABSENT\",\n  \"studentId\": \"<uuid>\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -1989,7 +2343,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "f837a092-2066-4dc8-9c69-8b57737651c0",
+                                                    "id": "6933c528-27ae-457d-be8f-c7c52303e6f5",
                                                     "name": "View attendance history for a student",
                                                     "request": {
                                                         "name": "View attendance history for a student",
@@ -2031,7 +2385,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "7276f014-b19f-41bb-b9be-0b0c76650c69",
+                                                            "id": "e29d4dc1-72a4-41d8-b78b-22f6081d85d1",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -2115,7 +2469,7 @@
                                                             "description": "",
                                                             "item": [
                                                                 {
-                                                                    "id": "9d6dca84-b1ef-4e3c-9e70-3603e33c58c0",
+                                                                    "id": "0c6f48e6-3ec9-469c-9845-49e9f815f8cc",
                                                                     "name": "View attendance for a whole class/section on a given date",
                                                                     "request": {
                                                                         "name": "View attendance for a whole class/section on a given date",
@@ -2179,7 +2533,7 @@
                                                                     },
                                                                     "response": [
                                                                         {
-                                                                            "id": "5a54ba91-5845-4454-9b9e-13a5008c648b",
+                                                                            "id": "c5f99055-ec2c-4c95-a94d-956576fd6ec8",
                                                                             "name": "OK",
                                                                             "originalRequest": {
                                                                                 "url": {
@@ -2283,7 +2637,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "ce345f66-3baa-4338-97fb-a350c9c23f01",
+                                            "id": "fad9e7b7-107f-4d0c-ad92-3ded177a03b8",
                                             "name": "Update a fee record's paid amount/status",
                                             "request": {
                                                 "name": "Update a fee record's paid amount/status",
@@ -2325,7 +2679,7 @@
                                                 "method": "PATCH",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PARTIAL\"\n}",
+                                                    "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"OVERDUE\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -2337,7 +2691,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "7fd805b4-d1b6-4350-b4ce-4c161cc87358",
+                                                    "id": "cfaf5eb6-e399-487a-8952-f40297ed77cd",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -2385,7 +2739,7 @@
                                                         "method": "PATCH",
                                                         "body": {
                                                             "mode": "raw",
-                                                            "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PARTIAL\"\n}",
+                                                            "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"OVERDUE\"\n}",
                                                             "options": {
                                                                 "raw": {
                                                                     "headerFamily": "json",
@@ -2423,7 +2777,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "47730613-9d0d-4e9f-9341-02a65c49fb9b",
+                                                    "id": "a2d4fedd-3468-482c-9ca1-9641de9fb020",
                                                     "name": "View fee status for a student",
                                                     "request": {
                                                         "name": "View fee status for a student",
@@ -2465,7 +2819,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "5351118d-6ccd-47cb-ade5-7022f954b9c1",
+                                                            "id": "63fe8a16-72db-4289-82e8-21d89e7b2a3a",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -2518,7 +2872,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"PENDING\",\n    \"dueDate\": \"<date>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"PENDING\",\n    \"dueDate\": \"<date>\"\n  }\n]",
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"PARTIAL\",\n    \"dueDate\": \"<date>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"PENDING\",\n    \"dueDate\": \"<date>\"\n  }\n]",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -2557,7 +2911,7 @@
         }
     ],
     "info": {
-        "_postman_id": "6ee4892b-9c87-4e56-8acf-8e1ac5375900",
+        "_postman_id": "03634560-d849-46ec-b03b-1f786fb5473c",
         "name": "School Management App API",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {

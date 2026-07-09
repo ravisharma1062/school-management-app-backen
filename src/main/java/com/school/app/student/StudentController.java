@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,6 +27,13 @@ public class StudentController {
     @Operation(summary = "List students (paginated)")
     public Page<StudentDto> list(Pageable pageable) {
         return studentService.list(pageable);
+    }
+
+    @GetMapping("/my-children")
+    @PreAuthorize("hasRole('PARENT')")
+    @Operation(summary = "List the authenticated parent's own children")
+    public List<StudentDto> myChildren(@AuthenticationPrincipal User currentUser) {
+        return studentService.getMyChildren(currentUser);
     }
 
     @PostMapping
