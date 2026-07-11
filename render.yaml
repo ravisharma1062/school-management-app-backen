@@ -1,16 +1,21 @@
-# Render Blueprint — deploy from the Render dashboard via "New > Blueprint",
-# pointing at this repo (school-management-app-backend).
+# Render Blueprint — reference only at this point, NOT deployed as a Blueprint.
 #
-# The Postgres instance is provisioned manually (not by this blueprint) — deploy the
-# backend web service in the SAME REGION as that database so it can use the free/fast
-# internal hostname instead of routing over the public internet. DB_URL/DB_USERNAME/
-# DB_PASSWORD are declared with sync: false: Render will prompt for them in the
-# dashboard on first deploy and stores them as secrets — they are never written here.
+# The backend is already live, deployed manually (not via this file) as
+# "school-management-app-backen" at https://school-management-app-backen.onrender.com
+# (Render assigned that name from the repo name, not the "school-app-backend" this
+# file originally predicted). Running "New > Blueprint" against this file now would
+# create a SECOND, duplicate backend service — don't do that. Deploy the frontend the
+# same way the backend was deployed: manually, via Render's "New > Static Site",
+# pointing at the school-management-app-ui repo, build command `npm run build`,
+# publish directory `dist`, with a `/* -> /index.html` rewrite rule.
 #
-# NOTE: APP_CORS_ALLOWED_ORIGINS and VITE_API_BASE_URL below assume the service
-# names below are available and Render assigns them the predictable
-# https://<name>.onrender.com hostname. If Render appends a suffix because a
-# name was taken, update both values by hand after the first deploy.
+# After that manual frontend deploy:
+#   1. Note its real assigned URL.
+#   2. Set VITE_API_BASE_URL on the frontend static site (rebuild triggers a redeploy).
+#   3. Set APP_CORS_ALLOWED_ORIGINS on the backend service to that same URL (confirmed
+#      via a live preflight test that anything not explicitly allowed gets a 403).
+#
+# The block below is kept as a record of the intended config, not something to run.
 services:
   - type: web
     name: school-app-backend
@@ -46,4 +51,4 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://school-app-backend.onrender.com
+        value: https://school-management-app-backen.onrender.com
