@@ -35,6 +35,9 @@ public abstract class AbstractIntegrationTest {
         registry.add("spring.datasource.url", POSTGRES::getJdbcUrl);
         registry.add("spring.datasource.username", POSTGRES::getUsername);
         registry.add("spring.datasource.password", POSTGRES::getPassword);
+        // Keep file uploads made by tests out of the repo's ./storage dir.
+        registry.add("app.storage.local.base-dir",
+                () -> System.getProperty("java.io.tmpdir") + "/school-app-test-storage");
     }
 
     @Autowired

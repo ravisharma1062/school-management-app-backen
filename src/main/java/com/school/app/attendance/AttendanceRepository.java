@@ -21,4 +21,13 @@ public interface AttendanceRepository extends JpaRepository<Attendance, UUID> {
             @Param("studentClass") String studentClass,
             @Param("section") String section,
             @Param("date") LocalDate date);
+
+    @Query("select a from Attendance a where a.date between :from and :to "
+            + "and (:studentClass is null or a.student.studentClass = :studentClass)")
+    List<Attendance> findInRange(
+            @Param("from") LocalDate from,
+            @Param("to") LocalDate to,
+            @Param("studentClass") String studentClass);
+
+    List<Attendance> findByStudentIdAndDateBetween(UUID studentId, LocalDate from, LocalDate to);
 }

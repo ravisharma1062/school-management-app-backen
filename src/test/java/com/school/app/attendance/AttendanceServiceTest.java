@@ -1,6 +1,8 @@
 package com.school.app.attendance;
 
+import com.school.app.common.notification.NotificationService;
 import com.school.app.student.StudentRepository;
+import com.school.app.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -20,9 +22,13 @@ class AttendanceServiceTest {
     private StudentRepository studentRepository;
     @Mock
     private AttendanceMapper attendanceMapper;
+    @Mock
+    private NotificationService notificationService;
+    @Mock
+    private UserRepository userRepository;
 
     private AttendanceService newService() {
-        return new AttendanceService(attendanceRepository, studentRepository, attendanceMapper);
+        return new AttendanceService(attendanceRepository, studentRepository, attendanceMapper, notificationService, userRepository);
     }
 
     @Test

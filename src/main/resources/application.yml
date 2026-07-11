@@ -17,12 +17,37 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 
 app:
   jwt:
     secret: ${JWT_SECRET:change-this-secret-in-every-environment-min-32-bytes-long}
     access-token-expiration-ms: ${JWT_ACCESS_EXPIRATION_MS:900000}
     refresh-token-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:604800000}
+  notification:
+    sms:
+      msg91:
+        auth-key: ${MSG91_AUTH_KEY:}
+        sender-id: ${MSG91_SENDER_ID:}
+        route: ${MSG91_ROUTE:4}
+    email:
+      smtp:
+        host: ${SES_SMTP_HOST:}
+        port: ${SES_SMTP_PORT:587}
+        username: ${SES_SMTP_USERNAME:}
+        password: ${SES_SMTP_PASSWORD:}
+        from-address: ${NOTIFICATION_FROM_EMAIL:no-reply@school.app}
+  payment:
+    razorpay:
+      key-id: ${RAZORPAY_KEY_ID:}
+      key-secret: ${RAZORPAY_KEY_SECRET:}
+      webhook-secret: ${RAZORPAY_WEBHOOK_SECRET:}
+  storage:
+    local:
+      base-dir: ${STORAGE_LOCAL_DIR:./storage}
 
 springdoc:
   swagger-ui:

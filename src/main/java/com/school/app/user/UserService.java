@@ -1,6 +1,8 @@
 package com.school.app.user;
 
 import com.school.app.common.exception.DuplicateResourceException;
+import com.school.app.common.notification.NotificationEventType;
+import com.school.app.common.notification.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +17,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
+    private final NotificationService notificationService;
 
     @PreAuthorize("hasRole('ADMIN')")
     public UserDto create(UserCreateRequest request) {
@@ -30,7 +33,17 @@ public class UserService {
                 .phone(request.phone())
                 .build();
 
-        return userMapper.toDto(userRepository.save(user));
+        User saved = userRepository.save(user);
+
+        notificationService.notify(
+                NotificationEventType.USER_WELCOME,
+                saved,
+                "Welcome to School App",
+                "Hi " + saved.getName() + ",\n\nAn account has been created for you.\n\n"
+                        + "Email: " + saved.getEmail() + "\nTemporary password: " + request.password()
+                        + "\n\nPlease sign in and change your password as soon as possible.");
+
+        return userMapper.toDto(saved);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
