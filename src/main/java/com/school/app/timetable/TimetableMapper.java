@@ -13,7 +13,8 @@ public class TimetableMapper {
                 timetable.getDayOfWeek(),
                 timetable.getPeriod(),
                 timetable.getSubject(),
-                timetable.getTeacher().getId()
+                timetable.getTeacher().getId(),
+                timetable.isActive()
         );
     }
 }

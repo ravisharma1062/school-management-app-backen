@@ -12,4 +12,8 @@ public interface NoticeRepository extends JpaRepository<Notice, UUID> {
     Page<Notice> findByTargetRoleIn(Collection<TargetRole> targetRoles, Pageable pageable);
 
     Page<Notice> findByTargetRole(TargetRole targetRole, Pageable pageable);
+
+    Page<Notice> findByTargetRoleInAndActiveTrue(Collection<TargetRole> targetRoles, Pageable pageable);
+
+    Page<Notice> findByTargetRoleAndActiveTrue(TargetRole targetRole, Pageable pageable);
 }

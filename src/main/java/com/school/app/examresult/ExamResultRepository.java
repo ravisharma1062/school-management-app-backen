@@ -8,4 +8,6 @@ import java.util.UUID;
 public interface ExamResultRepository extends JpaRepository<ExamResult, UUID> {
 
     List<ExamResult> findByStudentId(UUID studentId);
+
+    List<ExamResult> findByStudentIdAndTerm(UUID studentId, String term);
 }

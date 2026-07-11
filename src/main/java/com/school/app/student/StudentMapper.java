@@ -15,7 +15,8 @@ public class StudentMapper {
                 student.getStudentClass(),
                 student.getSection(),
                 student.getDob(),
-                parent != null ? parent.getId() : null
+                parent != null ? parent.getId() : null,
+                student.isActive()
         );
     }
 }

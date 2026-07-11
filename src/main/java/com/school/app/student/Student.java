@@ -44,6 +44,10 @@ public class Student {
     @JoinColumn(name = "parent_id")
     private User parent;
 
+    @Column(name = "is_active", nullable = false)
+    @Builder.Default
+    private boolean active = true;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 

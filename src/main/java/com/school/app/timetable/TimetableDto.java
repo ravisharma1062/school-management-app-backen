@@ -10,6 +10,7 @@ public record TimetableDto(
         DayOfWeek dayOfWeek,
         int period,
         String subject,
-        UUID teacherId
+        UUID teacherId,
+        boolean active
 ) {
 }

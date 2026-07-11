@@ -9,6 +9,7 @@ public record NoticeDto(
         String description,
         TargetRole targetRole,
         UUID createdBy,
-        Instant createdAt
+        Instant createdAt,
+        boolean active
 ) {
 }

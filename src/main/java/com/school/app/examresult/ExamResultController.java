@@ -5,6 +5,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +35,19 @@ public class ExamResultController {
     @Operation(summary = "View exam results for a student")
     public List<ExamResultDto> getByStudent(@PathVariable UUID studentId, @AuthenticationPrincipal User currentUser) {
         return examResultService.getByStudent(studentId, currentUser);
+    }
+
+    @GetMapping(value = "/student/{studentId}/report-card", produces = MediaType.APPLICATION_PDF_VALUE)
+    @PreAuthorize("hasAnyRole('TEACHER', 'PARENT')")
+    @Operation(summary = "Download a student's report card as a PDF, optionally filtered by term")
+    public ResponseEntity<byte[]> reportCard(
+            @PathVariable UUID studentId,
+            @RequestParam(required = false) String term,
+            @AuthenticationPrincipal User currentUser) {
+        byte[] pdf = examResultService.generateReportCard(studentId, term, currentUser);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=report-card.pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdf);
     }
 }

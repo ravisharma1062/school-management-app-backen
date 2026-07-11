@@ -10,6 +10,7 @@ public record StudentDto(
         String studentClass,
         String section,
         LocalDate dob,
-        UUID parentId
+        UUID parentId,
+        boolean active
 ) {
 }

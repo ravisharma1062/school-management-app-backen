@@ -12,7 +12,8 @@ public class NoticeMapper {
                 notice.getDescription(),
                 notice.getTargetRole(),
                 notice.getCreatedBy().getId(),
-                notice.getCreatedAt()
+                notice.getCreatedAt(),
+                notice.isActive()
         );
     }
 }
