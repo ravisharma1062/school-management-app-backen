@@ -126,7 +126,7 @@ class LibraryIntegrationTest extends AbstractIntegrationTest {
                 BookIssueDto.class).getBody();
 
         ResponseEntity<BookIssueDto> returned = restTemplate.exchange(
-                "/api/v1/library/issues/" + issue.id() + "/return", HttpMethod.POST,
+                "/api/v1/library/issues/" + issue.id() + "/return", HttpMethod.PATCH,
                 new HttpEntity<>(adminHeaders()), BookIssueDto.class);
 
         assertThat(returned.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -148,11 +148,11 @@ class LibraryIntegrationTest extends AbstractIntegrationTest {
                 BookIssueDto.class).getBody();
 
         restTemplate.exchange(
-                "/api/v1/library/issues/" + issue.id() + "/return", HttpMethod.POST,
+                "/api/v1/library/issues/" + issue.id() + "/return", HttpMethod.PATCH,
                 new HttpEntity<>(adminHeaders()), BookIssueDto.class);
 
         ResponseEntity<String> secondReturn = restTemplate.exchange(
-                "/api/v1/library/issues/" + issue.id() + "/return", HttpMethod.POST,
+                "/api/v1/library/issues/" + issue.id() + "/return", HttpMethod.PATCH,
                 new HttpEntity<>(adminHeaders()), String.class);
         assertThat(secondReturn.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
@@ -175,6 +175,34 @@ class LibraryIntegrationTest extends AbstractIntegrationTest {
                 "/api/v1/library/students/" + child.getId() + "/issues", HttpMethod.GET,
                 new HttpEntity<>(authHeaders(otherParent)), String.class);
         assertThat(outsiderView.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
+    }
+
+    @Test
+    void adminUploadsACoverImageAndAnyRoleCanDownloadIt() {
+        BookDto book = createBook(adminHeaders(), 1, BookDto.class).getBody();
+        assertThat(book.hasCoverImage()).isFalse();
+
+        org.springframework.util.LinkedMultiValueMap<String, Object> body = new org.springframework.util.LinkedMultiValueMap<>();
+        body.add("file", new org.springframework.core.io.ByteArrayResource("fake-image-bytes".getBytes()) {
+            @Override
+            public String getFilename() {
+                return "cover.jpg";
+            }
+        });
+        HttpHeaders uploadHeaders = adminHeaders();
+        uploadHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        ResponseEntity<BookDto> uploaded = restTemplate.exchange(
+                "/api/v1/library/books/" + book.id() + "/cover", HttpMethod.POST,
+                new HttpEntity<>(body, uploadHeaders), BookDto.class);
+        assertThat(uploaded.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(uploaded.getBody().hasCoverImage()).isTrue();
+
+        ResponseEntity<byte[]> downloaded = restTemplate.exchange(
+                "/api/v1/library/books/" + book.id() + "/cover", HttpMethod.GET,
+                new HttpEntity<>(authHeaders(parent)), byte[].class);
+        assertThat(downloaded.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(downloaded.getBody()).isEqualTo("fake-image-bytes".getBytes());
     }
 
     private <T> ResponseEntity<T> createBook(HttpHeaders headers, int copies, Class<T> responseType) {

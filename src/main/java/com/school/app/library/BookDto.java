@@ -7,6 +7,7 @@ public record BookDto(
         String title,
         String author,
         String isbn,
+        boolean hasCoverImage,
         int totalCopies,
         int availableCopies
 ) {

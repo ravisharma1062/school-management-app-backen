@@ -7,9 +7,12 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
@@ -36,6 +39,21 @@ public class LibraryController {
         return libraryService.searchBooks(search, pageable);
     }
 
+    @PostMapping(value = "/books/{id}/cover", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Upload a book's cover image")
+    public BookDto uploadCover(@PathVariable UUID id, @RequestParam("file") MultipartFile file) {
+        return libraryService.uploadCover(id, file);
+    }
+
+    @GetMapping("/books/{id}/cover")
+    @PreAuthorize("hasAnyRole('ADMIN', 'TEACHER', 'PARENT')")
+    @Operation(summary = "Download a book's cover image")
+    public ResponseEntity<byte[]> downloadCover(@PathVariable UUID id) {
+        LibraryService.StoredCover cover = libraryService.downloadCover(id);
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(cover.contentType())).body(cover.content());
+    }
+
     @PostMapping("/issues")
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Issue a book to a student")
@@ -43,7 +61,7 @@ public class LibraryController {
         return libraryService.issueBook(request);
     }
 
-    @PostMapping("/issues/{issueId}/return")
+    @PatchMapping("/issues/{issueId}/return")
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Return a book, computing any overdue fine")
     public BookIssueDto returnBook(@PathVariable UUID issueId) {

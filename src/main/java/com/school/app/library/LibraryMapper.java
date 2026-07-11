@@ -7,7 +7,7 @@ public class LibraryMapper {
 
     public BookDto toDto(Book book) {
         return new BookDto(book.getId(), book.getTitle(), book.getAuthor(), book.getIsbn(),
-                book.getTotalCopies(), book.getAvailableCopies());
+                book.getCoverImageKey() != null, book.getTotalCopies(), book.getAvailableCopies());
     }
 
     public BookIssueDto toDto(BookIssue issue) {

@@ -31,6 +31,12 @@ public class Book {
 
     private String isbn;
 
+    @Column(name = "cover_image_key")
+    private String coverImageKey;
+
+    @Column(name = "cover_image_content_type")
+    private String coverImageContentType;
+
     @Column(name = "total_copies", nullable = false)
     private int totalCopies;
 

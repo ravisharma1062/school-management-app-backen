@@ -2,6 +2,7 @@ package com.school.app.library;
 
 import com.school.app.common.exception.BadRequestException;
 import com.school.app.common.exception.ResourceNotFoundException;
+import com.school.app.common.storage.FileStorageService;
 import com.school.app.student.Student;
 import com.school.app.student.StudentRepository;
 import com.school.app.user.Role;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,10 +24,12 @@ import java.util.UUID;
 public class LibraryService {
 
     private static final int LOAN_PERIOD_DAYS = 14;
+    private static final String COVER_STORAGE_SUBDIRECTORY = "book-covers";
 
     private final BookRepository bookRepository;
     private final BookIssueRepository bookIssueRepository;
     private final StudentRepository studentRepository;
+    private final FileStorageService fileStorageService;
     private final LibraryMapper libraryMapper;
 
     public BookDto createBook(BookCreateRequest request) {
@@ -98,6 +102,28 @@ public class LibraryService {
         saved.setBook(book);
         saved.setStudent(issue.getStudent());
         return libraryMapper.toDto(saved);
+    }
+
+    public BookDto uploadCover(UUID bookId, MultipartFile file) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new ResourceNotFoundException("Book with id " + bookId + " not found"));
+
+        book.setCoverImageKey(fileStorageService.store(file, COVER_STORAGE_SUBDIRECTORY));
+        book.setCoverImageContentType(file.getContentType() != null ? file.getContentType() : "application/octet-stream");
+        return libraryMapper.toDto(bookRepository.save(book));
+    }
+
+    public StoredCover downloadCover(UUID bookId) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new ResourceNotFoundException("Book with id " + bookId + " not found"));
+
+        if (book.getCoverImageKey() == null) {
+            throw new ResourceNotFoundException("Book with id " + bookId + " has no cover image");
+        }
+        return new StoredCover(fileStorageService.load(book.getCoverImageKey()), book.getCoverImageContentType());
+    }
+
+    public record StoredCover(byte[] content, String contentType) {
     }
 
     public List<BookIssueDto> getIssuesForStudent(UUID studentId, User currentUser) {
