@@ -7,6 +7,7 @@ public record UserDto(
         String name,
         String email,
         Role role,
-        String phone
+        String phone,
+        LanguageCode preferredLanguage
 ) {
 }

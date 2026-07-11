@@ -43,6 +43,10 @@ public class User implements UserDetails {
 
     private String phone;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "preferred_language", nullable = false, length = 5)
+    private LanguageCode preferredLanguage;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
@@ -50,6 +54,9 @@ public class User implements UserDetails {
     void onCreate() {
         if (createdAt == null) {
             createdAt = Instant.now();
+        }
+        if (preferredLanguage == null) {
+            preferredLanguage = LanguageCode.EN;
         }
     }
 

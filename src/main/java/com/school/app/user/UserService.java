@@ -53,4 +53,9 @@ public class UserService {
                 : userRepository.findAll(pageable);
         return users.map(userMapper::toDto);
     }
+
+    public UserDto updateMyLanguage(User currentUser, LanguageCode preferredLanguage) {
+        currentUser.setPreferredLanguage(preferredLanguage);
+        return userMapper.toDto(userRepository.save(currentUser));
+    }
 }

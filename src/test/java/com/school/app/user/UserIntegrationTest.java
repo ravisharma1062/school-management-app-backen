@@ -166,4 +166,24 @@ class UserIntegrationTest extends AbstractIntegrationTest {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
     }
+
+    @Test
+    void newUsersDefaultToEnglishAndCanSwitchToHindi() {
+        HttpHeaders headers = authHeaders(parent);
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        ResponseEntity<Map> meBefore = restTemplate.exchange(
+                "/api/v1/auth/me", HttpMethod.GET, new HttpEntity<>(headers), Map.class);
+        assertThat(meBefore.getBody().get("preferredLanguage")).isEqualTo("EN");
+
+        ResponseEntity<Map> updated = restTemplate.exchange(
+                "/api/v1/users/me/language", HttpMethod.PATCH,
+                new HttpEntity<>(Map.of("preferredLanguage", "HI"), headers), Map.class);
+        assertThat(updated.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(updated.getBody().get("preferredLanguage")).isEqualTo("HI");
+
+        ResponseEntity<Map> meAfter = restTemplate.exchange(
+                "/api/v1/auth/me", HttpMethod.GET, new HttpEntity<>(headers), Map.class);
+        assertThat(meAfter.getBody().get("preferredLanguage")).isEqualTo("HI");
+    }
 }
