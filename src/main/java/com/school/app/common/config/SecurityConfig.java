@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -62,6 +63,9 @@ public class SecurityConfig {
                         // The payment gateway calls this directly (no JWT); authenticity is
                         // established by verifying the request's HMAC signature instead.
                         .requestMatchers("/api/v1/payments/webhook").permitAll()
+                        // The bus's GPS device/app calls this directly (no JWT); authenticity is
+                        // established by verifying the route's X-Location-Token header instead.
+                        .requestMatchers(HttpMethod.POST, "/api/v1/transport/routes/*/location").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
