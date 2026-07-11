@@ -21,7 +21,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "14bfe036-ee18-4622-987d-3b87174d6c72",
+                                                    "id": "f5032681-4c32-47ff-8ef4-66c3647fbda5",
                                                     "name": "Get a student's bus route/stop assignment",
                                                     "request": {
                                                         "name": "Get a student's bus route/stop assignment",
@@ -63,7 +63,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "ac7a78ac-d545-47dc-9a7c-64b73ad9b22c",
+                                                            "id": "a31459a9-c776-446c-a3c5-de4e55a61155",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -127,7 +127,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "0dae229c-d9d8-45a4-bc77-25aeccdf7e5c",
+                                                    "id": "e6ab2526-681f-406c-b1d7-c99739e629f0",
                                                     "name": "Assign (or reassign) a student to a bus route and stop",
                                                     "request": {
                                                         "name": "Assign (or reassign) a student to a bus route and stop",
@@ -182,7 +182,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "51d79e94-2d26-4d37-a7e8-76a3ad2f00c1",
+                                                            "id": "ee4a7be4-cbfc-4b9e-b58e-22c46ed5ca09",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -267,7 +267,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "ac44042e-b210-453d-a706-23036bb3b156",
+                                            "id": "641f3b53-f8b3-4bf8-8662-581f2ce93dc5",
                                             "name": "List all bus routes",
                                             "request": {
                                                 "name": "List all bus routes",
@@ -297,7 +297,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "ffeb352c-e3b1-4512-b2ed-119faff5fb17",
+                                                    "id": "48b2cee9-ced4-44db-87a6-6aa631ed2f8a",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -349,7 +349,7 @@
                                             }
                                         },
                                         {
-                                            "id": "9f367a13-f6f3-4409-9448-2c6fa1bff5bd",
+                                            "id": "b89117c4-e757-4560-b086-2cb67cf0984a",
                                             "name": "Create a bus route with its stops",
                                             "request": {
                                                 "name": "Create a bus route with its stops",
@@ -392,7 +392,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "ed27a9cd-58d6-41d3-a39a-6a70adb9e081",
+                                                    "id": "e3056c79-bd35-4a25-b8d4-fb82e219dc42",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -465,7 +465,7 @@
                                                     "description": "",
                                                     "item": [
                                                         {
-                                                            "id": "b90e273f-80d6-4d9e-8f6d-64ecf219e254",
+                                                            "id": "01068b0b-fcd0-4259-b932-e2e64efea8ad",
                                                             "name": "Device-authenticated GPS location push (no JWT — authenticated by the route's location token)",
                                                             "request": {
                                                                 "name": "Device-authenticated GPS location push (no JWT — authenticated by the route's location token)",
@@ -526,7 +526,7 @@
                                                             },
                                                             "response": [
                                                                 {
-                                                                    "id": "3a8b8dbf-afc2-4e64-bd97-2096c39bdbb9",
+                                                                    "id": "676e5ce1-1a5a-4935-b578-f8413847d81a",
                                                                     "name": "OK",
                                                                     "originalRequest": {
                                                                         "url": {
@@ -607,7 +607,7 @@
                                                             "description": "",
                                                             "item": [
                                                                 {
-                                                                    "id": "7cd012ec-e24e-4c04-9039-ada0c9eed3d8",
+                                                                    "id": "0e5f5f0c-02c7-444f-a4bf-6361c58b25a5",
                                                                     "name": "Latest known location for a bus route (parents must have a child assigned to it)",
                                                                     "request": {
                                                                         "name": "Latest known location for a bus route (parents must have a child assigned to it)",
@@ -651,7 +651,7 @@
                                                                     },
                                                                     "response": [
                                                                         {
-                                                                            "id": "3aa93887-51e6-44fe-beab-413920b717fd",
+                                                                            "id": "007e76c6-2c9f-4987-a52c-92013e021b6f",
                                                                             "name": "OK",
                                                                             "originalRequest": {
                                                                                 "url": {
@@ -721,7 +721,7 @@
                                                     ]
                                                 },
                                                 {
-                                                    "id": "bbfec839-d8a3-4f17-9eee-7c64b93114e4",
+                                                    "id": "b7f459a4-b64f-4e2d-81c1-a41cc78b19f2",
                                                     "name": "Get a bus route's full detail, including its device location-token",
                                                     "request": {
                                                         "name": "Get a bus route's full detail, including its device location-token",
@@ -763,7 +763,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "5f3eb753-fd5d-4c1b-8fcd-89ac8d58aa33",
+                                                            "id": "4037dd45-24a0-48b1-a1eb-bfcdfe74ef42",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -837,7 +837,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "2872a4b6-2ed1-4d99-97bd-51b3eabf5493",
+                                    "id": "2e585f4d-06e5-4d08-8d41-c350cb14dff7",
                                     "name": "List users (paginated), optionally filtered by role",
                                     "request": {
                                         "name": "List users (paginated), optionally filtered by role",
@@ -903,7 +903,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "3a48c8e6-30b2-4d4b-a00d-3e98c6ff31ea",
+                                            "id": "4019c132-d9c6-459f-b348-abb8cc0e62a6",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -980,7 +980,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"role\": \"TEACHER\",\n      \"phone\": \"<string>\",\n      \"preferredLanguage\": \"EN\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"role\": \"PARENT\",\n      \"phone\": \"<string>\",\n      \"preferredLanguage\": \"EN\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"paged\": \"<boolean>\",\n    \"unpaged\": \"<boolean>\"\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"empty\": \"<boolean>\"\n}",
+                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"role\": \"TEACHER\",\n      \"phone\": \"<string>\",\n      \"preferredLanguage\": \"HI\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"role\": \"TEACHER\",\n      \"phone\": \"<string>\",\n      \"preferredLanguage\": \"HI\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -991,7 +991,7 @@
                                     }
                                 },
                                 {
-                                    "id": "26d373e7-4a57-4df7-a62d-5a3fdcce0e14",
+                                    "id": "f5c23df6-dc9a-45b0-9888-4ab40c6fa6da",
                                     "name": "Create a Teacher or Parent user account",
                                     "request": {
                                         "name": "Create a Teacher or Parent user account",
@@ -1021,7 +1021,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": \"ADMIN\",\n  \"phone\": \"<string>\"\n}",
+                                            "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": \"PARENT\",\n  \"phone\": \"<string>\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "headerFamily": "json",
@@ -1033,7 +1033,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "0e0b8129-4c07-43f0-8e4a-92173d90f40e",
+                                            "id": "9d0a31fe-b0fc-4565-a477-3d5925ba5b3a",
                                             "name": "Created",
                                             "originalRequest": {
                                                 "url": {
@@ -1069,7 +1069,7 @@
                                                 "method": "POST",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": \"ADMIN\",\n  \"phone\": \"<string>\"\n}",
+                                                    "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"role\": \"PARENT\",\n  \"phone\": \"<string>\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -1086,7 +1086,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"ADMIN\",\n  \"phone\": \"<string>\",\n  \"preferredLanguage\": \"EN\"\n}",
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"PARENT\",\n  \"phone\": \"<string>\",\n  \"preferredLanguage\": \"EN\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -1105,7 +1105,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "a0b4faed-1a04-4c0f-87ec-a60a43d12853",
+                                                    "id": "fb48a168-d809-4e07-bb5f-aa02bb129f98",
                                                     "name": "Update the current user's preferred UI language",
                                                     "request": {
                                                         "name": "Update the current user's preferred UI language",
@@ -1149,7 +1149,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "d43fbac9-8690-4dc3-92cb-7418a4315e07",
+                                                            "id": "7c34a48f-5174-461b-a231-fd0582a227bc",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -1204,7 +1204,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"ADMIN\",\n  \"phone\": \"<string>\",\n  \"preferredLanguage\": \"EN\"\n}",
+                                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"PARENT\",\n  \"phone\": \"<string>\",\n  \"preferredLanguage\": \"EN\"\n}",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -1225,7 +1225,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "04f877fd-af98-420d-919b-9fe2be8cecc4",
+                                    "id": "a8c6234f-3313-4e99-9ae7-abe298912fb2",
                                     "name": "Create a timetable entry",
                                     "request": {
                                         "name": "Create a timetable entry",
@@ -1255,7 +1255,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"dayOfWeek\": \"THURSDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
+                                            "raw": "{\n  \"dayOfWeek\": \"TUESDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "headerFamily": "json",
@@ -1267,7 +1267,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "6dbe3c2d-511a-44cd-8740-2f27a844d352",
+                                            "id": "1a0b508c-67d6-4097-9a76-9b1d06cd0e97",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -1303,7 +1303,7 @@
                                                 "method": "POST",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"dayOfWeek\": \"THURSDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
+                                                    "raw": "{\n  \"dayOfWeek\": \"TUESDAY\",\n  \"section\": \"<string>\",\n  \"studentClass\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"teacherId\": \"<uuid>\",\n  \"period\": \"<integer>\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -1339,7 +1339,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "db12362c-12cd-40b2-bed3-140d68adc515",
+                                                    "id": "13077cc0-1f4c-4377-89aa-1e0b39781311",
                                                     "name": "Restore a previously archived timetable entry",
                                                     "request": {
                                                         "name": "Restore a previously archived timetable entry",
@@ -1381,7 +1381,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "1b4f7a86-c2ad-4ea7-a678-c5cebed31a88",
+                                                            "id": "31b6d396-1b16-46a2-8d2e-566bded64c3e",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -1451,7 +1451,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "8280e8e7-5379-49f0-825b-9705138f4792",
+                                                    "id": "1b3de808-c608-40fb-a5cc-7589cdeb6594",
                                                     "name": "Archive (soft-delete) a timetable entry",
                                                     "request": {
                                                         "name": "Archive (soft-delete) a timetable entry",
@@ -1493,7 +1493,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "142032b2-fd6f-45ca-8ab0-835e204b2b78",
+                                                            "id": "ed30fa49-213a-4a55-91e0-b47649592dd7",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -1569,7 +1569,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "34eed4ec-7674-4226-82e3-2a7a1638a879",
+                                                    "id": "85544c4a-c63d-4cdd-adf3-2513b27bf418",
                                                     "name": "View the weekly timetable for a class/section",
                                                     "request": {
                                                         "name": "View the weekly timetable for a class/section",
@@ -1631,7 +1631,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "a5d9a0ac-2ead-40e3-bc40-fc328f4a0d76",
+                                                            "id": "f0182190-2050-496e-a892-a2e64b722aef",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -1704,7 +1704,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"FRIDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\",\n    \"active\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"TUESDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\",\n    \"active\": \"<boolean>\"\n  }\n]",
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"WEDNESDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\",\n    \"active\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentClass\": \"<string>\",\n    \"section\": \"<string>\",\n    \"dayOfWeek\": \"TUESDAY\",\n    \"period\": \"<integer>\",\n    \"subject\": \"<string>\",\n    \"teacherId\": \"<uuid>\",\n    \"active\": \"<boolean>\"\n  }\n]",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -1725,7 +1725,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "9e971a46-2fe9-4bfd-8382-44082b0faa53",
+                                    "id": "0a20df94-11d5-4b57-93db-e4536d83e38e",
                                     "name": "List students (paginated), optionally filtered by name, roll number, or class",
                                     "request": {
                                         "name": "List students (paginated), optionally filtered by name, roll number, or class",
@@ -1818,7 +1818,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "b48af777-4d7f-4b7a-a6ea-4c59cb7aab73",
+                                            "id": "89cff9db-d08b-4577-8bcc-42bd12e4bd9a",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -1922,7 +1922,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"paged\": \"<boolean>\",\n    \"unpaged\": \"<boolean>\"\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"empty\": \"<boolean>\"\n}",
+                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"rollNo\": \"<string>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"dob\": \"<date>\",\n      \"parentId\": \"<uuid>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -1933,7 +1933,7 @@
                                     }
                                 },
                                 {
-                                    "id": "5dbb82e6-900c-480a-9c50-78b9e9a29a77",
+                                    "id": "3c4c5f7e-1f68-4d30-9b81-d5ebc2b08c8d",
                                     "name": "Create a student",
                                     "request": {
                                         "name": "Create a student",
@@ -1975,7 +1975,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "94b7847e-14b1-4672-ba2b-b493726e7ce1",
+                                            "id": "729c7f50-5504-4940-af6d-975223e8458d",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -2043,7 +2043,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "b2de82e9-772d-4e3b-a194-267fd4bd10ef",
+                                            "id": "7e9a9cdf-cc3c-456c-8405-8662a8f28ba9",
                                             "name": "Bulk-create students from a CSV file (name,rollNo,studentClass,section,dob[,parentEmail])",
                                             "request": {
                                                 "name": "Bulk-create students from a CSV file (name,rollNo,studentClass,section,dob[,parentEmail])",
@@ -2089,7 +2089,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "a60e9ff4-f670-45a0-899a-4b194d45f079",
+                                                    "id": "87037bc0-beb2-4003-9b78-92440fa7a21a",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -2163,7 +2163,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "9412caff-eae1-453e-bd55-0be11d9d314f",
+                                            "id": "33fda90c-beba-4be6-a854-ca0b0d114622",
                                             "name": "Get a student by id (parents may only view their own child)",
                                             "request": {
                                                 "name": "Get a student by id (parents may only view their own child)",
@@ -2204,7 +2204,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "cca58b15-dde1-4aae-824d-74c1094ffe40",
+                                                    "id": "fc035706-ed2f-4991-86df-d25699a138b0",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -2267,7 +2267,7 @@
                                             }
                                         },
                                         {
-                                            "id": "e8d3ea2a-d3ed-4b53-a92f-091ec2582cfa",
+                                            "id": "a1d97444-4622-4524-86a3-e8a3d086cd84",
                                             "name": "Update a student",
                                             "request": {
                                                 "name": "Update a student",
@@ -2321,7 +2321,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "b4798ff1-ff05-419b-9e7b-52667a587a06",
+                                                    "id": "d7008cc3-5674-45f9-b86e-938dbfa00273",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -2401,7 +2401,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "723d1298-94bf-4cbc-873c-0d946ccd5575",
+                                                    "id": "4ec7cf4a-bdbb-49da-a803-f6b7ef73735b",
                                                     "name": "Restore a previously archived student",
                                                     "request": {
                                                         "name": "Restore a previously archived student",
@@ -2443,7 +2443,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "72fe66ae-714d-4148-8c4a-a7b67e6cbf5f",
+                                                            "id": "e19c3398-b586-47b0-94a7-808f80ad47b6",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -2513,7 +2513,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "16dfd318-ac70-4172-b3ec-6f7f6ca3b237",
+                                                    "id": "80780ec1-5a32-4845-bd3d-3e9b4883197c",
                                                     "name": "Archive (soft-delete) a student",
                                                     "request": {
                                                         "name": "Archive (soft-delete) a student",
@@ -2555,7 +2555,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "c6c4af60-4008-45e9-b33f-b96153e7b701",
+                                                            "id": "4d3a7df7-36ad-4b93-b4bf-6238dcaab99e",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -2627,7 +2627,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "30e6ecb5-cf18-4aaa-b1a2-d88a1fc65dce",
+                                            "id": "f901844a-19a9-42f2-9608-eacf804b8762",
                                             "name": "List the authenticated parent's own children",
                                             "request": {
                                                 "name": "List the authenticated parent's own children",
@@ -2657,7 +2657,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "720bbbdb-adc5-43b5-8537-5d01ce1aec58",
+                                                    "id": "f17ef1eb-4876-4a7c-9631-a1b3e8e565f1",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -2721,7 +2721,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "f7265719-cc1a-43cf-ae16-ae0316a84e92",
+                                            "id": "918061ca-af35-42d8-b30b-95237a2b76d1",
                                             "name": "Razorpay payment webhook (signature-verified, not JWT-authenticated)",
                                             "request": {
                                                 "name": "Razorpay payment webhook (signature-verified, not JWT-authenticated)",
@@ -2769,7 +2769,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "373bd880-974c-4727-b716-783ec225791f",
+                                                    "id": "6d20ce7a-faef-4db8-b9bf-9a5425116c74",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -2839,7 +2839,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "0f6fd11e-1674-4d09-9602-a671d590b87c",
+                                            "id": "81c82edc-daef-4093-8242-a9f0ea56fb18",
                                             "name": "Create a gateway order for an outstanding fee, ready for client-side checkout",
                                             "request": {
                                                 "name": "Create a gateway order for an outstanding fee, ready for client-side checkout",
@@ -2882,7 +2882,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "52a22b7e-ba9e-4da3-8ce9-262aa8212a9d",
+                                                    "id": "4045f79b-795d-41c2-b45b-6b4283fbd8ca",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -2953,7 +2953,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "f31fc6e7-d250-4daf-9fe6-27032d1e7702",
+                                            "id": "b5cb0be3-0930-43ba-b30f-357599a81850",
                                             "name": "Look up a payment's status (parents may only view their own child's payments)",
                                             "request": {
                                                 "name": "Look up a payment's status (parents may only view their own child's payments)",
@@ -2994,7 +2994,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "75e009b9-e11f-41ae-8f1f-709b4644c032",
+                                                    "id": "311cdd2b-51dc-4e85-af07-ae164af2d3d4",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -3065,7 +3065,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "c1ad003d-baf3-439f-bd1e-278ce35fd619",
+                                    "id": "9871f4a6-74e6-4d21-aa51-d64ad25c9dce",
                                     "name": "List notices visible to the current user, optionally filtered by target role",
                                     "request": {
                                         "name": "List notices visible to the current user, optionally filtered by target role",
@@ -3087,7 +3087,7 @@
                                                         "type": "text/plain"
                                                     },
                                                     "key": "role",
-                                                    "value": "ADMIN"
+                                                    "value": "TEACHER"
                                                 },
                                                 {
                                                     "disabled": false,
@@ -3140,7 +3140,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "bbf5e97b-f820-4e08-840f-3d35af88bcea",
+                                            "id": "7f401c55-cec1-44e5-be12-f0d31f3d7cff",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -3160,7 +3160,7 @@
                                                                 "type": "text/plain"
                                                             },
                                                             "key": "role",
-                                                            "value": "ADMIN"
+                                                            "value": "TEACHER"
                                                         },
                                                         {
                                                             "disabled": false,
@@ -3226,7 +3226,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"ADMIN\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"PARENT\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"paged\": \"<boolean>\",\n    \"unpaged\": \"<boolean>\"\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"empty\": \"<boolean>\"\n}",
+                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"PARENT\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\",\n      \"active\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetRole\": \"TEACHER\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\",\n      \"active\": \"<boolean>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -3237,7 +3237,7 @@
                                     }
                                 },
                                 {
-                                    "id": "0930c89c-d105-420b-98bb-478d2aa3a21a",
+                                    "id": "3aa78205-cb2b-400e-bda0-be591eb081cc",
                                     "name": "Post a notice",
                                     "request": {
                                         "name": "Post a notice",
@@ -3267,7 +3267,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"targetRole\": \"PARENT\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                            "raw": "{\n  \"targetRole\": \"TEACHER\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "headerFamily": "json",
@@ -3279,7 +3279,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "4be08b89-8772-400a-a480-dfec45d8c11e",
+                                            "id": "76ad49c8-89f5-4a4a-b4fc-9d41af1dbdfa",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -3315,7 +3315,7 @@
                                                 "method": "POST",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"targetRole\": \"PARENT\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                                    "raw": "{\n  \"targetRole\": \"TEACHER\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -3332,7 +3332,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"ADMIN\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"active\": \"<boolean>\"\n}",
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"ALL\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"active\": \"<boolean>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -3351,7 +3351,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "1729b7af-224d-4ddb-a644-4773bdb858ca",
+                                                    "id": "001395a0-2e98-499c-b20f-d0a5c8b6c6d0",
                                                     "name": "Restore a previously archived notice",
                                                     "request": {
                                                         "name": "Restore a previously archived notice",
@@ -3393,7 +3393,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "b428afc9-b5fd-4c7e-beab-d62846e0f337",
+                                                            "id": "e03958b5-1e3b-429c-861f-296c6c4dfa85",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -3446,7 +3446,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"ADMIN\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"active\": \"<boolean>\"\n}",
+                                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"ALL\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"active\": \"<boolean>\"\n}",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -3463,7 +3463,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "d0a16bed-9c29-4f46-b69e-ff3430ec87b2",
+                                                    "id": "bece28e3-ed95-4ed5-88f2-052567b6e173",
                                                     "name": "Archive (soft-delete) a notice",
                                                     "request": {
                                                         "name": "Archive (soft-delete) a notice",
@@ -3505,7 +3505,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "624039f3-5b60-423e-bf73-750c5d2f3d8c",
+                                                            "id": "ed565b8c-42d9-4504-b50f-059f07d1c4bd",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -3558,7 +3558,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"ADMIN\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"active\": \"<boolean>\"\n}",
+                                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetRole\": \"ALL\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"active\": \"<boolean>\"\n}",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -3583,7 +3583,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "f3f7e00e-b27a-4981-8cc3-fcb2275a3976",
+                                            "id": "2b7dc783-c1d9-4e33-aa39-7592ed385720",
                                             "name": "Issue a book to a student",
                                             "request": {
                                                 "name": "Issue a book to a student",
@@ -3626,7 +3626,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "8501877a-1104-4dbd-98ca-dc4e7a56462b",
+                                                    "id": "92c9cca3-03dc-455c-a8d6-b430b96ef19a",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -3699,7 +3699,7 @@
                                                     "description": "",
                                                     "item": [
                                                         {
-                                                            "id": "bc1f5bf8-832d-4e42-8975-a1f123779632",
+                                                            "id": "fe25cc69-0165-425e-9533-0dfdbb2a287d",
                                                             "name": "Return a book, computing any overdue fine",
                                                             "request": {
                                                                 "name": "Return a book, computing any overdue fine",
@@ -3736,13 +3736,13 @@
                                                                         "value": "*/*"
                                                                     }
                                                                 ],
-                                                                "method": "POST",
+                                                                "method": "PATCH",
                                                                 "body": {},
                                                                 "auth": null
                                                             },
                                                             "response": [
                                                                 {
-                                                                    "id": "13e66b07-7f9c-45b6-97a8-d6c4e97de3a8",
+                                                                    "id": "77a9e2e3-c069-404e-9295-a3fcb6fa9008",
                                                                     "name": "OK",
                                                                     "originalRequest": {
                                                                         "url": {
@@ -3785,7 +3785,7 @@
                                                                                 "value": "Bearer <token>"
                                                                             }
                                                                         ],
-                                                                        "method": "POST",
+                                                                        "method": "PATCH",
                                                                         "body": {}
                                                                     },
                                                                     "status": "OK",
@@ -3817,7 +3817,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "0a0d0c00-8e64-4316-b184-9365b0b9c431",
+                                            "id": "2505d68d-9db8-47a6-8605-a8da683e091e",
                                             "name": "Search the library catalog by title, author, or ISBN",
                                             "request": {
                                                 "name": "Search the library catalog by title, author, or ISBN",
@@ -3884,7 +3884,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "54e90b70-980a-4d33-8c44-12dcc853af3c",
+                                                    "id": "7a075160-c39d-4a9f-a5f2-deb418c32e59",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -3962,7 +3962,7 @@
                                                             "value": "*/*"
                                                         }
                                                     ],
-                                                    "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"author\": \"<string>\",\n      \"isbn\": \"<string>\",\n      \"totalCopies\": \"<integer>\",\n      \"availableCopies\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"author\": \"<string>\",\n      \"isbn\": \"<string>\",\n      \"totalCopies\": \"<integer>\",\n      \"availableCopies\": \"<integer>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"paged\": \"<boolean>\",\n    \"unpaged\": \"<boolean>\"\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"empty\": \"<boolean>\"\n}",
+                                                    "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"author\": \"<string>\",\n      \"isbn\": \"<string>\",\n      \"hasCoverImage\": \"<boolean>\",\n      \"totalCopies\": \"<integer>\",\n      \"availableCopies\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"author\": \"<string>\",\n      \"isbn\": \"<string>\",\n      \"hasCoverImage\": \"<boolean>\",\n      \"totalCopies\": \"<integer>\",\n      \"availableCopies\": \"<integer>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "text"
                                                 }
@@ -3973,7 +3973,7 @@
                                             }
                                         },
                                         {
-                                            "id": "5410bca2-0c7e-4281-bc87-47c3a33ce962",
+                                            "id": "f7245524-633c-4380-b21f-4cd056d9140a",
                                             "name": "Add a book to the library catalog",
                                             "request": {
                                                 "name": "Add a book to the library catalog",
@@ -4016,7 +4016,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "5bf4921f-0c63-4554-aff9-1ed3af8e6c69",
+                                                    "id": "95a6a840-d8e9-4068-92bd-ae8ccd7472ba",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -4070,7 +4070,7 @@
                                                             "value": "*/*"
                                                         }
                                                     ],
-                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"author\": \"<string>\",\n  \"isbn\": \"<string>\",\n  \"totalCopies\": \"<integer>\",\n  \"availableCopies\": \"<integer>\"\n}",
+                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"author\": \"<string>\",\n  \"isbn\": \"<string>\",\n  \"hasCoverImage\": \"<boolean>\",\n  \"totalCopies\": \"<integer>\",\n  \"availableCopies\": \"<integer>\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "text"
                                                 }
@@ -4079,6 +4079,266 @@
                                             "protocolProfileBehavior": {
                                                 "disableBodyPruning": true
                                             }
+                                        },
+                                        {
+                                            "name": "{id}",
+                                            "description": "",
+                                            "item": [
+                                                {
+                                                    "name": "cover",
+                                                    "description": "",
+                                                    "item": [
+                                                        {
+                                                            "id": "3cb82f64-b91d-4206-a355-bbc36c3cbf34",
+                                                            "name": "Download a book's cover image",
+                                                            "request": {
+                                                                "name": "Download a book's cover image",
+                                                                "description": {},
+                                                                "url": {
+                                                                    "path": [
+                                                                        "api",
+                                                                        "v1",
+                                                                        "library",
+                                                                        "books",
+                                                                        ":id",
+                                                                        "cover"
+                                                                    ],
+                                                                    "host": [
+                                                                        "{{baseUrl}}"
+                                                                    ],
+                                                                    "query": [],
+                                                                    "variable": [
+                                                                        {
+                                                                            "type": "any",
+                                                                            "value": "<uuid>",
+                                                                            "key": "id",
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "header": [
+                                                                    {
+                                                                        "key": "Accept",
+                                                                        "value": "*/*"
+                                                                    }
+                                                                ],
+                                                                "method": "GET",
+                                                                "body": {},
+                                                                "auth": null
+                                                            },
+                                                            "response": [
+                                                                {
+                                                                    "id": "dd7b12d1-7303-40c1-a2bf-05d6d6cd9267",
+                                                                    "name": "OK",
+                                                                    "originalRequest": {
+                                                                        "url": {
+                                                                            "path": [
+                                                                                "api",
+                                                                                "v1",
+                                                                                "library",
+                                                                                "books",
+                                                                                ":id",
+                                                                                "cover"
+                                                                            ],
+                                                                            "host": [
+                                                                                "{{baseUrl}}"
+                                                                            ],
+                                                                            "query": [],
+                                                                            "variable": [
+                                                                                {
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) ",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "type": "any",
+                                                                                    "value": "<uuid>",
+                                                                                    "key": "id"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "header": [
+                                                                            {
+                                                                                "key": "Accept",
+                                                                                "value": "*/*"
+                                                                            },
+                                                                            {
+                                                                                "description": {
+                                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                                    "type": "text/plain"
+                                                                                },
+                                                                                "key": "Authorization",
+                                                                                "value": "Bearer <token>"
+                                                                            }
+                                                                        ],
+                                                                        "method": "GET",
+                                                                        "body": {}
+                                                                    },
+                                                                    "status": "OK",
+                                                                    "code": 200,
+                                                                    "header": [
+                                                                        {
+                                                                            "key": "Content-Type",
+                                                                            "value": "*/*"
+                                                                        }
+                                                                    ],
+                                                                    "body": "<byte>",
+                                                                    "cookie": [],
+                                                                    "_postman_previewlanguage": "text"
+                                                                }
+                                                            ],
+                                                            "event": [],
+                                                            "protocolProfileBehavior": {
+                                                                "disableBodyPruning": true
+                                                            }
+                                                        },
+                                                        {
+                                                            "id": "58c47850-2bda-4b47-b39c-9cc2ff5c1de1",
+                                                            "name": "Upload a book's cover image",
+                                                            "request": {
+                                                                "name": "Upload a book's cover image",
+                                                                "description": {},
+                                                                "url": {
+                                                                    "path": [
+                                                                        "api",
+                                                                        "v1",
+                                                                        "library",
+                                                                        "books",
+                                                                        ":id",
+                                                                        "cover"
+                                                                    ],
+                                                                    "host": [
+                                                                        "{{baseUrl}}"
+                                                                    ],
+                                                                    "query": [],
+                                                                    "variable": [
+                                                                        {
+                                                                            "type": "any",
+                                                                            "value": "<uuid>",
+                                                                            "key": "id",
+                                                                            "disabled": false,
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "header": [
+                                                                    {
+                                                                        "key": "Content-Type",
+                                                                        "value": "multipart/form-data"
+                                                                    },
+                                                                    {
+                                                                        "key": "Accept",
+                                                                        "value": "*/*"
+                                                                    }
+                                                                ],
+                                                                "method": "POST",
+                                                                "body": {
+                                                                    "mode": "formdata",
+                                                                    "formdata": [
+                                                                        {
+                                                                            "description": {
+                                                                                "content": "(Required) ",
+                                                                                "type": "text/plain"
+                                                                            },
+                                                                            "key": "file",
+                                                                            "type": "file"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "auth": null
+                                                            },
+                                                            "response": [
+                                                                {
+                                                                    "id": "3e4852c8-562e-4c2d-9cb8-072598af7eaf",
+                                                                    "name": "OK",
+                                                                    "originalRequest": {
+                                                                        "url": {
+                                                                            "path": [
+                                                                                "api",
+                                                                                "v1",
+                                                                                "library",
+                                                                                "books",
+                                                                                ":id",
+                                                                                "cover"
+                                                                            ],
+                                                                            "host": [
+                                                                                "{{baseUrl}}"
+                                                                            ],
+                                                                            "query": [],
+                                                                            "variable": [
+                                                                                {
+                                                                                    "disabled": false,
+                                                                                    "description": {
+                                                                                        "content": "(Required) ",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "type": "any",
+                                                                                    "value": "<uuid>",
+                                                                                    "key": "id"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "header": [
+                                                                            {
+                                                                                "key": "Content-Type",
+                                                                                "value": "multipart/form-data"
+                                                                            },
+                                                                            {
+                                                                                "key": "Accept",
+                                                                                "value": "*/*"
+                                                                            },
+                                                                            {
+                                                                                "description": {
+                                                                                    "content": "Added as a part of security scheme: bearer",
+                                                                                    "type": "text/plain"
+                                                                                },
+                                                                                "key": "Authorization",
+                                                                                "value": "Bearer <token>"
+                                                                            }
+                                                                        ],
+                                                                        "method": "POST",
+                                                                        "body": {
+                                                                            "mode": "formdata",
+                                                                            "formdata": [
+                                                                                {
+                                                                                    "description": {
+                                                                                        "content": "(Required) ",
+                                                                                        "type": "text/plain"
+                                                                                    },
+                                                                                    "key": "file",
+                                                                                    "type": "file"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    "status": "OK",
+                                                                    "code": 200,
+                                                                    "header": [
+                                                                        {
+                                                                            "key": "Content-Type",
+                                                                            "value": "*/*"
+                                                                        }
+                                                                    ],
+                                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"author\": \"<string>\",\n  \"isbn\": \"<string>\",\n  \"hasCoverImage\": \"<boolean>\",\n  \"totalCopies\": \"<integer>\",\n  \"availableCopies\": \"<integer>\"\n}",
+                                                                    "cookie": [],
+                                                                    "_postman_previewlanguage": "text"
+                                                                }
+                                                            ],
+                                                            "event": [],
+                                                            "protocolProfileBehavior": {
+                                                                "disableBodyPruning": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
@@ -4095,7 +4355,7 @@
                                                     "description": "",
                                                     "item": [
                                                         {
-                                                            "id": "fc827018-f6b1-4371-90fc-3f6e3136d445",
+                                                            "id": "f9803fa8-4eba-421d-b57d-535144bea605",
                                                             "name": "List a student's book issue history",
                                                             "request": {
                                                                 "name": "List a student's book issue history",
@@ -4138,7 +4398,7 @@
                                                             },
                                                             "response": [
                                                                 {
-                                                                    "id": "124102f1-3e15-4910-9027-8c21b28ab4af",
+                                                                    "id": "24e32ae3-de27-4147-b022-b3de092b4f51",
                                                                     "name": "OK",
                                                                     "originalRequest": {
                                                                         "url": {
@@ -4215,7 +4475,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "6307514a-04be-475f-b4c6-3b1f3cbf51ce",
+                                    "id": "99eb6ee5-03b4-465a-9c71-b7491cc402ee",
                                     "name": "List leave requests (admins see everyone's; teachers/parents see only their own)",
                                     "request": {
                                         "name": "List leave requests (admins see everyone's; teachers/parents see only their own)",
@@ -4237,7 +4497,7 @@
                                                         "type": "text/plain"
                                                     },
                                                     "key": "status",
-                                                    "value": "PENDING"
+                                                    "value": "REJECTED"
                                                 },
                                                 {
                                                     "disabled": false,
@@ -4281,7 +4541,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "fe34310f-0322-4024-98d8-3290b1f7a360",
+                                            "id": "1fc6bd46-55e1-4675-acee-d24390830213",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -4301,7 +4561,7 @@
                                                                 "type": "text/plain"
                                                             },
                                                             "key": "status",
-                                                            "value": "PENDING"
+                                                            "value": "REJECTED"
                                                         },
                                                         {
                                                             "disabled": false,
@@ -4358,7 +4618,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"requesterId\": \"<uuid>\",\n      \"type\": \"OTHER\",\n      \"fromDate\": \"<date>\",\n      \"toDate\": \"<date>\",\n      \"reason\": \"<string>\",\n      \"status\": \"PENDING\",\n      \"reviewedBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"requesterId\": \"<uuid>\",\n      \"type\": \"CASUAL\",\n      \"fromDate\": \"<date>\",\n      \"toDate\": \"<date>\",\n      \"reason\": \"<string>\",\n      \"status\": \"PENDING\",\n      \"reviewedBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"paged\": \"<boolean>\",\n    \"unpaged\": \"<boolean>\"\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"empty\": \"<boolean>\"\n}",
+                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"requesterId\": \"<uuid>\",\n      \"type\": \"CASUAL\",\n      \"fromDate\": \"<date>\",\n      \"toDate\": \"<date>\",\n      \"reason\": \"<string>\",\n      \"status\": \"REJECTED\",\n      \"reviewedBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"requesterId\": \"<uuid>\",\n      \"type\": \"SICK\",\n      \"fromDate\": \"<date>\",\n      \"toDate\": \"<date>\",\n      \"reason\": \"<string>\",\n      \"status\": \"REJECTED\",\n      \"reviewedBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -4369,7 +4629,7 @@
                                     }
                                 },
                                 {
-                                    "id": "726b99bc-759d-4321-8e7c-5608f75b8426",
+                                    "id": "0738073b-9167-47de-b8e8-cf2690bb0d2a",
                                     "name": "Submit a leave request",
                                     "request": {
                                         "name": "Submit a leave request",
@@ -4399,7 +4659,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\",\n  \"type\": \"CASUAL\",\n  \"reason\": \"<string>\"\n}",
+                                            "raw": "{\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\",\n  \"type\": \"SICK\",\n  \"reason\": \"<string>\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "headerFamily": "json",
@@ -4411,7 +4671,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "420cd4a2-811b-4aff-b677-c3b4333de4c6",
+                                            "id": "a8defd4d-f429-4f79-95fd-cb9e03163625",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -4447,7 +4707,7 @@
                                                 "method": "POST",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\",\n  \"type\": \"CASUAL\",\n  \"reason\": \"<string>\"\n}",
+                                                    "raw": "{\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\",\n  \"type\": \"SICK\",\n  \"reason\": \"<string>\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -4464,7 +4724,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"requesterId\": \"<uuid>\",\n  \"type\": \"OTHER\",\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\",\n  \"reason\": \"<string>\",\n  \"status\": \"APPROVED\",\n  \"reviewedBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"requesterId\": \"<uuid>\",\n  \"type\": \"CASUAL\",\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\",\n  \"reason\": \"<string>\",\n  \"status\": \"APPROVED\",\n  \"reviewedBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -4479,7 +4739,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "ec996005-0aa1-47cb-bb56-f89d8d819c27",
+                                            "id": "7164327e-5860-4ade-b7fa-326e57849fd8",
                                             "name": "Approve or reject a leave request",
                                             "request": {
                                                 "name": "Approve or reject a leave request",
@@ -4533,7 +4793,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "34faeda7-da14-463b-8241-7e68c61ac27b",
+                                                    "id": "2676000c-5909-4f95-b41f-b19850a74ee4",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -4598,7 +4858,7 @@
                                                             "value": "*/*"
                                                         }
                                                     ],
-                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"requesterId\": \"<uuid>\",\n  \"type\": \"OTHER\",\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\",\n  \"reason\": \"<string>\",\n  \"status\": \"APPROVED\",\n  \"reviewedBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"requesterId\": \"<uuid>\",\n  \"type\": \"CASUAL\",\n  \"fromDate\": \"<date>\",\n  \"toDate\": \"<date>\",\n  \"reason\": \"<string>\",\n  \"status\": \"APPROVED\",\n  \"reviewedBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "text"
                                                 }
@@ -4617,7 +4877,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "7b13da3a-e247-41bc-a216-c24880ea1e95",
+                                    "id": "24e07b0e-18ac-4b09-b0c1-6683e2cddcba",
                                     "name": "Post homework for a class/section",
                                     "request": {
                                         "name": "Post homework for a class/section",
@@ -4659,7 +4919,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "ed81fc5e-3763-4187-8902-df0db180a60b",
+                                            "id": "c42c08d6-d0a0-422b-a0d8-95af8307e4b4",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -4731,7 +4991,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "691bcb08-f240-44cc-be5d-bf37d0d6e681",
+                                                    "id": "5b6188da-63fc-42d9-9855-86da12997dab",
                                                     "name": "List all submissions for a piece of homework",
                                                     "request": {
                                                         "name": "List all submissions for a piece of homework",
@@ -4773,7 +5033,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "0b4f5363-553e-4a5a-bd27-97bba34d161e",
+                                                            "id": "ec2508e7-d401-4586-9808-fab25e108dde",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -4826,7 +5086,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"homeworkId\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"fileName\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"status\": \"GRADED\",\n    \"teacherFeedback\": \"<string>\",\n    \"grade\": \"<string>\",\n    \"submittedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"homeworkId\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"fileName\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"status\": \"SUBMITTED\",\n    \"teacherFeedback\": \"<string>\",\n    \"grade\": \"<string>\",\n    \"submittedAt\": \"<dateTime>\"\n  }\n]",
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"homeworkId\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"fileName\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"status\": \"SUBMITTED\",\n    \"teacherFeedback\": \"<string>\",\n    \"grade\": \"<string>\",\n    \"submittedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"homeworkId\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"fileName\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"status\": \"SUBMITTED\",\n    \"teacherFeedback\": \"<string>\",\n    \"grade\": \"<string>\",\n    \"submittedAt\": \"<dateTime>\"\n  }\n]",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -4837,7 +5097,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "ab02717a-9c62-4745-be84-89b0561e7848",
+                                                    "id": "ea3e5f33-122b-4eab-a2fe-981a3cba34d6",
                                                     "name": "Submit a file for a piece of homework on behalf of a child",
                                                     "request": {
                                                         "name": "Submit a file for a piece of homework on behalf of a child",
@@ -4905,7 +5165,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "26412879-5b93-4ea9-b9d1-4f6baf269c52",
+                                                            "id": "4e0a8bae-9a55-4601-b66e-40be0ee4f301",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -5007,7 +5267,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "d7a765aa-a4d4-4eac-86bb-6cb542367cd7",
+                                                    "id": "38959155-0534-454e-a2fc-20a32b388919",
                                                     "name": "Grade a homework submission",
                                                     "request": {
                                                         "name": "Grade a homework submission",
@@ -5062,7 +5322,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "d7b6eec1-b3f4-4b2b-9bfc-0e9e5d1814b7",
+                                                            "id": "45a958d2-6ef5-4e73-b1b0-fd6b8d002abe",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -5143,7 +5403,7 @@
                                                     "description": "",
                                                     "item": [
                                                         {
-                                                            "id": "59e154a5-2410-4d74-9aff-8acc4bd8abc0",
+                                                            "id": "31518519-7724-4261-a1a1-3ee54668de10",
                                                             "name": "Download a submitted homework file",
                                                             "request": {
                                                                 "name": "Download a submitted homework file",
@@ -5186,7 +5446,7 @@
                                                             },
                                                             "response": [
                                                                 {
-                                                                    "id": "1daef750-43ed-4e0c-bf7c-e93d84899644",
+                                                                    "id": "b96d83f5-a616-4daa-8638-9a9f415cd89d",
                                                                     "name": "OK",
                                                                     "originalRequest": {
                                                                         "url": {
@@ -5263,7 +5523,7 @@
                                                     "description": "",
                                                     "item": [
                                                         {
-                                                            "id": "2b41ae07-11e3-4196-bf0d-16f4da27d868",
+                                                            "id": "e6304701-6529-42a7-9c50-be34e2575613",
                                                             "name": "List a student's homework submissions",
                                                             "request": {
                                                                 "name": "List a student's homework submissions",
@@ -5306,7 +5566,7 @@
                                                             },
                                                             "response": [
                                                                 {
-                                                                    "id": "a5a7c323-cfe4-4e07-9eda-7e970977bf6c",
+                                                                    "id": "56ad48d6-c899-449c-b167-ed8205f19864",
                                                                     "name": "OK",
                                                                     "originalRequest": {
                                                                         "url": {
@@ -5360,7 +5620,7 @@
                                                                             "value": "*/*"
                                                                         }
                                                                     ],
-                                                                    "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"homeworkId\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"fileName\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"status\": \"GRADED\",\n    \"teacherFeedback\": \"<string>\",\n    \"grade\": \"<string>\",\n    \"submittedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"homeworkId\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"fileName\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"status\": \"SUBMITTED\",\n    \"teacherFeedback\": \"<string>\",\n    \"grade\": \"<string>\",\n    \"submittedAt\": \"<dateTime>\"\n  }\n]",
+                                                                    "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"homeworkId\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"fileName\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"status\": \"SUBMITTED\",\n    \"teacherFeedback\": \"<string>\",\n    \"grade\": \"<string>\",\n    \"submittedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"homeworkId\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"fileName\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"status\": \"SUBMITTED\",\n    \"teacherFeedback\": \"<string>\",\n    \"grade\": \"<string>\",\n    \"submittedAt\": \"<dateTime>\"\n  }\n]",
                                                                     "cookie": [],
                                                                     "_postman_previewlanguage": "text"
                                                                 }
@@ -5385,7 +5645,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "a8d70fed-2661-45b6-9b6d-9a848a2ef57d",
+                                                    "id": "97dd213e-f283-4f51-942f-423c1ba29d91",
                                                     "name": "List homework for a class/section (paginated)",
                                                     "request": {
                                                         "name": "List homework for a class/section (paginated)",
@@ -5465,7 +5725,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "2d0a9042-eee4-471d-b94d-43c8acee8858",
+                                                            "id": "044241fb-719c-44c1-9d89-53e312a06232",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -5556,7 +5816,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"numberOfElements\": \"<integer>\",\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"paged\": \"<boolean>\",\n    \"unpaged\": \"<boolean>\"\n  },\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"empty\": \"<boolean>\"\n}",
+                                                            "body": "{\n  \"totalPages\": \"<integer>\",\n  \"totalElements\": \"<long>\",\n  \"first\": \"<boolean>\",\n  \"last\": \"<boolean>\",\n  \"size\": \"<integer>\",\n  \"content\": [\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"studentClass\": \"<string>\",\n      \"section\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"createdBy\": \"<uuid>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"number\": \"<integer>\",\n  \"sort\": [\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    },\n    {\n      \"direction\": \"<string>\",\n      \"nullHandling\": \"<string>\",\n      \"ascending\": \"<boolean>\",\n      \"property\": \"<string>\",\n      \"ignoreCase\": \"<boolean>\"\n    }\n  ],\n  \"pageable\": {\n    \"offset\": \"<long>\",\n    \"sort\": [\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      },\n      {\n        \"direction\": \"<string>\",\n        \"nullHandling\": \"<string>\",\n        \"ascending\": \"<boolean>\",\n        \"property\": \"<string>\",\n        \"ignoreCase\": \"<boolean>\"\n      }\n    ],\n    \"pageNumber\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"unpaged\": \"<boolean>\",\n    \"paged\": \"<boolean>\"\n  },\n  \"numberOfElements\": \"<integer>\",\n  \"empty\": \"<boolean>\"\n}",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -5577,7 +5837,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "49787225-e8d3-4dce-ab8a-9fecc55c145b",
+                                    "id": "eea0a7b4-40d9-4412-8785-bb377b126ed2",
                                     "name": "Record an exam result (grade is computed server-side)",
                                     "request": {
                                         "name": "Record an exam result (grade is computed server-side)",
@@ -5619,7 +5879,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "fec5bbd2-f345-498c-9080-5af7f891790a",
+                                            "id": "bf8edc01-d1e1-4907-88e9-e37f9b6b34a0",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -5691,7 +5951,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "e1806149-55be-4e7e-8428-02ae06f0d119",
+                                                    "id": "131e1434-f49a-4f3b-9c86-2c698bf7c26b",
                                                     "name": "View exam results for a student",
                                                     "request": {
                                                         "name": "View exam results for a student",
@@ -5733,7 +5993,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "9a1592b5-23ab-4180-88ff-e92ba5c8e3ee",
+                                                            "id": "2d03402a-e600-430e-b2a4-dfe91803f74b",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -5801,7 +6061,7 @@
                                                     "description": "",
                                                     "item": [
                                                         {
-                                                            "id": "d534bb15-4035-4cc1-b0b0-907f7473fca2",
+                                                            "id": "210fa185-392d-4576-aefc-3af152c3edbc",
                                                             "name": "Download a student's report card as a PDF, optionally filtered by term",
                                                             "request": {
                                                                 "name": "Download a student's report card as a PDF, optionally filtered by term",
@@ -5854,7 +6114,7 @@
                                                             },
                                                             "response": [
                                                                 {
-                                                                    "id": "d92c16af-b369-45a3-a090-6679b2834118",
+                                                                    "id": "f8d34f18-2c09-40a7-ad30-52eeef6e2b9f",
                                                                     "name": "OK",
                                                                     "originalRequest": {
                                                                         "url": {
@@ -5941,7 +6201,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "5615d182-9186-43e1-83c4-515ffbfab55b",
+                                    "id": "c7740a89-6252-4efb-a5b2-75a915d37ad1",
                                     "name": "List upcoming events over the next N days, with the caller's own RSVP status",
                                     "request": {
                                         "name": "List upcoming events over the next N days, with the caller's own RSVP status",
@@ -5980,7 +6240,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "5401091e-01ce-4157-a709-96e279ad8801",
+                                            "id": "a8ef549d-a7e7-4da9-8a29-ea730753f3fb",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -6041,7 +6301,7 @@
                                     }
                                 },
                                 {
-                                    "id": "4e91f0c0-4721-49c9-8f11-1482a0959396",
+                                    "id": "e7ecec24-5477-420a-a5ba-1cf3b04f2f0d",
                                     "name": "Create a school event",
                                     "request": {
                                         "name": "Create a school event",
@@ -6083,7 +6343,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "ed51c5fe-02e8-4d91-9ea9-1976a201ef43",
+                                            "id": "bdb14bf0-4a1d-46df-af62-a1e90fe48003",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -6136,7 +6396,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventDate\": \"<date>\",\n  \"location\": \"<string>\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"myRsvpStatus\": \"NOT_GOING\"\n}",
+                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventDate\": \"<date>\",\n  \"location\": \"<string>\",\n  \"createdBy\": \"<uuid>\",\n  \"createdAt\": \"<dateTime>\",\n  \"myRsvpStatus\": \"GOING\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -6155,7 +6415,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "c2ae6e9a-e37a-406b-b9a2-13f65b504c62",
+                                                    "id": "0811ab59-aee8-439a-acdb-ff9db0471598",
                                                     "name": "Submit or update the caller's RSVP for an event",
                                                     "request": {
                                                         "name": "Submit or update the caller's RSVP for an event",
@@ -6198,7 +6458,7 @@
                                                         "method": "POST",
                                                         "body": {
                                                             "mode": "raw",
-                                                            "raw": "{\n  \"status\": \"MAYBE\"\n}",
+                                                            "raw": "{\n  \"status\": \"NOT_GOING\"\n}",
                                                             "options": {
                                                                 "raw": {
                                                                     "headerFamily": "json",
@@ -6210,7 +6470,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "aef0aeca-5332-4376-95a4-fa7a263394ed",
+                                                            "id": "ed27c3cf-4322-461c-bd80-66de575d2fbc",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -6259,7 +6519,7 @@
                                                                 "method": "POST",
                                                                 "body": {
                                                                     "mode": "raw",
-                                                                    "raw": "{\n  \"status\": \"MAYBE\"\n}",
+                                                                    "raw": "{\n  \"status\": \"NOT_GOING\"\n}",
                                                                     "options": {
                                                                         "raw": {
                                                                             "headerFamily": "json",
@@ -6276,7 +6536,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"eventId\": \"<uuid>\",\n  \"userId\": \"<uuid>\",\n  \"userName\": \"<string>\",\n  \"status\": \"GOING\",\n  \"respondedAt\": \"<dateTime>\"\n}",
+                                                            "body": "{\n  \"id\": \"<uuid>\",\n  \"eventId\": \"<uuid>\",\n  \"userId\": \"<uuid>\",\n  \"userName\": \"<string>\",\n  \"status\": \"NOT_GOING\",\n  \"respondedAt\": \"<dateTime>\"\n}",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -6293,7 +6553,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "1dd8efd2-c3b1-4971-8274-2659d14e7750",
+                                                    "id": "cced9d19-9ff9-4599-aec5-52d3527a7338",
                                                     "name": "List all RSVPs for an event",
                                                     "request": {
                                                         "name": "List all RSVPs for an event",
@@ -6335,7 +6595,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "eaa701c8-3fd4-4a3f-ae5f-e0e80ffb5903",
+                                                            "id": "f65f1c8a-c6b4-427c-9488-1a732f2767ea",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -6388,7 +6648,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"eventId\": \"<uuid>\",\n    \"userId\": \"<uuid>\",\n    \"userName\": \"<string>\",\n    \"status\": \"NOT_GOING\",\n    \"respondedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"eventId\": \"<uuid>\",\n    \"userId\": \"<uuid>\",\n    \"userName\": \"<string>\",\n    \"status\": \"NOT_GOING\",\n    \"respondedAt\": \"<dateTime>\"\n  }\n]",
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"eventId\": \"<uuid>\",\n    \"userId\": \"<uuid>\",\n    \"userName\": \"<string>\",\n    \"status\": \"NOT_GOING\",\n    \"respondedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"eventId\": \"<uuid>\",\n    \"userId\": \"<uuid>\",\n    \"userName\": \"<string>\",\n    \"status\": \"MAYBE\",\n    \"respondedAt\": \"<dateTime>\"\n  }\n]",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -6409,7 +6669,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "8ba8bfa5-9941-47ce-b1d9-f51080b48223",
+                                    "id": "12d34072-e0fb-4a1e-971e-c0d673a7a724",
                                     "name": "List the current user's conversations",
                                     "request": {
                                         "name": "List the current user's conversations",
@@ -6438,7 +6698,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "07ff6990-f1eb-4fe5-ad6a-a7afaa2aa23c",
+                                            "id": "98d98837-c4ee-45c6-885d-527fcaa2f42e",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -6489,7 +6749,7 @@
                                     }
                                 },
                                 {
-                                    "id": "37da30c6-d2ee-43a6-8bab-328387bc48f3",
+                                    "id": "fcae3e06-d0f2-455f-a0db-a1230bc74415",
                                     "name": "Start (or resume) a conversation with a parent/teacher",
                                     "request": {
                                         "name": "Start (or resume) a conversation with a parent/teacher",
@@ -6531,7 +6791,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "f8606f42-eab8-43fb-8795-ad8f51d6fc25",
+                                            "id": "b3668cf5-9060-4e7c-ae08-54f936c0a8bd",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -6603,7 +6863,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "ec0e794b-00e9-4846-8547-35dd871ade2f",
+                                                    "id": "c1526b15-554c-435b-95e7-c55053ea1bb1",
                                                     "name": "List messages in a conversation",
                                                     "request": {
                                                         "name": "List messages in a conversation",
@@ -6645,7 +6905,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "c9904c77-6ce9-46e6-bd10-c7deb3064a2d",
+                                                            "id": "24d2ea4d-d602-426b-b663-391bda5a7ef5",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -6709,7 +6969,7 @@
                                                     }
                                                 },
                                                 {
-                                                    "id": "a2cdfbda-61b7-409a-acca-f98047861829",
+                                                    "id": "6017e13e-1d25-4664-b7cd-d5ea866f59dc",
                                                     "name": "Send a message in a conversation",
                                                     "request": {
                                                         "name": "Send a message in a conversation",
@@ -6764,7 +7024,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "6505c1e6-5478-4cd2-ab8d-a1c88b2bda30",
+                                                            "id": "65ba26ac-2963-4021-82e0-dd5cace9766a",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -6849,7 +7109,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "cf4c64f1-2a84-47ea-93a0-b63af52df597",
+                                            "id": "65133e5c-e9e6-4ce3-bc19-a1fe02483379",
                                             "name": "List people the current user is allowed to start a conversation with",
                                             "request": {
                                                 "name": "List people the current user is allowed to start a conversation with",
@@ -6879,7 +7139,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "f6ecf94e-cfba-46d6-ac55-63c2a08fd937",
+                                                    "id": "55a41200-2dc5-47af-81b4-ac202b3e5dc3",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -6943,7 +7203,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "895ededb-d73c-4ac6-8d27-ac5767500da4",
+                                            "id": "e55a3b70-4cc0-4f98-ada7-65a4c13131bd",
                                             "name": "Exchange a valid refresh token for a new token pair",
                                             "request": {
                                                 "name": "Exchange a valid refresh token for a new token pair",
@@ -6986,7 +7246,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "b2206e5d-c754-4104-bcdc-28f2b216d6f5",
+                                                    "id": "f766675f-0f44-4a03-8ae5-89d2e678519e",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -7040,7 +7300,7 @@
                                                             "value": "*/*"
                                                         }
                                                     ],
-                                                    "body": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\",\n  \"role\": \"TEACHER\"\n}",
+                                                    "body": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\",\n  \"role\": \"ADMIN\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "text"
                                                 }
@@ -7057,7 +7317,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "8c079ecb-3c49-43f1-b6dc-baeb65817f89",
+                                            "id": "e5477bb7-10fc-4abc-94be-bd1c1e4dcd99",
                                             "name": "Authenticate with email/password and receive access + refresh tokens",
                                             "request": {
                                                 "name": "Authenticate with email/password and receive access + refresh tokens",
@@ -7100,7 +7360,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "b070bf46-8269-4c70-a02b-a14d19f025b8",
+                                                    "id": "19935ecb-cda2-4541-8c7c-d9db146e0345",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -7154,7 +7414,7 @@
                                                             "value": "*/*"
                                                         }
                                                     ],
-                                                    "body": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\",\n  \"role\": \"TEACHER\"\n}",
+                                                    "body": "{\n  \"accessToken\": \"<string>\",\n  \"refreshToken\": \"<string>\",\n  \"role\": \"ADMIN\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "text"
                                                 }
@@ -7171,7 +7431,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "a454fc79-2e51-4d39-bd31-c6ab38b3aaf7",
+                                            "id": "1b9e43f6-e062-4c4f-aa86-b0e56a5d8672",
                                             "name": "Get the currently authenticated user's profile",
                                             "request": {
                                                 "name": "Get the currently authenticated user's profile",
@@ -7201,7 +7461,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "297a3732-9e27-41a7-82ed-178d0fe9b94c",
+                                                    "id": "a9f2746a-a7db-4037-be27-19f7152a5e63",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -7242,7 +7502,7 @@
                                                             "value": "*/*"
                                                         }
                                                     ],
-                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"ADMIN\",\n  \"phone\": \"<string>\",\n  \"preferredLanguage\": \"EN\"\n}",
+                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"role\": \"PARENT\",\n  \"phone\": \"<string>\",\n  \"preferredLanguage\": \"EN\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "text"
                                                 }
@@ -7261,7 +7521,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "1cfc3165-f652-462e-939e-aa4f4d774aee",
+                                    "id": "fee8301c-a97c-4ed8-b18e-04649287cd81",
                                     "name": "Mark (or update) attendance for a student on a given date",
                                     "request": {
                                         "name": "Mark (or update) attendance for a student on a given date",
@@ -7291,7 +7551,7 @@
                                         "method": "POST",
                                         "body": {
                                             "mode": "raw",
-                                            "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"ABSENT\",\n  \"studentId\": \"<uuid>\"\n}",
+                                            "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"LATE\",\n  \"studentId\": \"<uuid>\"\n}",
                                             "options": {
                                                 "raw": {
                                                     "headerFamily": "json",
@@ -7303,7 +7563,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "3bd318d3-4ed6-4289-9cfa-fa6b4be59982",
+                                            "id": "e0529fbb-96f8-4a41-8544-691fa50b4aca",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -7339,7 +7599,7 @@
                                                 "method": "POST",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"ABSENT\",\n  \"studentId\": \"<uuid>\"\n}",
+                                                    "raw": "{\n  \"date\": \"<date>\",\n  \"status\": \"LATE\",\n  \"studentId\": \"<uuid>\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -7375,7 +7635,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "2e6e2bd9-c660-4145-947f-f31c028f92ca",
+                                                    "id": "1a79b942-f854-453b-ad91-6ee2c9fa9e1c",
                                                     "name": "View attendance history for a student",
                                                     "request": {
                                                         "name": "View attendance history for a student",
@@ -7417,7 +7677,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "5c4f802b-6d79-4e33-a6c2-6b4a7cf1fb39",
+                                                            "id": "dbe0318d-6435-4ff3-bcbe-76f8d2750e93",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -7470,7 +7730,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"ABSENT\",\n    \"markedBy\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"ABSENT\",\n    \"markedBy\": \"<uuid>\"\n  }\n]",
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"PRESENT\",\n    \"markedBy\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"EXCUSED\",\n    \"markedBy\": \"<uuid>\"\n  }\n]",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -7501,7 +7761,7 @@
                                                             "description": "",
                                                             "item": [
                                                                 {
-                                                                    "id": "e1042748-4282-4dce-93ca-e08206f90fcd",
+                                                                    "id": "1381ca88-fe07-4ac7-b709-e220884b6beb",
                                                                     "name": "View attendance for a whole class/section on a given date",
                                                                     "request": {
                                                                         "name": "View attendance for a whole class/section on a given date",
@@ -7565,7 +7825,7 @@
                                                                     },
                                                                     "response": [
                                                                         {
-                                                                            "id": "9d4810a1-b4a0-412c-b146-0e23d2cec936",
+                                                                            "id": "f4a6aabe-f05c-484a-95a6-1836e386d75a",
                                                                             "name": "OK",
                                                                             "originalRequest": {
                                                                                 "url": {
@@ -7640,7 +7900,7 @@
                                                                                     "value": "*/*"
                                                                                 }
                                                                             ],
-                                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"ABSENT\",\n    \"markedBy\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"ABSENT\",\n    \"markedBy\": \"<uuid>\"\n  }\n]",
+                                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"PRESENT\",\n    \"markedBy\": \"<uuid>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"date\": \"<date>\",\n    \"status\": \"EXCUSED\",\n    \"markedBy\": \"<uuid>\"\n  }\n]",
                                                                             "cookie": [],
                                                                             "_postman_previewlanguage": "text"
                                                                         }
@@ -7669,7 +7929,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "4341cca7-b8ec-46dd-ac21-f84fd0d4f798",
+                                            "id": "fd48b622-8d39-4e83-94c1-a2c0afc74e7d",
                                             "name": "Enable/disable SMS, email, and push for one event type",
                                             "request": {
                                                 "name": "Enable/disable SMS, email, and push for one event type",
@@ -7723,7 +7983,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "c949c2e1-3fd6-4309-a14f-2de6414d05e2",
+                                                    "id": "c840aad1-0461-4f82-9aa9-65a4b5f684b1",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -7788,7 +8048,7 @@
                                                             "value": "*/*"
                                                         }
                                                     ],
-                                                    "body": "{\n  \"eventType\": \"NOTICE_CREATED\",\n  \"smsEnabled\": \"<boolean>\",\n  \"emailEnabled\": \"<boolean>\"\n}",
+                                                    "body": "{\n  \"eventType\": \"MESSAGE_RECEIVED\",\n  \"smsEnabled\": \"<boolean>\",\n  \"emailEnabled\": \"<boolean>\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "text"
                                                 }
@@ -7801,7 +8061,7 @@
                                     ]
                                 },
                                 {
-                                    "id": "82d0feeb-8645-4902-a615-284cee7ce8bd",
+                                    "id": "8b13f956-62c5-465f-a435-d80812d1f4cf",
                                     "name": "List which channels are enabled for each notification event type",
                                     "request": {
                                         "name": "List which channels are enabled for each notification event type",
@@ -7830,7 +8090,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "50908181-412a-41c4-8a08-183ebf891b10",
+                                            "id": "e2f20f4a-ba98-4b30-b46c-1fa184635a7e",
                                             "name": "OK",
                                             "originalRequest": {
                                                 "url": {
@@ -7870,7 +8130,7 @@
                                                     "value": "*/*"
                                                 }
                                             ],
-                                            "body": "[\n  {\n    \"eventType\": \"USER_WELCOME\",\n    \"smsEnabled\": \"<boolean>\",\n    \"emailEnabled\": \"<boolean>\"\n  },\n  {\n    \"eventType\": \"ATTENDANCE_ABSENT\",\n    \"smsEnabled\": \"<boolean>\",\n    \"emailEnabled\": \"<boolean>\"\n  }\n]",
+                                            "body": "[\n  {\n    \"eventType\": \"NOTICE_CREATED\",\n    \"smsEnabled\": \"<boolean>\",\n    \"emailEnabled\": \"<boolean>\"\n  },\n  {\n    \"eventType\": \"NOTICE_CREATED\",\n    \"smsEnabled\": \"<boolean>\",\n    \"emailEnabled\": \"<boolean>\"\n  }\n]",
                                             "cookie": [],
                                             "_postman_previewlanguage": "text"
                                         }
@@ -7891,7 +8151,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "7de1d710-93e9-46e1-a26f-9b781457d523",
+                                            "id": "a4bf3320-343a-40f8-9c58-c5f74bf72d80",
                                             "name": "Update a fee record's paid amount/status",
                                             "request": {
                                                 "name": "Update a fee record's paid amount/status",
@@ -7933,7 +8193,7 @@
                                                 "method": "PATCH",
                                                 "body": {
                                                     "mode": "raw",
-                                                    "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PARTIAL\"\n}",
+                                                    "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PENDING\"\n}",
                                                     "options": {
                                                         "raw": {
                                                             "headerFamily": "json",
@@ -7945,7 +8205,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "0745b6a2-a161-4487-b86e-873b7f2ee5a5",
+                                                    "id": "b16d058d-409c-4993-9b47-abd3f01ab9b9",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -7993,7 +8253,7 @@
                                                         "method": "PATCH",
                                                         "body": {
                                                             "mode": "raw",
-                                                            "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PARTIAL\"\n}",
+                                                            "raw": "{\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PENDING\"\n}",
                                                             "options": {
                                                                 "raw": {
                                                                     "headerFamily": "json",
@@ -8010,7 +8270,7 @@
                                                             "value": "*/*"
                                                         }
                                                     ],
-                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"studentId\": \"<uuid>\",\n  \"term\": \"<string>\",\n  \"amountDue\": \"<number>\",\n  \"amountPaid\": \"<number>\",\n  \"status\": \"PENDING\",\n  \"dueDate\": \"<date>\"\n}",
+                                                    "body": "{\n  \"id\": \"<uuid>\",\n  \"studentId\": \"<uuid>\",\n  \"term\": \"<string>\",\n  \"amountDue\": \"<number>\",\n  \"amountPaid\": \"<number>\",\n  \"status\": \"OVERDUE\",\n  \"dueDate\": \"<date>\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "text"
                                                 }
@@ -8031,7 +8291,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "dbeb695a-02e6-48ed-a2a7-456460b07c90",
+                                                    "id": "9b9fc0fc-a56c-4f62-9735-a3e1f3c32b94",
                                                     "name": "View fee status for a student",
                                                     "request": {
                                                         "name": "View fee status for a student",
@@ -8073,7 +8333,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "5a2e5d15-fb10-4f31-aee1-514eb4d85a02",
+                                                            "id": "86f15adb-c185-450c-a26e-75f5db0137e4",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -8126,7 +8386,7 @@
                                                                     "value": "*/*"
                                                                 }
                                                             ],
-                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"OVERDUE\",\n    \"dueDate\": \"<date>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"OVERDUE\",\n    \"dueDate\": \"<date>\"\n  }\n]",
+                                                            "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"PENDING\",\n    \"dueDate\": \"<date>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"studentId\": \"<uuid>\",\n    \"term\": \"<string>\",\n    \"amountDue\": \"<number>\",\n    \"amountPaid\": \"<number>\",\n    \"status\": \"PENDING\",\n    \"dueDate\": \"<date>\"\n  }\n]",
                                                             "cookie": [],
                                                             "_postman_previewlanguage": "text"
                                                         }
@@ -8155,7 +8415,7 @@
                                             "description": "",
                                             "item": [
                                                 {
-                                                    "id": "00b11209-aa5b-45e4-9e06-27fff723064a",
+                                                    "id": "52eae47c-ddbe-41a4-954a-82b03b8f71f3",
                                                     "name": "Fee collection summary, optionally filtered by class",
                                                     "request": {
                                                         "name": "Fee collection summary, optionally filtered by class",
@@ -8196,7 +8456,7 @@
                                                     },
                                                     "response": [
                                                         {
-                                                            "id": "a743ba4b-364d-4d62-a340-4a53e5a9cbb9",
+                                                            "id": "93e49568-6443-4462-8b0a-2079651848d9",
                                                             "name": "OK",
                                                             "originalRequest": {
                                                                 "url": {
@@ -8267,7 +8527,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "c1412193-0cb9-483b-8527-7d8c7a9ea0a3",
+                                            "id": "6ffa9c0f-158e-4fc9-920f-403a2ba2f5b4",
                                             "name": "Daily attendance trend, optionally filtered by class, over the last N days",
                                             "request": {
                                                 "name": "Daily attendance trend, optionally filtered by class, over the last N days",
@@ -8316,7 +8576,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "3c990c46-1ce3-4b7c-a07f-3a414728cb40",
+                                                    "id": "3e171c97-e6d3-4f1e-a87b-681bececaf57",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -8393,7 +8653,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "e8a9a0c5-5557-4ac1-a016-bacaf8b6b64c",
+                                            "id": "a87b12c5-05a7-414b-b702-f3f52eb6670a",
                                             "name": "Students with low attendance and/or significantly overdue fees",
                                             "request": {
                                                 "name": "Students with low attendance and/or significantly overdue fees",
@@ -8423,7 +8683,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "d0de4ea0-8810-491b-bdc0-ff9478beb850",
+                                                    "id": "0256a5c7-0fd7-4817-ae05-cc8c792242a3",
                                                     "name": "OK",
                                                     "originalRequest": {
                                                         "url": {
@@ -8501,7 +8761,7 @@
         }
     ],
     "info": {
-        "_postman_id": "0cb20b3d-a54e-482a-bd8a-f3ce60849ba4",
+        "_postman_id": "0dbbf7c2-88e2-4fb9-9a3b-55a623cd62df",
         "name": "School Management App API",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
