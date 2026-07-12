@@ -144,7 +144,7 @@ class AttendanceTimetableIntegrationTest extends AbstractIntegrationTest {
     @Test
     void adminCanCreateTimetableEntryButTeacherCannot() {
         TimetableCreateRequest request = new TimetableCreateRequest(
-                "7", "C", DayOfWeek.MONDAY, 1, "Math", teacher.getId());
+                "7", "C", DayOfWeek.MONDAY, 1, "Math", teacherUser.getId());
 
         HttpHeaders adminHeaders = adminHeaders();
         adminHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -155,7 +155,7 @@ class AttendanceTimetableIntegrationTest extends AbstractIntegrationTest {
         HttpHeaders teacherHeaders = authHeaders(teacherUser);
         teacherHeaders.setContentType(MediaType.APPLICATION_JSON);
         TimetableCreateRequest secondSlot = new TimetableCreateRequest(
-                "7", "C", DayOfWeek.TUESDAY, 1, "Science", teacher.getId());
+                "7", "C", DayOfWeek.TUESDAY, 1, "Science", teacherUser.getId());
         ResponseEntity<String> teacherResponse = restTemplate.exchange(
                 "/api/v1/timetable", HttpMethod.POST, new HttpEntity<>(secondSlot, teacherHeaders), String.class);
         assertThat(teacherResponse.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);

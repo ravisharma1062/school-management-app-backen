@@ -27,7 +27,7 @@ public class TimetableService {
     }
 
     public TimetableDto create(TimetableCreateRequest request) {
-        Teacher teacher = teacherRepository.findById(request.teacherId())
+        Teacher teacher = teacherRepository.findByUserId(request.teacherId())
                 .orElseThrow(() -> new ResourceNotFoundException("Teacher with id " + request.teacherId() + " not found"));
 
         Timetable timetable = Timetable.builder()
