@@ -22,7 +22,7 @@ public class TimetableSteps {
         body.put("dayOfWeek", day);
         body.put("period", period);
         body.put("subject", subject);
-        body.put("teacherId", world.teacherProfile(teacherAlias).getId().toString());
+        body.put("teacherId", world.user(teacherAlias).getId().toString());
         world.exchange(HttpMethod.POST, "/api/v1/timetable", body);
     }
 

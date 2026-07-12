@@ -22,6 +22,8 @@ class UserIntegrationTest extends AbstractIntegrationTest {
     @Autowired
     private UserRepository userRepository;
     @Autowired
+    private TeacherRepository teacherRepository;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     private User teacher;
@@ -80,6 +82,9 @@ class UserIntegrationTest extends AbstractIntegrationTest {
         assertThat(response.getBody().get("role")).isEqualTo("TEACHER");
         assertThat(response.getBody()).doesNotContainKey("password");
         assertThat(response.getBody()).doesNotContainKey("passwordHash");
+
+        UUID createdUserId = UUID.fromString((String) response.getBody().get("id"));
+        assertThat(teacherRepository.findByUserId(createdUserId)).isPresent();
     }
 
     @Test

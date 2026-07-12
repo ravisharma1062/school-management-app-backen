@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final TeacherRepository teacherRepository;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
     private final NotificationService notificationService;
@@ -34,6 +35,10 @@ public class UserService {
                 .build();
 
         User saved = userRepository.save(user);
+
+        if (saved.getRole() == Role.TEACHER) {
+            teacherRepository.save(Teacher.builder().user(saved).build());
+        }
 
         notificationService.notify(
                 NotificationEventType.USER_WELCOME,
