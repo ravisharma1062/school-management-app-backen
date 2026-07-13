@@ -1,5 +1,7 @@
 package com.school.app.messaging;
 
+import com.school.app.platform.FeatureKey;
+import com.school.app.platform.RequiresEntitlement;
 import com.school.app.user.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,6 +24,7 @@ public class ConversationController {
 
     @PostMapping
     @PreAuthorize("hasAnyRole('PARENT', 'TEACHER')")
+    @RequiresEntitlement(FeatureKey.MESSAGING)
     @Operation(summary = "Start (or resume) a conversation with a parent/teacher")
     public ConversationDto start(
             @Valid @RequestBody ConversationCreateRequest request, @AuthenticationPrincipal User currentUser) {
@@ -44,6 +47,7 @@ public class ConversationController {
 
     @PostMapping("/{id}/messages")
     @PreAuthorize("hasAnyRole('PARENT', 'TEACHER')")
+    @RequiresEntitlement(FeatureKey.MESSAGING)
     @Operation(summary = "Send a message in a conversation")
     public MessageDto sendMessage(
             @PathVariable UUID id,

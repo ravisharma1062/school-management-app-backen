@@ -1,5 +1,7 @@
 package com.school.app.analytics;
 
+import com.school.app.platform.FeatureKey;
+import com.school.app.platform.RequiresEntitlement;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ public class AnalyticsController {
 
     @GetMapping("/attendance")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.ANALYTICS)
     @Operation(summary = "Daily attendance trend, optionally filtered by class, over the last N days")
     public List<AttendanceTrendPointDto> attendanceTrend(
             @RequestParam(name = "class", required = false) String studentClass,
@@ -27,6 +30,7 @@ public class AnalyticsController {
 
     @GetMapping("/fees/summary")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.ANALYTICS)
     @Operation(summary = "Fee collection summary, optionally filtered by class")
     public FeeSummaryDto feeSummary(@RequestParam(name = "class", required = false) String studentClass) {
         return analyticsService.getFeeSummary(studentClass);
@@ -34,6 +38,7 @@ public class AnalyticsController {
 
     @GetMapping("/at-risk-students")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.ANALYTICS)
     @Operation(summary = "Students with low attendance and/or significantly overdue fees")
     public List<AtRiskStudentDto> atRiskStudents() {
         return analyticsService.getAtRiskStudents();

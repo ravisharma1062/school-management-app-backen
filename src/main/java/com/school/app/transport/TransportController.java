@@ -1,5 +1,7 @@
 package com.school.app.transport;
 
+import com.school.app.platform.FeatureKey;
+import com.school.app.platform.RequiresEntitlement;
 import com.school.app.user.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,6 +24,7 @@ public class TransportController {
 
     @PostMapping("/routes")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.TRANSPORT_TRACKING)
     @Operation(summary = "Create a bus route with its stops")
     public BusRouteAdminDto createRoute(@Valid @RequestBody BusRouteCreateRequest request) {
         return transportService.createRoute(request);
@@ -29,6 +32,7 @@ public class TransportController {
 
     @GetMapping("/routes")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.TRANSPORT_TRACKING)
     @Operation(summary = "List all bus routes")
     public List<BusRouteSummaryDto> listRoutes() {
         return transportService.listRoutes();
@@ -36,6 +40,7 @@ public class TransportController {
 
     @GetMapping("/routes/{id}")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.TRANSPORT_TRACKING)
     @Operation(summary = "Get a bus route's full detail, including its device location-token")
     public BusRouteAdminDto getRoute(@PathVariable UUID id) {
         return transportService.getRoute(id);
@@ -59,6 +64,7 @@ public class TransportController {
 
     @PutMapping("/students/{studentId}")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.TRANSPORT_TRACKING)
     @Operation(summary = "Assign (or reassign) a student to a bus route and stop")
     public StudentTransportDto assignStudent(
             @PathVariable UUID studentId, @Valid @RequestBody StudentTransportAssignRequest request) {

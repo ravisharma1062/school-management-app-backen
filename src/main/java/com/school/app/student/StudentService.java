@@ -2,6 +2,8 @@ package com.school.app.student;
 
 import com.school.app.common.exception.BadRequestException;
 import com.school.app.common.exception.ResourceNotFoundException;
+import com.school.app.platform.EntitlementService;
+import com.school.app.platform.FeatureKey;
 import com.school.app.user.Role;
 import com.school.app.user.User;
 import com.school.app.user.UserRepository;
@@ -39,6 +41,7 @@ public class StudentService {
     private final StudentRepository studentRepository;
     private final UserRepository userRepository;
     private final StudentMapper studentMapper;
+    private final EntitlementService entitlementService;
 
     public Page<StudentDto> list(String name, String rollNo, String studentClass, boolean includeArchived, Pageable pageable) {
         Specification<Student> spec = Specification.allOf();
@@ -58,6 +61,8 @@ public class StudentService {
     }
 
     public StudentDto create(StudentCreateRequest request) {
+        entitlementService.checkLimit(FeatureKey.MAX_STUDENTS, studentRepository.countByActiveTrue());
+
         if (studentRepository.existsByStudentClassAndSectionAndRollNo(
                 request.studentClass(), request.section(), request.rollNo())) {
             throw new BadRequestException("A student with this roll number already exists in this class/section");
@@ -164,6 +169,11 @@ public class StudentService {
         Set<String> seenInFile = new HashSet<>();
         int total = 0;
         int success = 0;
+        // Checked and incremented per-row (not once up front) so a batch that would cross the
+        // plan's MAX_STUDENTS limit partway through still imports everything up to the limit,
+        // reporting the rest as row errors, consistent with this method's existing
+        // partial-success model.
+        long activeStudentCount = studentRepository.countByActiveTrue();
 
         try (CSVParser parser = format.parse(new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))) {
             for (String required : REQUIRED_CSV_COLUMNS) {
@@ -177,7 +187,9 @@ public class StudentService {
                 int rowNumber = (int) record.getRecordNumber() + 1; // +1 to account for the header row
 
                 try {
+                    entitlementService.checkLimit(FeatureKey.MAX_STUDENTS, activeStudentCount);
                     importRow(record, seenInFile);
+                    activeStudentCount++;
                     success++;
                 } catch (Exception e) {
                     errors.add(new BulkImportResult.RowError(rowNumber, e.getMessage()));

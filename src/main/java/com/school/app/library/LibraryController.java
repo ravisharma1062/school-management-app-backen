@@ -1,5 +1,7 @@
 package com.school.app.library;
 
+import com.school.app.platform.FeatureKey;
+import com.school.app.platform.RequiresEntitlement;
 import com.school.app.user.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,6 +29,7 @@ public class LibraryController {
 
     @PostMapping("/books")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.LIBRARY)
     @Operation(summary = "Add a book to the library catalog")
     public BookDto createBook(@Valid @RequestBody BookCreateRequest request) {
         return libraryService.createBook(request);
@@ -56,6 +59,7 @@ public class LibraryController {
 
     @PostMapping("/issues")
     @PreAuthorize("hasRole('ADMIN')")
+    @RequiresEntitlement(FeatureKey.LIBRARY)
     @Operation(summary = "Issue a book to a student")
     public BookIssueDto issueBook(@Valid @RequestBody BookIssueCreateRequest request) {
         return libraryService.issueBook(request);
