@@ -116,6 +116,13 @@
             <version>1.11.0</version>
         </dependency>
 
+        <!-- TOTP (platform admin MFA) -->
+        <dependency>
+            <groupId>dev.samstevens.totp</groupId>
+            <artifactId>totp</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

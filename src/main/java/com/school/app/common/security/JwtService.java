@@ -1,5 +1,6 @@
 package com.school.app.common.security;
 
+import com.school.app.platform.PlatformRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -43,7 +44,34 @@ public class JwtService {
         return Jwts.builder()
                 .subject(userDetails.getUsername())
                 .claim("type", tokenType)
+                .claim("scope", "TENANT")
                 .claim("school_id", schoolId.toString())
+                .issuedAt(now)
+                .expiration(new Date(now.getTime() + expirationMs))
+                .signWith(signingKey)
+                .compact();
+    }
+
+    /**
+     * Platform tokens carry no {@code school_id} at all (Architecture Decision #3 — platform
+     * operators are a separate surface, not scoped to any tenant) and a {@code scope = PLATFORM}
+     * claim {@link JwtAuthFilter} uses to keep the two token families non-interchangeable.
+     */
+    public String generatePlatformAccessToken(String email, PlatformRole role) {
+        return buildPlatformToken(email, role, accessTokenExpirationMs, "access");
+    }
+
+    public String generatePlatformRefreshToken(String email, PlatformRole role) {
+        return buildPlatformToken(email, role, refreshTokenExpirationMs, "refresh");
+    }
+
+    private String buildPlatformToken(String email, PlatformRole role, long expirationMs, String tokenType) {
+        Date now = new Date();
+        return Jwts.builder()
+                .subject(email)
+                .claim("type", tokenType)
+                .claim("scope", "PLATFORM")
+                .claim("platform_role", role.name())
                 .issuedAt(now)
                 .expiration(new Date(now.getTime() + expirationMs))
                 .signWith(signingKey)
@@ -58,6 +86,12 @@ public class JwtService {
     public UUID extractSchoolId(String token) {
         String raw = extractClaim(token, claims -> claims.get("school_id", String.class));
         return raw != null ? UUID.fromString(raw) : null;
+    }
+
+    /** Tokens minted before this claim existed have no {@code scope} claim and are treated as TENANT. */
+    public boolean isPlatformToken(String token) {
+        String scope = extractClaim(token, claims -> claims.get("scope", String.class));
+        return "PLATFORM".equals(scope);
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {

@@ -59,6 +59,13 @@ public class SecurityConfig {
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/auth/login", "/api/v1/auth/refresh").permitAll()
+                        // Account-activation (MT-3 invite-link flow) authenticates via the token
+                        // itself, not a JWT — see ActivationService.
+                        .requestMatchers(HttpMethod.GET, "/api/v1/auth/activation/*").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/activate").permitAll()
+                        // Platform (operator console) login is the platform-scope equivalent of
+                        // /auth/login — no JWT exists yet either.
+                        .requestMatchers("/api/v1/platform/auth/login", "/api/v1/platform/auth/refresh").permitAll()
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/actuator/health").permitAll()
                         // The payment gateway calls this directly (no JWT); authenticity is

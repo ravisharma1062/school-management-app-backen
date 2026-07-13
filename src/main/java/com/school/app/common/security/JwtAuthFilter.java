@@ -2,6 +2,8 @@ package com.school.app.common.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.school.app.common.exception.ErrorResponse;
+import com.school.app.platform.PlatformUser;
+import com.school.app.platform.PlatformUserLookupService;
 import com.school.app.school.School;
 import com.school.app.school.SchoolRepository;
 import com.school.app.school.SchoolStatus;
@@ -31,6 +33,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsServiceImpl userDetailsService;
+    private final PlatformUserLookupService platformUserLookupService;
     private final SchoolRepository schoolRepository;
     private final ObjectMapper objectMapper;
 
@@ -52,22 +55,38 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             String username = jwtService.extractUsername(token);
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                // Set from the already-signature-verified claim so the per-request user lookup
-                // below is correctly @TenantId-scoped without an extra bootstrapping query.
-                UUID schoolId = jwtService.extractSchoolId(token);
-                if (schoolId != null) {
-                    TenantContext.set(schoolId);
+                boolean isPlatformToken = jwtService.isPlatformToken(token);
+                boolean isPlatformPath = request.getRequestURI().startsWith("/api/v1/platform/");
+
+                if (isPlatformToken != isPlatformPath) {
+                    // A platform-scoped token must only be usable on /api/v1/platform/** and vice
+                    // versa (MT-3 security requirement). Leave the request unauthenticated rather
+                    // than authorize across the boundary — it falls through to the normal 401 for
+                    // whichever side rejects an anonymous request.
+                    filterChain.doFilter(request, response);
+                    return;
                 }
 
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-                if (jwtService.isTokenValid(token, userDetails) && !jwtService.isRefreshToken(token)) {
-                    if (schoolId != null && shortCircuitForSuspendedSchool(schoolId, request, response)) {
-                        return;
+                if (isPlatformToken) {
+                    PlatformUser platformUser = platformUserLookupService.loadByEmail(username);
+                    if (platformUser != null && jwtService.isTokenValid(token, platformUser) && !jwtService.isRefreshToken(token)) {
+                        authenticate(platformUser, request);
                     }
-                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                            userDetails, null, userDetails.getAuthorities());
-                    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                } else {
+                    // Set from the already-signature-verified claim so the per-request user lookup
+                    // below is correctly @TenantId-scoped without an extra bootstrapping query.
+                    UUID schoolId = jwtService.extractSchoolId(token);
+                    if (schoolId != null) {
+                        TenantContext.set(schoolId);
+                    }
+
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                    if (jwtService.isTokenValid(token, userDetails) && !jwtService.isRefreshToken(token)) {
+                        if (schoolId != null && shortCircuitForSuspendedSchool(schoolId, request, response)) {
+                            return;
+                        }
+                        authenticate(userDetails, request);
+                    }
                 }
             }
 
@@ -75,6 +94,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         } finally {
             TenantContext.clear();
         }
+    }
+
+    private void authenticate(UserDetails userDetails, HttpServletRequest request) {
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                userDetails, null, userDetails.getAuthorities());
+        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        SecurityContextHolder.getContext().setAuthentication(authToken);
     }
 
     /**

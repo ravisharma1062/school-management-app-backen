@@ -50,6 +50,9 @@ app:
   storage:
     local:
       base-dir: ${STORAGE_LOCAL_DIR:./storage}
+  operator:
+    # Where the operator console's "set your password" page lives; the activation email links here.
+    activation-base-url: ${OPERATOR_ACTIVATION_BASE_URL:http://localhost:5174/activate}
 
 springdoc:
   swagger-ui:

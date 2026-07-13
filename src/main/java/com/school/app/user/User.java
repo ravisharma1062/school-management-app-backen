@@ -52,6 +52,12 @@ public class User implements UserDetails {
     @Column(name = "preferred_language", nullable = false, length = 5)
     private LanguageCode preferredLanguage;
 
+    /** {@code PENDING_ACTIVATION} for a provisioning-created admin with no usable password yet. */
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    @Builder.Default
+    private UserStatus status = UserStatus.ACTIVE;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
@@ -62,6 +68,9 @@ public class User implements UserDetails {
         }
         if (preferredLanguage == null) {
             preferredLanguage = LanguageCode.EN;
+        }
+        if (status == null) {
+            status = UserStatus.ACTIVE;
         }
     }
 
@@ -78,5 +87,16 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return email;
+    }
+
+    /**
+     * PENDING_ACTIVATION accounts are minted with an unusable random password hash (see
+     * ProvisioningService) so they already can't authenticate — this override makes that
+     * explicit and gives Spring Security's standard {@link org.springframework.security.authentication.DisabledException}
+     * flow instead of relying solely on the password never matching.
+     */
+    @Override
+    public boolean isEnabled() {
+        return status == UserStatus.ACTIVE;
     }
 }
