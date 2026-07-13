@@ -6,15 +6,21 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.Instant;
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 /**
  * Global (not {@code @TenantId}) — deliberately a separate table from {@code User}, not a role on
  * it, so the tenant-scoped user table stays uniformly scoped and this highest-privilege surface
- * (can touch every school) stays isolated. Platform login/auth itself is MT-3; this table exists
- * from MT-2 onward per the plan's build order.
+ * (can touch every school) stays isolated. Implements {@link UserDetails} the same way {@code User}
+ * does, but is never registered with the global {@code AuthenticationManager} — see
+ * {@link PlatformUserLookupService} for why.
  */
 @Entity
 @Table(name = "platform_users")
@@ -23,7 +29,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PlatformUser {
+public class PlatformUser implements UserDetails {
 
     @Id
     @GeneratedValue
@@ -53,5 +59,20 @@ public class PlatformUser {
         if (createdAt == null) {
             createdAt = Instant.now();
         }
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + platformRole.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return passwordHash;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
     }
 }
