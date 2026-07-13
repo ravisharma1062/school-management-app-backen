@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.TenantId;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -23,6 +24,10 @@ public class NotificationLog {
     @Id
     @GeneratedValue
     private UUID id;
+
+    @TenantId
+    @Column(name = "school_id", nullable = false)
+    private UUID schoolId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "event_type", nullable = false, length = 50)

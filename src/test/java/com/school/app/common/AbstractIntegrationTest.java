@@ -1,5 +1,9 @@
 package com.school.app.common;
 
+import com.school.app.common.security.TenantContext;
+import com.school.app.school.School;
+import com.school.app.school.SchoolRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,6 +46,29 @@ public abstract class AbstractIntegrationTest {
 
     @Autowired
     protected TestRestTemplate restTemplate;
+    @Autowired
+    private SchoolRepository schoolRepository;
+
+    /**
+     * Test fixtures built by calling a repository directly (bypassing HTTP/login) run on this
+     * JUnit thread, which {@code JwtAuthFilter} never touches — every {@code @TenantId} entity
+     * insert would otherwise try to write the nil sentinel and fail its FK to {@code schools}.
+     * Scope this thread to the one school Flyway's V16 migration created (JUnit superclass
+     * {@code @BeforeEach} methods run before subclass ones, so this is set before any subclass
+     * {@code setUp()} saves a fixture), matching what a real request for the seeded admin would
+     * resolve to.
+     */
+    @BeforeEach
+    void setDefaultTenantContext() {
+        School defaultSchool = schoolRepository.findBySlug("default-school")
+                .orElseThrow(() -> new IllegalStateException("Flyway's default school seed (V16) is missing"));
+        TenantContext.set(defaultSchool.getId());
+    }
+
+    @AfterEach
+    void clearTenantContext() {
+        TenantContext.clear();
+    }
 
     @BeforeEach
     void enablePatchAndErrorBodySupport() {

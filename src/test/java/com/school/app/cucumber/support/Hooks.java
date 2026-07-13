@@ -1,5 +1,9 @@
 package com.school.app.cucumber.support;
 
+import com.school.app.common.security.TenantContext;
+import com.school.app.school.School;
+import com.school.app.school.SchoolRepository;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -22,6 +26,8 @@ public class Hooks {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private TestRestTemplate restTemplate;
+    @Autowired
+    private SchoolRepository schoolRepository;
 
     @Before
     public void resetDatabase() {
@@ -29,6 +35,24 @@ public class Hooks {
             jdbcTemplate.update("DELETE FROM " + table);
         }
         jdbcTemplate.update("DELETE FROM users WHERE email <> 'admin@school.app'");
+    }
+
+    /**
+     * Step definitions that save fixtures directly via a repository (e.g. {@code CommonSteps})
+     * run on this thread, which never goes through {@code JwtAuthFilter} — scope it to the one
+     * school Flyway's V16 migration created, same as {@code AbstractIntegrationTest} does for the
+     * plain JUnit suite.
+     */
+    @Before
+    public void setDefaultTenantContext() {
+        School defaultSchool = schoolRepository.findBySlug("default-school")
+                .orElseThrow(() -> new IllegalStateException("Flyway's default school seed (V16) is missing"));
+        TenantContext.set(defaultSchool.getId());
+    }
+
+    @After
+    public void clearTenantContext() {
+        TenantContext.clear();
     }
 
     /**

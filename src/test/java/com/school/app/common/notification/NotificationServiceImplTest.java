@@ -46,7 +46,7 @@ class NotificationServiceImplTest {
 
     @Test
     void doesNothingWhenNoPreferenceRowExists() {
-        when(preferenceRepository.findById(NotificationEventType.ATTENDANCE_ABSENT)).thenReturn(Optional.empty());
+        when(preferenceRepository.findByEventType(NotificationEventType.ATTENDANCE_ABSENT)).thenReturn(Optional.empty());
 
         service.notify(NotificationEventType.ATTENDANCE_ABSENT, recipient, "subj", "msg");
 
@@ -60,7 +60,7 @@ class NotificationServiceImplTest {
                 .smsEnabled(true)
                 .emailEnabled(false)
                 .build();
-        when(preferenceRepository.findById(NotificationEventType.ATTENDANCE_ABSENT)).thenReturn(Optional.of(pref));
+        when(preferenceRepository.findByEventType(NotificationEventType.ATTENDANCE_ABSENT)).thenReturn(Optional.of(pref));
 
         service.notify(NotificationEventType.ATTENDANCE_ABSENT, recipient, "subj", "msg");
 
@@ -80,7 +80,7 @@ class NotificationServiceImplTest {
                 .smsEnabled(false)
                 .emailEnabled(true)
                 .build();
-        when(preferenceRepository.findById(NotificationEventType.USER_WELCOME)).thenReturn(Optional.of(pref));
+        when(preferenceRepository.findByEventType(NotificationEventType.USER_WELCOME)).thenReturn(Optional.of(pref));
         doThrow(new NotConfiguredException("no creds")).when(emailProvider).send(any(), any(), any());
 
         service.notify(NotificationEventType.USER_WELCOME, recipient, "subj", "msg");
@@ -97,7 +97,7 @@ class NotificationServiceImplTest {
                 .smsEnabled(true)
                 .emailEnabled(false)
                 .build();
-        when(preferenceRepository.findById(NotificationEventType.FEE_OVERDUE)).thenReturn(Optional.of(pref));
+        when(preferenceRepository.findByEventType(NotificationEventType.FEE_OVERDUE)).thenReturn(Optional.of(pref));
         doThrow(new RuntimeException("network down")).when(smsProvider).send(any(), any());
 
         service.notify(NotificationEventType.FEE_OVERDUE, recipient, "subj", "msg");
@@ -120,7 +120,7 @@ class NotificationServiceImplTest {
                 .smsEnabled(true)
                 .emailEnabled(false)
                 .build();
-        when(preferenceRepository.findById(NotificationEventType.ATTENDANCE_ABSENT)).thenReturn(Optional.of(pref));
+        when(preferenceRepository.findByEventType(NotificationEventType.ATTENDANCE_ABSENT)).thenReturn(Optional.of(pref));
 
         service.notify(NotificationEventType.ATTENDANCE_ABSENT, noPhone, "subj", "msg");
 

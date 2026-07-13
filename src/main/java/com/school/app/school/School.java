@@ -1,48 +1,42 @@
-package com.school.app.event;
+package com.school.app.school;
 
-import com.school.app.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.TenantId;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ * The tenant root. Deliberately NOT {@code @TenantId} — every other entity is scoped
+ * to a school, but the school itself is the thing being scoped.
+ */
 @Entity
-@Table(name = "events")
+@Table(name = "schools")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Event {
+public class School {
 
     @Id
     @GeneratedValue
     private UUID id;
 
-    @TenantId
-    @Column(name = "school_id", nullable = false)
-    private UUID schoolId;
-
     @Column(nullable = false)
-    private String title;
+    private String name;
 
-    private String description;
+    @Column(nullable = false, unique = true)
+    private String slug;
 
-    @Column(name = "event_date", nullable = false)
-    private LocalDate eventDate;
-
-    private String location;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "created_by", nullable = false)
-    private User createdBy;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    @Builder.Default
+    private SchoolStatus status = SchoolStatus.ACTIVE;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;

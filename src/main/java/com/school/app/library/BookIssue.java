@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.TenantId;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -24,6 +25,10 @@ public class BookIssue {
     @Id
     @GeneratedValue
     private UUID id;
+
+    @TenantId
+    @Column(name = "school_id", nullable = false)
+    private UUID schoolId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "book_id", nullable = false)

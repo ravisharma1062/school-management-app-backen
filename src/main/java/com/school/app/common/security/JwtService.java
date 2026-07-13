@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.UUID;
 import java.util.function.Function;
 
 @Service
@@ -29,19 +30,20 @@ public class JwtService {
         this.refreshTokenExpirationMs = refreshTokenExpirationMs;
     }
 
-    public String generateAccessToken(UserDetails userDetails) {
-        return buildToken(userDetails, accessTokenExpirationMs, "access");
+    public String generateAccessToken(UserDetails userDetails, UUID schoolId) {
+        return buildToken(userDetails, schoolId, accessTokenExpirationMs, "access");
     }
 
-    public String generateRefreshToken(UserDetails userDetails) {
-        return buildToken(userDetails, refreshTokenExpirationMs, "refresh");
+    public String generateRefreshToken(UserDetails userDetails, UUID schoolId) {
+        return buildToken(userDetails, schoolId, refreshTokenExpirationMs, "refresh");
     }
 
-    private String buildToken(UserDetails userDetails, long expirationMs, String tokenType) {
+    private String buildToken(UserDetails userDetails, UUID schoolId, long expirationMs, String tokenType) {
         Date now = new Date();
         return Jwts.builder()
                 .subject(userDetails.getUsername())
                 .claim("type", tokenType)
+                .claim("school_id", schoolId.toString())
                 .issuedAt(now)
                 .expiration(new Date(now.getTime() + expirationMs))
                 .signWith(signingKey)
@@ -50,6 +52,12 @@ public class JwtService {
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    /** Returns {@code null} for a token minted before this claim existed, rather than throwing. */
+    public UUID extractSchoolId(String token) {
+        String raw = extractClaim(token, claims -> claims.get("school_id", String.class));
+        return raw != null ? UUID.fromString(raw) : null;
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {

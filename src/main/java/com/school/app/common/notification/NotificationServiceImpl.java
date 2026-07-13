@@ -20,7 +20,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void notify(NotificationEventType eventType, User recipient, String subject, String message) {
-        NotificationPreference preference = preferenceRepository.findById(eventType).orElse(null);
+        NotificationPreference preference = preferenceRepository.findByEventType(eventType).orElse(null);
         if (preference == null) {
             log.warn("No notification preference row for event type {}; skipping", eventType);
             return;

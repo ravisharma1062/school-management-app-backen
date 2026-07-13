@@ -35,11 +35,14 @@ class AuthServiceTest {
     private AuthService authService;
 
     private User user;
+    private UUID schoolId;
 
     @BeforeEach
     void setUp() {
+        schoolId = UUID.randomUUID();
         user = User.builder()
                 .id(UUID.randomUUID())
+                .schoolId(schoolId)
                 .name("Admin")
                 .email("admin@school.app")
                 .passwordHash("hashed")
@@ -51,8 +54,8 @@ class AuthServiceTest {
     void loginReturnsTokensAndRoleOnSuccess() {
         LoginRequest request = new LoginRequest("admin@school.app", "correct-password");
         when(userRepository.findByEmail("admin@school.app")).thenReturn(Optional.of(user));
-        when(jwtService.generateAccessToken(user)).thenReturn("access-token");
-        when(jwtService.generateRefreshToken(user)).thenReturn("refresh-token");
+        when(jwtService.generateAccessToken(user, schoolId)).thenReturn("access-token");
+        when(jwtService.generateRefreshToken(user, schoolId)).thenReturn("refresh-token");
 
         AuthResponse response = authService.login(request);
 
@@ -84,11 +87,12 @@ class AuthServiceTest {
     void refreshReturnsNewTokenPairForValidRefreshToken() {
         RefreshRequest request = new RefreshRequest("valid-refresh-token");
         when(jwtService.isRefreshToken("valid-refresh-token")).thenReturn(true);
+        when(jwtService.extractSchoolId("valid-refresh-token")).thenReturn(schoolId);
         when(jwtService.extractUsername("valid-refresh-token")).thenReturn("admin@school.app");
         when(userRepository.findByEmail("admin@school.app")).thenReturn(Optional.of(user));
         when(jwtService.isTokenValid("valid-refresh-token", user)).thenReturn(true);
-        when(jwtService.generateAccessToken(user)).thenReturn("new-access-token");
-        when(jwtService.generateRefreshToken(user)).thenReturn("new-refresh-token");
+        when(jwtService.generateAccessToken(user, schoolId)).thenReturn("new-access-token");
+        when(jwtService.generateRefreshToken(user, schoolId)).thenReturn("new-refresh-token");
 
         AuthResponse response = authService.refresh(request);
 
