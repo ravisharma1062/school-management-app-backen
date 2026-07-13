@@ -20,7 +20,7 @@ public class NotificationPreferenceService {
     }
 
     public NotificationPreferenceDto update(NotificationEventType eventType, NotificationPreferenceUpdateRequest request) {
-        NotificationPreference preference = preferenceRepository.findById(eventType)
+        NotificationPreference preference = preferenceRepository.findByEventType(eventType)
                 .orElseThrow(() -> new ResourceNotFoundException("No preference row for event type " + eventType));
 
         preference.setSmsEnabled(request.smsEnabled());

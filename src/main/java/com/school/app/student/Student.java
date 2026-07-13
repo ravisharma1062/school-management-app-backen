@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.TenantId;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -24,6 +25,10 @@ public class Student {
     @Id
     @GeneratedValue
     private UUID id;
+
+    @TenantId
+    @Column(name = "school_id", nullable = false)
+    private UUID schoolId;
 
     @Column(nullable = false)
     private String name;

@@ -2,6 +2,7 @@ package com.school.app.transport;
 
 import com.school.app.common.exception.BadRequestException;
 import com.school.app.common.exception.ResourceNotFoundException;
+import com.school.app.common.security.TenantContext;
 import com.school.app.student.Student;
 import com.school.app.student.StudentRepository;
 import com.school.app.user.Role;
@@ -59,10 +60,16 @@ public class TransportService {
     }
 
     public void pushLocation(UUID routeId, String token, LocationPushRequest request) {
-        BusRoute route = requireRoute(routeId);
+        // No JWT on this endpoint — the device authenticates via the route's own location
+        // token — so there is no tenant in TenantContext yet. routeId is a real primary key,
+        // already unambiguous regardless of school, so look it up unfiltered (mirrors the
+        // login-by-email bootstrap), then scope the rest of this request to what it belongs to.
+        BusRoute route = busRouteRepository.findByIdBypassingTenantFilter(routeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Bus route with id " + routeId + " not found"));
         if (!constantTimeEquals(route.getLocationToken(), token)) {
             throw new AccessDeniedException("Invalid location token");
         }
+        TenantContext.set(route.getSchoolId());
         route.setCurrentLat(request.latitude());
         route.setCurrentLng(request.longitude());
         route.setLocationUpdatedAt(Instant.now());

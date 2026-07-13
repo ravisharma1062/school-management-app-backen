@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.school.app.common.exception.BadRequestException;
 import com.school.app.common.exception.ResourceNotFoundException;
+import com.school.app.common.security.TenantContext;
+import com.school.app.common.security.TenantRlsTransactionListener;
 import com.school.app.fee.Fee;
 import com.school.app.fee.FeeRepository;
 import com.school.app.fee.FeeStatus;
@@ -11,6 +13,7 @@ import com.school.app.student.Student;
 import com.school.app.student.StudentRepository;
 import com.school.app.user.Role;
 import com.school.app.user.User;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
@@ -31,6 +34,8 @@ public class PaymentService {
     private final StudentRepository studentRepository;
     private final PaymentMapper paymentMapper;
     private final PaymentGatewayProvider gatewayProvider;
+    private final TenantRlsTransactionListener tenantRlsTransactionListener;
+    private final EntityManager entityManager;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public PaymentInitiateResponse initiate(PaymentInitiateRequest request, User currentUser) {
@@ -89,11 +94,20 @@ public class PaymentService {
             return;
         }
 
-        Payment payment = paymentRepository.findByGatewayOrderId(orderId).orElse(null);
+        // No JWT on this endpoint — the gateway authenticates via the request's HMAC signature —
+        // so there is no tenant in TenantContext yet. gatewayOrderId is globally unique (a DB
+        // UNIQUE constraint), so look it up unfiltered (mirrors the login-by-email bootstrap),
+        // then scope the rest of this request to what it belongs to. This whole method is one
+        // @Transactional block that already began before this line ran, so TenantContext.set()
+        // alone is too late for TenantRlsTransactionListener's normal transaction-begin hook —
+        // re-apply the RLS session variable directly, for the remainder of this transaction.
+        Payment payment = paymentRepository.findByGatewayOrderIdBypassingTenantFilter(orderId).orElse(null);
         if (payment == null) {
             log.warn("Razorpay webhook referenced unknown order_id '{}'; ignoring", orderId);
             return;
         }
+        TenantContext.set(payment.getSchoolId());
+        tenantRlsTransactionListener.applyCurrentTenant(entityManager);
 
         if (event.equals("payment.captured")) {
             payment.setStatus(PaymentStatus.SUCCESS);

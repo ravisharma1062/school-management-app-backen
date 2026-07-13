@@ -15,12 +15,15 @@ class JwtServiceTest {
 
     private JwtService jwtService;
     private User user;
+    private UUID schoolId;
 
     @BeforeEach
     void setUp() {
         jwtService = new JwtService(SECRET, 60_000L, 3_600_000L);
+        schoolId = UUID.randomUUID();
         user = User.builder()
                 .id(UUID.randomUUID())
+                .schoolId(schoolId)
                 .name("Jane Teacher")
                 .email("jane@school.app")
                 .passwordHash("hashed")
@@ -30,24 +33,26 @@ class JwtServiceTest {
 
     @Test
     void generatesAccessTokenThatIsValidForTheSameUser() {
-        String token = jwtService.generateAccessToken(user);
+        String token = jwtService.generateAccessToken(user, schoolId);
 
         assertThat(jwtService.extractUsername(token)).isEqualTo(user.getEmail());
         assertThat(jwtService.isTokenValid(token, user)).isTrue();
         assertThat(jwtService.isRefreshToken(token)).isFalse();
+        assertThat(jwtService.extractSchoolId(token)).isEqualTo(schoolId);
     }
 
     @Test
     void generatesRefreshTokenMarkedAsRefreshType() {
-        String token = jwtService.generateRefreshToken(user);
+        String token = jwtService.generateRefreshToken(user, schoolId);
 
         assertThat(jwtService.isRefreshToken(token)).isTrue();
         assertThat(jwtService.isTokenValid(token, user)).isTrue();
+        assertThat(jwtService.extractSchoolId(token)).isEqualTo(schoolId);
     }
 
     @Test
     void tokenIsInvalidForADifferentUser() {
-        String token = jwtService.generateAccessToken(user);
+        String token = jwtService.generateAccessToken(user, schoolId);
 
         User otherUser = User.builder()
                 .id(UUID.randomUUID())

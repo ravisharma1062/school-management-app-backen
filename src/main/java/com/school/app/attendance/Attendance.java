@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.TenantId;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -24,6 +25,10 @@ public class Attendance {
     @Id
     @GeneratedValue
     private UUID id;
+
+    @TenantId
+    @Column(name = "school_id", nullable = false)
+    private UUID schoolId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "student_id", nullable = false)
