@@ -22,4 +22,6 @@ public interface StudentRepository extends JpaRepository<Student, UUID>, JpaSpec
     List<Student> findByStudentClassAndSectionAndActiveTrue(String studentClass, String section);
 
     boolean existsByStudentClassAndSectionAndRollNo(String studentClass, String section, String rollNo);
+
+    long countByActiveTrue();
 }

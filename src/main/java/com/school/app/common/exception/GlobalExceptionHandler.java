@@ -47,6 +47,16 @@ public class GlobalExceptionHandler {
         return build(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage(), request);
     }
 
+    @ExceptionHandler(FeatureNotEntitledException.class)
+    public ResponseEntity<ErrorResponse> handleFeatureNotEntitled(FeatureNotEntitledException ex, HttpServletRequest request) {
+        return build(HttpStatus.FORBIDDEN, ex.getMessage(), request, "FEATURE_NOT_ENTITLED");
+    }
+
+    @ExceptionHandler(LimitExceededException.class)
+    public ResponseEntity<ErrorResponse> handleLimitExceeded(LimitExceededException ex, HttpServletRequest request) {
+        return build(HttpStatus.CONFLICT, ex.getMessage(), request, "LIMIT_EXCEEDED");
+    }
+
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ErrorResponse> handleBadCredentials(BadCredentialsException ex, HttpServletRequest request) {
         return build(HttpStatus.UNAUTHORIZED, message("error.badCredentials"), request);
@@ -86,6 +96,19 @@ public class GlobalExceptionHandler {
                 status.getReasonPhrase(),
                 message,
                 request.getRequestURI()
+        );
+        return ResponseEntity.status(status).body(body);
+    }
+
+    private ResponseEntity<ErrorResponse> build(HttpStatus status, String message, HttpServletRequest request, String code) {
+        ErrorResponse body = new ErrorResponse(
+                Instant.now(),
+                status.value(),
+                status.getReasonPhrase(),
+                message,
+                request.getRequestURI(),
+                null,
+                code
         );
         return ResponseEntity.status(status).body(body);
     }

@@ -1,5 +1,7 @@
 package com.school.app.fee.payment;
 
+import com.school.app.platform.FeatureKey;
+import com.school.app.platform.RequiresEntitlement;
 import com.school.app.user.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,6 +25,7 @@ public class PaymentController {
 
     @PostMapping("/initiate")
     @PreAuthorize("hasRole('PARENT')")
+    @RequiresEntitlement(FeatureKey.ONLINE_PAYMENTS)
     @Operation(summary = "Create a gateway order for an outstanding fee, ready for client-side checkout")
     public PaymentInitiateResponse initiate(
             @Valid @RequestBody PaymentInitiateRequest request,

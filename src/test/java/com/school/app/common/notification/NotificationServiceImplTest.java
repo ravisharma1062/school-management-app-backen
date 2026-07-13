@@ -3,6 +3,8 @@ package com.school.app.common.notification;
 import com.school.app.common.exception.NotConfiguredException;
 import com.school.app.common.notification.email.EmailProvider;
 import com.school.app.common.notification.sms.SmsProvider;
+import com.school.app.platform.EntitlementService;
+import com.school.app.platform.FeatureKey;
 import com.school.app.user.Role;
 import com.school.app.user.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,6 +25,7 @@ class NotificationServiceImplTest {
     private NotificationLogRepository logRepository;
     private SmsProvider smsProvider;
     private EmailProvider emailProvider;
+    private EntitlementService entitlementService;
     private NotificationServiceImpl service;
 
     private User recipient;
@@ -33,7 +36,9 @@ class NotificationServiceImplTest {
         logRepository = mock(NotificationLogRepository.class);
         smsProvider = mock(SmsProvider.class);
         emailProvider = mock(EmailProvider.class);
-        service = new NotificationServiceImpl(preferenceRepository, logRepository, smsProvider, emailProvider);
+        entitlementService = mock(EntitlementService.class);
+        when(entitlementService.isEntitled(any())).thenReturn(true);
+        service = new NotificationServiceImpl(preferenceRepository, logRepository, smsProvider, emailProvider, entitlementService);
 
         recipient = User.builder()
                 .id(UUID.randomUUID())
@@ -71,6 +76,24 @@ class NotificationServiceImplTest {
         verify(logRepository).save(captor.capture());
         assertThat(captor.getValue().getStatus()).isEqualTo(NotificationStatus.SENT);
         assertThat(captor.getValue().getChannel()).isEqualTo(NotificationChannel.SMS);
+    }
+
+    @Test
+    void logsSkippedNotEntitledWhenChannelNotInPlanAndNeverCallsTheProvider() {
+        NotificationPreference pref = NotificationPreference.builder()
+                .eventType(NotificationEventType.ATTENDANCE_ABSENT)
+                .smsEnabled(true)
+                .emailEnabled(false)
+                .build();
+        when(preferenceRepository.findByEventType(NotificationEventType.ATTENDANCE_ABSENT)).thenReturn(Optional.of(pref));
+        when(entitlementService.isEntitled(FeatureKey.SMS_NOTIFICATIONS)).thenReturn(false);
+
+        service.notify(NotificationEventType.ATTENDANCE_ABSENT, recipient, "subj", "msg");
+
+        verifyNoInteractions(smsProvider);
+        ArgumentCaptor<NotificationLog> captor = ArgumentCaptor.forClass(NotificationLog.class);
+        verify(logRepository).save(captor.capture());
+        assertThat(captor.getValue().getStatus()).isEqualTo(NotificationStatus.SKIPPED_NOT_ENTITLED);
     }
 
     @Test
