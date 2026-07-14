@@ -12,8 +12,8 @@ import java.util.List;
 @Configuration
 public class CorsConfig {
 
-    // 5173 = school-facing web app; 5174 = operator console (MT-3).
-    @Value("${app.cors.allowed-origins:http://localhost:5173,http://localhost:5174}")
+    // 5173 = school-facing web app; 5174 = operator console (MT-3); 5175 = marketing site (MT-4).
+    @Value("${app.cors.allowed-origins:http://localhost:5173,http://localhost:5174,http://localhost:5175}")
     private String[] allowedOrigins;
 
     @Bean

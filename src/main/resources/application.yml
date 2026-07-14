@@ -53,6 +53,12 @@ app:
   operator:
     # Where the operator console's "set your password" page lives; the activation email links here.
     activation-base-url: ${OPERATOR_ACTIVATION_BASE_URL:http://localhost:5174/activate}
+  captcha:
+    turnstile:
+      secret-key: ${CAPTCHA_TURNSTILE_SECRET_KEY:}
+  platform:
+    # Notified (email) whenever the public signup form (MT-4) gets a new submission.
+    team-email: ${PLATFORM_TEAM_EMAIL:platform-team@school.app}
 
 springdoc:
   swagger-ui:
