@@ -21,6 +21,11 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     List<User> findByRole(Role role);
 
+    /** MT-6e — at most one per tenant; enforced by {@code UserService.reassignBillingOwner}. */
+    Optional<User> findByBillingOwnerTrue();
+
+    boolean existsByBillingOwnerTrue();
+
     /**
      * Bypasses the {@code @TenantId} filter — for the account-activation flow, which resolves
      * the tenant from the activation token itself rather than a JWT, mirroring
@@ -47,8 +52,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
      * first so the RLS policy on this INSERT passes.
      */
     @Modifying
-    @Query(value = "INSERT INTO users (id, school_id, name, email, password_hash, role, preferred_language, status, created_at) "
-            + "VALUES (:id, :schoolId, :name, :email, :passwordHash, :role, :preferredLanguage, :status, now())", nativeQuery = true)
+    @Query(value = "INSERT INTO users (id, school_id, name, email, password_hash, role, preferred_language, status, is_billing_owner, created_at) "
+            + "VALUES (:id, :schoolId, :name, :email, :passwordHash, :role, :preferredLanguage, :status, true, now())", nativeQuery = true)
     void insertBypassingTenantFilter(
             @Param("id") UUID id,
             @Param("schoolId") UUID schoolId,

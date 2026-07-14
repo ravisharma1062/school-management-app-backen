@@ -1,14 +1,19 @@
 package com.school.app.user;
 
+import com.school.app.common.exception.BadRequestException;
 import com.school.app.common.exception.DuplicateResourceException;
+import com.school.app.common.exception.ResourceNotFoundException;
 import com.school.app.common.notification.NotificationEventType;
 import com.school.app.common.notification.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -62,5 +67,30 @@ public class UserService {
     public UserDto updateMyLanguage(User currentUser, LanguageCode preferredLanguage) {
         currentUser.setPreferredLanguage(preferredLanguage);
         return userMapper.toDto(userRepository.save(currentUser));
+    }
+
+    /**
+     * MT-6e — "billing actions restricted to the billing owner": only the current billing owner
+     * may hand the role to another ADMIN. The one exception is a school with no billing owner at
+     * all (shouldn't happen after {@code V22}'s backfill, but defensive against edge cases) —
+     * any ADMIN may claim it then, so a school can never be permanently locked out.
+     */
+    @PreAuthorize("hasRole('ADMIN')")
+    public UserDto reassignBillingOwner(UUID targetUserId, User actingUser) {
+        if (userRepository.existsByBillingOwnerTrue() && !actingUser.isBillingOwner()) {
+            throw new AccessDeniedException("Only the current billing owner can reassign billing ownership");
+        }
+        User target = userRepository.findById(targetUserId)
+                .orElseThrow(() -> new ResourceNotFoundException("User " + targetUserId + " not found"));
+        if (target.getRole() != Role.ADMIN) {
+            throw new BadRequestException("Only an ADMIN can be the billing owner");
+        }
+
+        userRepository.findByBillingOwnerTrue().ifPresent(current -> {
+            current.setBillingOwner(false);
+            userRepository.save(current);
+        });
+        target.setBillingOwner(true);
+        return userMapper.toDto(userRepository.save(target));
     }
 }

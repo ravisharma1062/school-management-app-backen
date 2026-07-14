@@ -11,6 +11,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
@@ -39,5 +41,12 @@ public class UserController {
     public UserDto updateMyLanguage(
             @AuthenticationPrincipal User currentUser, @Valid @RequestBody UserLanguageUpdateRequest request) {
         return userService.updateMyLanguage(currentUser, request.preferredLanguage());
+    }
+
+    @PatchMapping("/{id}/billing-owner")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Make this ADMIN the school's billing owner (only the current billing owner may reassign it)")
+    public UserDto reassignBillingOwner(@PathVariable UUID id, @AuthenticationPrincipal User currentUser) {
+        return userService.reassignBillingOwner(id, currentUser);
     }
 }

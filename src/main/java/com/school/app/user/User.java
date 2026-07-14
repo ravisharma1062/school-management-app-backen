@@ -58,6 +58,11 @@ public class User implements UserDetails {
     @Builder.Default
     private UserStatus status = UserStatus.ACTIVE;
 
+    /** MT-6e — the ADMIN who manages plan/billing, distinct from day-to-day operational ADMINs. */
+    @Column(name = "is_billing_owner", nullable = false)
+    @Builder.Default
+    private boolean billingOwner = false;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
