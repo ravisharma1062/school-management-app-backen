@@ -74,7 +74,7 @@ class PlatformSettingsIntegrationTest extends AbstractIntegrationTest {
     void enablingAutoApproveMakesNewSignupsProvisionInstantlyAndAuditedWithAnActor() {
         ResponseEntity<PlatformSettingsDto> updateResponse = restTemplate.exchange(
                 "/api/v1/platform/settings", HttpMethod.PATCH,
-                new HttpEntity<>(new PlatformSettingsUpdateRequest(true), platformHeaders()), PlatformSettingsDto.class);
+                new HttpEntity<>(new PlatformSettingsUpdateRequest(true, null), platformHeaders()), PlatformSettingsDto.class);
         assertThat(updateResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(updateResponse.getBody().autoApproveSignups()).isTrue();
         assertThat(auditLogRepository.findAll())

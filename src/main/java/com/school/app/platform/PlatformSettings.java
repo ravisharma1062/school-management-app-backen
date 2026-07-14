@@ -38,6 +38,10 @@ public class PlatformSettings {
     @Column(name = "auto_approve_signups", nullable = false)
     private boolean autoApproveSignups;
 
+    /** MT-5 (manual billing) — shown to every school on its billing page: bank details for NEFT, cheque/DD payee, etc. */
+    @Column(name = "payment_instructions", columnDefinition = "TEXT")
+    private String paymentInstructions;
+
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
