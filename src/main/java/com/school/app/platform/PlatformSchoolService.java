@@ -39,9 +39,12 @@ public class PlatformSchoolService {
     }
 
     /**
-     * Manually drives the lifecycle {@code JwtAuthFilter} enforces (suspend/reactivate/cancel)
-     * until MT-5 automates it via billing webhooks. Mirrors the new status onto the school's
-     * {@code Subscription} too, since that's what the tenant-facing account screen reads.
+     * Manually drives the lifecycle {@code JwtAuthFilter} enforces (suspend/reactivate/cancel).
+     * MT-5 (manual/offline billing — no payment gateway) automates only the {@code ACTIVE ->
+     * PAST_DUE} step via {@code SubscriptionOverdueJob}; suspending a {@code PAST_DUE} school
+     * always comes through here, an explicit operator call, by product decision. Mirrors the new
+     * status onto the school's {@code Subscription} too, since that's what the tenant-facing
+     * account screen reads.
      */
     @Transactional
     public SchoolAdminDto updateStatus(UUID id, SchoolStatus newStatus, PlatformUser actor) {

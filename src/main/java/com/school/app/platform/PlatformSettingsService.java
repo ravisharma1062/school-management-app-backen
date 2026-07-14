@@ -20,12 +20,22 @@ public class PlatformSettingsService {
     @Transactional
     public PlatformSettingsDto update(PlatformSettingsUpdateRequest request, PlatformUser actor) {
         PlatformSettings settings = requireSettings();
-        boolean oldValue = settings.isAutoApproveSignups();
-        settings.setAutoApproveSignups(request.autoApproveSignups());
-        PlatformSettings saved = platformSettingsRepository.save(settings);
+        StringBuilder changeSummary = new StringBuilder();
 
-        auditService.record(actor, AuditAction.PLATFORM_SETTINGS_UPDATED, null,
-                "Changed auto-approve-signups from " + oldValue + " to " + request.autoApproveSignups());
+        if (request.autoApproveSignups() != null && request.autoApproveSignups() != settings.isAutoApproveSignups()) {
+            changeSummary.append("auto-approve-signups: ").append(settings.isAutoApproveSignups())
+                    .append(" -> ").append(request.autoApproveSignups()).append(". ");
+            settings.setAutoApproveSignups(request.autoApproveSignups());
+        }
+        if (request.paymentInstructions() != null) {
+            changeSummary.append("Payment instructions updated.");
+            settings.setPaymentInstructions(request.paymentInstructions());
+        }
+
+        PlatformSettings saved = platformSettingsRepository.save(settings);
+        if (!changeSummary.isEmpty()) {
+            auditService.record(actor, AuditAction.PLATFORM_SETTINGS_UPDATED, null, changeSummary.toString().trim());
+        }
 
         return toDto(saved);
     }
@@ -36,6 +46,6 @@ public class PlatformSettingsService {
     }
 
     private PlatformSettingsDto toDto(PlatformSettings settings) {
-        return new PlatformSettingsDto(settings.isAutoApproveSignups());
+        return new PlatformSettingsDto(settings.isAutoApproveSignups(), settings.getPaymentInstructions());
     }
 }
