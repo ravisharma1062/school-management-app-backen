@@ -24,6 +24,8 @@ import java.util.Locale;
 public class PublicSignupService {
 
     private final SignupRequestRepository signupRequestRepository;
+    private final PlatformSettingsRepository platformSettingsRepository;
+    private final ProvisioningService provisioningService;
     private final CaptchaVerifier captchaVerifier;
     private final PublicSignupRateLimiter rateLimiter;
     private final EmailProvider emailProvider;
@@ -55,17 +57,30 @@ public class PublicSignupService {
                 .wantsSms(request.wantsSms())
                 .build());
 
-        notifyPlatformTeam(saved);
+        // MT-6f: "graduation of MT-3's provisioning service into a self-service trigger" — reuses
+        // the exact same operator-approval path (ProvisioningService.approve), just triggered
+        // automatically instead of by an operator's click, when the platform has opted in.
+        boolean autoApprove = platformSettingsRepository.findById(PlatformSettings.SINGLETON_ID)
+                .map(PlatformSettings::isAutoApproveSignups)
+                .orElse(false);
+        if (autoApprove) {
+            provisioningService.approve(saved.getId(), new ProvisionApproveRequest(null, false), null);
+        }
+
+        notifyPlatformTeam(saved, autoApprove);
     }
 
-    private void notifyPlatformTeam(SignupRequest signupRequest) {
+    private void notifyPlatformTeam(SignupRequest signupRequest, boolean autoApproved) {
         try {
-            emailProvider.send(platformTeamEmail, "New school signup request: " + signupRequest.getSchoolName(),
-                    "A new signup request needs review:\n\n"
-                            + "School: " + signupRequest.getSchoolName() + "\n"
-                            + "Contact: " + signupRequest.getContactName() + " <" + signupRequest.getContactEmail() + ">\n"
-                            + "Desired plan: " + signupRequest.getDesiredPlan() + "\n\n"
-                            + "Review it in the operator console.");
+            String subject = (autoApproved ? "Auto-provisioned school: " : "New school signup request: ") + signupRequest.getSchoolName();
+            String body = (autoApproved
+                    ? "A new signup request was auto-provisioned (no review needed):\n\n"
+                    : "A new signup request needs review:\n\n")
+                    + "School: " + signupRequest.getSchoolName() + "\n"
+                    + "Contact: " + signupRequest.getContactName() + " <" + signupRequest.getContactEmail() + ">\n"
+                    + "Desired plan: " + signupRequest.getDesiredPlan() + "\n\n"
+                    + (autoApproved ? "It's already live." : "Review it in the operator console.");
+            emailProvider.send(platformTeamEmail, subject, body);
         } catch (NotConfiguredException e) {
             log.info("Email provider not configured; skipping new-signup notification to platform team");
         } catch (Exception e) {
