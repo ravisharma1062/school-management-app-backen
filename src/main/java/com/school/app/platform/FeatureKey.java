@@ -13,5 +13,6 @@ public enum FeatureKey {
     TRANSPORT_TRACKING,
     LIBRARY,
     ANALYTICS,
-    MAX_STUDENTS
+    MAX_STUDENTS,
+    BRANDING
 }

@@ -3,6 +3,12 @@ package com.school.app.examresult;
 import com.school.app.common.exception.ResourceNotFoundException;
 import com.school.app.common.notification.NotificationEventType;
 import com.school.app.common.notification.NotificationService;
+import com.school.app.common.security.TenantContext;
+import com.school.app.common.storage.FileStorageService;
+import com.school.app.platform.EntitlementService;
+import com.school.app.platform.FeatureKey;
+import com.school.app.school.School;
+import com.school.app.school.SchoolRepository;
 import com.school.app.student.Student;
 import com.school.app.student.StudentRepository;
 import com.school.app.user.Role;
@@ -24,6 +30,9 @@ public class ExamResultService {
     private final ExamResultMapper examResultMapper;
     private final NotificationService notificationService;
     private final UserRepository userRepository;
+    private final SchoolRepository schoolRepository;
+    private final FileStorageService fileStorageService;
+    private final EntitlementService entitlementService;
 
     public ExamResultDto create(ExamResultCreateRequest request) {
         Student student = studentRepository.findById(request.studentId())
@@ -72,7 +81,23 @@ public class ExamResultService {
                 : examResultRepository.findByStudentId(studentId);
 
         List<ExamResultDto> dtos = results.stream().map(examResultMapper::toDto).toList();
-        return ReportCardGenerator.generate(student.getName(), student.getStudentClass(), student.getSection(), dtos);
+
+        School school = schoolRepository.findById(TenantContext.get()).orElse(null);
+        byte[] logoBytes = null;
+        String primaryColor = null;
+        // Branding on the PDF follows the school's CURRENT entitlement, not just whether a logo/color
+        // happens to still be stored — a downgraded school's report cards quietly stop being branded
+        // rather than needing an explicit "clear branding" step.
+        if (school != null && entitlementService.isEntitled(FeatureKey.BRANDING)) {
+            if (school.getLogoKey() != null) {
+                logoBytes = fileStorageService.load(school.getLogoKey());
+            }
+            primaryColor = school.getPrimaryColor();
+        }
+
+        return ReportCardGenerator.generate(
+                school != null ? school.getName() : null, logoBytes, primaryColor,
+                student.getName(), student.getStudentClass(), student.getSection(), dtos);
     }
 
     private Student requireVisibleStudent(UUID studentId, User currentUser) {

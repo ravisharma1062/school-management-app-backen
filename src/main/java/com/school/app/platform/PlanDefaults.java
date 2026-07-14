@@ -32,7 +32,8 @@ public final class PlanDefaults {
             FeatureKey.TRANSPORT_TRACKING, Default.off(),
             FeatureKey.LIBRARY, Default.on(),
             FeatureKey.ANALYTICS, Default.off(),
-            FeatureKey.MAX_STUDENTS, Default.limit(150));
+            FeatureKey.MAX_STUDENTS, Default.limit(150),
+            FeatureKey.BRANDING, Default.off());
 
     private static final Map<FeatureKey, Default> STANDARD = Map.of(
             FeatureKey.EMAIL_NOTIFICATIONS, Default.on(),
@@ -42,7 +43,8 @@ public final class PlanDefaults {
             FeatureKey.TRANSPORT_TRACKING, Default.off(),
             FeatureKey.LIBRARY, Default.on(),
             FeatureKey.ANALYTICS, Default.on(),
-            FeatureKey.MAX_STUDENTS, Default.limit(500));
+            FeatureKey.MAX_STUDENTS, Default.limit(500),
+            FeatureKey.BRANDING, Default.off());
 
     private static final Map<FeatureKey, Default> PREMIUM = Map.of(
             FeatureKey.EMAIL_NOTIFICATIONS, Default.on(),
@@ -52,7 +54,8 @@ public final class PlanDefaults {
             FeatureKey.TRANSPORT_TRACKING, Default.on(),
             FeatureKey.LIBRARY, Default.on(),
             FeatureKey.ANALYTICS, Default.on(),
-            FeatureKey.MAX_STUDENTS, Default.on());
+            FeatureKey.MAX_STUDENTS, Default.on(),
+            FeatureKey.BRANDING, Default.on());
 
     private PlanDefaults() {
     }
