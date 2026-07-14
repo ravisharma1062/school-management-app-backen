@@ -5,12 +5,14 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
+import com.lowagie.text.Image;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
+import java.awt.Color;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,19 +25,39 @@ public final class ReportCardGenerator {
     private ReportCardGenerator() {
     }
 
-    public static byte[] generate(String studentName, String studentClass, String section, List<ExamResultDto> results) {
+    /**
+     * @param schoolName    always shown; falls back to a generic title if blank.
+     * @param logoBytes     the school's logo image, or {@code null} if it has none set / isn't
+     *                      entitled to branding — the caller (ExamResultService) is what decides that.
+     * @param primaryColorHex a {@code #RRGGBB} hex string, or {@code null} for the default black.
+     */
+    public static byte[] generate(
+            String schoolName, byte[] logoBytes, String primaryColorHex,
+            String studentName, String studentClass, String section, List<ExamResultDto> results) {
         Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try {
             PdfWriter.getInstance(document, out);
             document.open();
 
-            Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18);
-            Font headingFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13);
+            Color brandColor = parseHexColor(primaryColorHex);
+            Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, brandColor != null ? brandColor : Color.BLACK);
+            Font headingFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 13, brandColor != null ? brandColor : Color.BLACK);
             Font normalFont = FontFactory.getFont(FontFactory.HELVETICA, 11);
             Font headerCellFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 11);
 
-            document.add(new Paragraph("Report Card", titleFont));
+            if (logoBytes != null) {
+                try {
+                    Image logo = Image.getInstance(logoBytes);
+                    logo.scaleToFit(90, 90);
+                    document.add(logo);
+                } catch (Exception e) {
+                    // A corrupt/unsupported logo image must never block report-card generation.
+                }
+            }
+
+            document.add(new Paragraph(schoolName != null && !schoolName.isBlank() ? schoolName : "Report Card", titleFont));
+            document.add(new Paragraph("Report Card", headingFont));
             document.add(new Paragraph(studentName + " — Class " + studentClass + "-" + section, normalFont));
             document.add(Chunk.NEWLINE);
 
@@ -79,5 +101,12 @@ public final class ReportCardGenerator {
 
     private static PdfPCell headerCell(String text, Font font) {
         return new PdfPCell(new Phrase(text, font));
+    }
+
+    private static Color parseHexColor(String hex) {
+        if (hex == null || !hex.matches("^#[0-9A-Fa-f]{6}$")) {
+            return null;
+        }
+        return Color.decode(hex);
     }
 }

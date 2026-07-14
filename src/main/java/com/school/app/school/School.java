@@ -38,6 +38,19 @@ public class School {
     @Builder.Default
     private SchoolStatus status = SchoolStatus.ACTIVE;
 
+    /** MT-6a per-tenant branding — gated by the {@code BRANDING} entitlement on write, not read. */
+    @Column(name = "logo_key")
+    private String logoKey;
+
+    @Column(name = "logo_content_type")
+    private String logoContentType;
+
+    @Column(name = "primary_color", length = 7)
+    private String primaryColor;
+
+    @Column(name = "secondary_color", length = 7)
+    private String secondaryColor;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
