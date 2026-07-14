@@ -34,6 +34,13 @@ public class PlatformSchoolController {
         return platformSchoolService.get(id);
     }
 
+    @GetMapping("/{id}/usage")
+    @PreAuthorize("hasRole('PLATFORM_ADMIN')")
+    @Operation(summary = "Get a school's current usage against its plan limits")
+    public SchoolUsageDto getUsage(@PathVariable UUID id) {
+        return platformSchoolService.getUsage(id);
+    }
+
     @PatchMapping("/{id}/status")
     @PreAuthorize("hasRole('PLATFORM_ADMIN')")
     @Operation(summary = "Suspend, reactivate, or cancel a school")
