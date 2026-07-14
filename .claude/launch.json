@@ -12,6 +12,12 @@
       "runtimeExecutable": "mvn",
       "runtimeArgs": ["spring-boot:run"],
       "port": 8080
+    },
+    {
+      "name": "operator",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:/Users/ravis/IdeaProjects/ai/school-management-app/operator", "run", "dev"],
+      "port": 5174
     }
   ]
 }
