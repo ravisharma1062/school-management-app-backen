@@ -75,13 +75,57 @@ public class ProvisioningService {
         }
 
         PlanCode planCode = request.planCode() != null ? request.planCode() : signupRequest.getDesiredPlan();
-        SubscriptionPlan plan = subscriptionPlanRepository.findByCode(planCode)
-                .orElseThrow(() -> new ResourceNotFoundException("Plan " + planCode + " not found"));
+        ProvisionOutcome outcome = provisionCore(new CoreProvisionInput(
+                signupRequest.getSchoolName(), signupRequest.getContactName(), signupRequest.getContactEmail(),
+                planCode, request.startAsTrial(), signupRequest.isWantsEmail(), signupRequest.isWantsSms()));
+
+        signupRequest.setStatus(SignupRequestStatus.APPROVED);
+        signupRequestRepository.save(signupRequest);
+
+        auditService.record(actor, AuditAction.SIGNUP_REQUEST_APPROVED, outcome.result().schoolId(),
+                "Provisioned '" + signupRequest.getSchoolName() + "' (" + planCode + ", "
+                        + (request.startAsTrial() ? "trial" : "active") + ") — invite sent to " + outcome.result().adminEmail());
+
+        return outcome;
+    }
+
+    /**
+     * MT-6b: self-service trial provisioning — no operator review, so there's no
+     * {@code SignupRequest} to advance and no human {@code PlatformUser} actor to attribute the
+     * audit entry to (recorded with a null actor; see {@code AuditLog.actor}'s Javadoc).
+     */
+    @Transactional
+    public ProvisionOutcome provisionSelfServiceTrial(PublicTrialSignupRequest request) {
+        String schoolName = request.schoolName().trim();
+        ProvisionOutcome outcome = provisionCore(new CoreProvisionInput(
+                schoolName, request.contactName().trim(), request.contactEmail().trim().toLowerCase(Locale.ROOT),
+                PlanCode.BASIC, true, request.wantsEmail(), request.wantsSms()));
+
+        auditService.record(null, AuditAction.TRIAL_SELF_PROVISIONED, outcome.result().schoolId(),
+                "Self-service trial started for '" + schoolName + "' — invite sent to " + outcome.result().adminEmail());
+
+        return outcome;
+    }
+
+    private record CoreProvisionInput(
+            String schoolName, String contactName, String contactEmail,
+            PlanCode planCode, boolean startAsTrial, boolean wantsEmail, boolean wantsSms) {
+    }
+
+    /**
+     * The atomic school+subscription+entitlements+admin-invite core shared by both the
+     * operator-approved ({@link #approve}) and self-service ({@link #provisionSelfServiceTrial})
+     * paths — everything except what happens to the (optional) originating {@code SignupRequest}
+     * and how the action gets audited, which differ enough between the two callers to stay there.
+     */
+    private ProvisionOutcome provisionCore(CoreProvisionInput input) {
+        SubscriptionPlan plan = subscriptionPlanRepository.findByCode(input.planCode())
+                .orElseThrow(() -> new ResourceNotFoundException("Plan " + input.planCode() + " not found"));
 
         School school = schoolRepository.save(School.builder()
-                .name(signupRequest.getSchoolName())
-                .slug(uniqueSlug(signupRequest.getSchoolName()))
-                .status(request.startAsTrial() ? SchoolStatus.TRIAL : SchoolStatus.ACTIVE)
+                .name(input.schoolName())
+                .slug(uniqueSlug(input.schoolName()))
+                .status(input.startAsTrial() ? SchoolStatus.TRIAL : SchoolStatus.ACTIVE)
                 .build());
 
         Instant now = Instant.now();
@@ -89,9 +133,9 @@ public class ProvisioningService {
                 .school(school)
                 .plan(plan)
                 .status(school.getStatus())
-                .currentPeriodStart(request.startAsTrial() ? null : now)
-                .currentPeriodEnd(request.startAsTrial() ? null : now.plus(BILLING_PERIOD_DAYS, ChronoUnit.DAYS))
-                .trialEndsAt(request.startAsTrial() ? now.plus(TRIAL_DAYS, ChronoUnit.DAYS) : null)
+                .currentPeriodStart(input.startAsTrial() ? null : now)
+                .currentPeriodEnd(input.startAsTrial() ? null : now.plus(BILLING_PERIOD_DAYS, ChronoUnit.DAYS))
+                .trialEndsAt(input.startAsTrial() ? now.plus(TRIAL_DAYS, ChronoUnit.DAYS) : null)
                 .build());
 
         var defaults = PlanDefaults.forPlan(plan.getCode());
@@ -100,8 +144,8 @@ public class ProvisioningService {
             // The two channel toggles the business explicitly sells are honoured from what the
             // school actually asked for at signup, overriding the plan's blanket default for them.
             boolean enabled = switch (key) {
-                case EMAIL_NOTIFICATIONS -> signupRequest.isWantsEmail();
-                case SMS_NOTIFICATIONS -> signupRequest.isWantsSms();
+                case EMAIL_NOTIFICATIONS -> input.wantsEmail();
+                case SMS_NOTIFICATIONS -> input.wantsSms();
                 default -> planDefault.enabled();
             };
             entitlementRepository.save(Entitlement.builder()
@@ -127,7 +171,7 @@ public class ProvisioningService {
         // status, which User#isEnabled() also checks.
         String placeholderPasswordHash = passwordEncoder.encode(UUID.randomUUID().toString());
         userRepository.insertBypassingTenantFilter(
-                adminId, school.getId(), signupRequest.getContactName(), signupRequest.getContactEmail(),
+                adminId, school.getId(), input.contactName(), input.contactEmail(),
                 placeholderPasswordHash, Role.ADMIN.name(), LanguageCode.EN.name(), UserStatus.PENDING_ACTIVATION.name());
 
         String rawToken = ActivationTokens.generateRaw();
@@ -138,17 +182,9 @@ public class ProvisioningService {
                 .expiresAt(Instant.now().plus(ACTIVATION_TOKEN_VALID_DAYS, ChronoUnit.DAYS))
                 .build());
 
-        signupRequest.setStatus(SignupRequestStatus.APPROVED);
-        signupRequestRepository.save(signupRequest);
+        sendActivationEmail(input.contactEmail(), school.getName(), rawToken);
 
-        String adminEmail = signupRequest.getContactEmail();
-        auditService.record(actor, AuditAction.SIGNUP_REQUEST_APPROVED, school.getId(),
-                "Provisioned '" + school.getName() + "' (" + plan.getCode() + ", "
-                        + (request.startAsTrial() ? "trial" : "active") + ") — invite sent to " + adminEmail);
-
-        sendActivationEmail(adminEmail, school.getName(), rawToken);
-
-        return new ProvisionOutcome(new ProvisionResultDto(school.getId(), school.getSlug(), adminEmail), rawToken);
+        return new ProvisionOutcome(new ProvisionResultDto(school.getId(), school.getSlug(), input.contactEmail()), rawToken);
     }
 
     @Transactional

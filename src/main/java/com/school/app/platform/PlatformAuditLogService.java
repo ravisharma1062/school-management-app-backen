@@ -15,6 +15,7 @@ public class PlatformAuditLogService {
     @Transactional(readOnly = true)
     public Page<AuditLogDto> list(Pageable pageable) {
         return auditLogRepository.findAllByOrderByCreatedAtDesc(pageable).map(log -> new AuditLogDto(
-                log.getId(), log.getActor().getEmail(), log.getAction(), log.getTargetSchoolId(), log.getSummary(), log.getCreatedAt()));
+                log.getId(), log.getActor() != null ? log.getActor().getEmail() : "System (self-service)",
+                log.getAction(), log.getTargetSchoolId(), log.getSummary(), log.getCreatedAt()));
     }
 }

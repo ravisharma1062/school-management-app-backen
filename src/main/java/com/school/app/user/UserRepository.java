@@ -30,6 +30,15 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByIdBypassingTenantFilter(UUID id);
 
     /**
+     * Bypasses the {@code @TenantId} filter — for MT-6b's self-service trial signup, a public
+     * (no-JWT, no-tenant) caller that must check the {@code email} column's cross-tenant UNIQUE
+     * constraint (V1) before insert, since the normal {@link #existsByEmail} would only see
+     * whatever single tenant the unauthenticated request's Session happens to resolve to.
+     */
+    @Query(value = "SELECT EXISTS(SELECT 1 FROM users WHERE email = :email)", nativeQuery = true)
+    boolean existsByEmailBypassingTenantFilter(String email);
+
+    /**
      * Bypasses Hibernate's {@code @TenantId} auto-population — for {@code ProvisioningService},
      * which creates this row for a school that didn't exist when its transaction's Session was
      * opened, so {@link com.school.app.common.security.SchoolTenantResolver} would otherwise

@@ -78,6 +78,9 @@ public class SecurityConfig {
                         // accepts. Rate-limited + CAPTCHA-verified inside PublicSignupService, not
                         // here; this just admits the request past authentication.
                         .requestMatchers(HttpMethod.POST, "/api/v1/public/signup-requests").permitAll()
+                        // MT-6b's self-service trial — same posture, rate-limited + CAPTCHA-verified
+                        // inside PublicTrialSignupService.
+                        .requestMatchers(HttpMethod.POST, "/api/v1/public/trial-signups").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())

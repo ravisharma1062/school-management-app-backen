@@ -24,8 +24,9 @@ public class AuditLog {
     @GeneratedValue
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "platform_user_id", nullable = false)
+    /** Null for self-service actions with no human platform-user actor (e.g. MT-6b's trial signup). */
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "platform_user_id", nullable = true)
     private PlatformUser actor;
 
     @Enumerated(EnumType.STRING)
