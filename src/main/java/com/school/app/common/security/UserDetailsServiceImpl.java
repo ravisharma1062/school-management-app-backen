@@ -1,6 +1,7 @@
 package com.school.app.common.security;
 
 import com.school.app.user.UserRepository;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final JdbcTemplate jdbcTemplate;
+    private final TenantRlsTransactionListener tenantRlsTransactionListener;
+    private final EntityManager entityManager;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -30,6 +33,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 throw new UsernameNotFoundException("No user found with email " + email);
             }
             TenantContext.set(schoolId);
+            // The tenant is discovered mid-request, after whatever transaction is already open
+            // (e.g. open-in-view) began — TenantRlsTransactionListener's begin-of-transaction hook
+            // already ran with no tenant known, so app.current_school_id was never set on this
+            // connection. Re-apply it now, same as ActivationService/ProvisioningService do for
+            // the same reason, or the findByEmail() call below silently sees zero rows under RLS
+            // even though Hibernate's own @TenantId filter is now correctly scoped.
+            tenantRlsTransactionListener.applyCurrentTenant(entityManager);
         }
 
         return userRepository.findByEmail(email)
