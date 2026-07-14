@@ -74,6 +74,10 @@ public class SecurityConfig {
                         // The bus's GPS device/app calls this directly (no JWT); authenticity is
                         // established by verifying the route's X-Location-Token header instead.
                         .requestMatchers(HttpMethod.POST, "/api/v1/transport/routes/*/location").permitAll()
+                        // MT-4's public signup form — the one new unauthenticated write this app
+                        // accepts. Rate-limited + CAPTCHA-verified inside PublicSignupService, not
+                        // here; this just admits the request past authentication.
+                        .requestMatchers(HttpMethod.POST, "/api/v1/public/signup-requests").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
