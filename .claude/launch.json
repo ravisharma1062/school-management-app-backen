@@ -18,6 +18,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "C:/Users/ravis/IdeaProjects/ai/school-management-app/operator", "run", "dev"],
       "port": 5174
+    },
+    {
+      "name": "marketing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:/Users/ravis/IdeaProjects/ai/school-management-app/marketing", "run", "dev"],
+      "port": 5175
     }
   ]
 }
