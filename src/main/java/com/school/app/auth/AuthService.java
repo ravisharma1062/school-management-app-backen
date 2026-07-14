@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -21,14 +22,15 @@ public class AuthService {
     private final JwtService jwtService;
 
     public AuthResponse login(LoginRequest request) {
-        // authenticate() resolves the tenant as a side effect (UserDetailsServiceImpl sets
-        // TenantContext once it finds which school this email belongs to), so the lookup below
-        // is already correctly scoped by the time we get here.
-        authenticationManager.authenticate(
+        // authenticate() already returns the exact User UserDetailsServiceImpl.loadUserByUsername
+        // loaded (as its principal) — re-querying by email here was not just redundant but
+        // actively broken: this second lookup starts its own fresh transaction/Session, whose
+        // Hibernate @TenantId filter and RLS session variable depend on machinery (the pre-auth
+        // bypass path, applyCurrentTenant) that only the ORIGINAL loadUserByUsername call wires up
+        // correctly. Using the already-authenticated principal sidesteps that entirely.
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.email(), request.password()));
-
-        User user = userRepository.findByEmail(request.email())
-                .orElseThrow(() -> new BadCredentialsException("Invalid email or password"));
+        User user = (User) authentication.getPrincipal();
 
         String accessToken = jwtService.generateAccessToken(user, user.getSchoolId());
         String refreshToken = jwtService.generateRefreshToken(user, user.getSchoolId());

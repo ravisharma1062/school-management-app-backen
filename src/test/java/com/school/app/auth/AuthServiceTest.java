@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.Authentication;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -53,7 +54,9 @@ class AuthServiceTest {
     @Test
     void loginReturnsTokensAndRoleOnSuccess() {
         LoginRequest request = new LoginRequest("admin@school.app", "correct-password");
-        when(userRepository.findByEmail("admin@school.app")).thenReturn(Optional.of(user));
+        Authentication authentication = mock(Authentication.class);
+        when(authentication.getPrincipal()).thenReturn(user);
+        when(authenticationManager.authenticate(any())).thenReturn(authentication);
         when(jwtService.generateAccessToken(user, schoolId)).thenReturn("access-token");
         when(jwtService.generateRefreshToken(user, schoolId)).thenReturn("refresh-token");
 
