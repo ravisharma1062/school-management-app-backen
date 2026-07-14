@@ -2,16 +2,12 @@ package com.school.app.common.security;
 
 import com.school.app.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.UUID;
 
 @Service
@@ -44,26 +40,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * Bypassing Hibernate's {@code @TenantId} filter with plain JDBC still isn't enough on its
      * own — {@code users} also has forced Postgres row-level security (V17), which every query on
      * that connection must satisfy regardless of how it's issued. Since {@code app.current_school_id}
-     * can't be set yet (finding it is the point of this query), this opens the narrow
-     * {@code app.pre_auth_lookup} exception from V25 for exactly this one hardcoded statement,
-     * then resets it before the pooled connection can be reused by another request.
+     * can't be set yet (finding it is the point of this query), this calls a server-side function
+     * (V26) that sets the narrow {@code app.pre_auth_lookup} exception, performs the lookup, and
+     * resets it — entirely within one atomic statement, so it doesn't depend on this connection's
+     * surrounding transaction (e.g. open-in-view) behaving any particular way across statements.
      */
     private UUID resolveSchoolIdByEmail(String email) {
-        return jdbcTemplate.execute((ConnectionCallback<UUID>) connection -> {
-            try (Statement enable = connection.createStatement()) {
-                enable.execute("SET app.pre_auth_lookup = 'true'");
-            }
-            try (PreparedStatement ps = connection.prepareStatement(
-                    "SELECT school_id FROM users WHERE email = ?")) {
-                ps.setString(1, email);
-                try (ResultSet rs = ps.executeQuery()) {
-                    return rs.next() ? (UUID) rs.getObject("school_id") : null;
-                }
-            } finally {
-                try (Statement disable = connection.createStatement()) {
-                    disable.execute("SET app.pre_auth_lookup = 'false'");
-                }
-            }
-        });
+        return jdbcTemplate.queryForObject(
+                "SELECT resolve_login_school_id(?)", UUID.class, email);
     }
 }
