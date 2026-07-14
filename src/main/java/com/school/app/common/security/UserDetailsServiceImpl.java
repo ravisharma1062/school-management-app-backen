@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -20,7 +21,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final TenantRlsTransactionListener tenantRlsTransactionListener;
     private final EntityManager entityManager;
 
+    // Must span both the tenant-resolution step and the findByEmail() below in one transaction:
+    // without this, the injected EntityManager used by applyCurrentTenant() is a short-lived
+    // session for that one call, unrelated to whatever fresh connection findByEmail() acquires
+    // moments later for its own transaction — so the RLS session variable never reaches the
+    // connection that matters. ActivationService/ProvisioningService don't need this explicitly
+    // because they're themselves @Transactional already, sharing one bound EntityManager throughout.
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         // users is now @TenantId-filtered, so a plain JPA lookup returns nothing until the
         // tenant is known. JwtAuthFilter already sets TenantContext from the validated JWT's
@@ -33,13 +41,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 throw new UsernameNotFoundException("No user found with email " + email);
             }
             TenantContext.set(schoolId);
-            // The tenant is discovered mid-request, after whatever transaction is already open
-            // (e.g. open-in-view) began — TenantRlsTransactionListener's begin-of-transaction hook
-            // already ran with no tenant known, so app.current_school_id was never set on this
-            // connection. Re-apply it now, same as ActivationService/ProvisioningService do for
-            // the same reason, or the findByEmail() call below silently sees zero rows under RLS
-            // even though Hibernate's own @TenantId filter is now correctly scoped.
+            // Re-apply the RLS session variable now that the tenant is known — this transaction's
+            // begin-of-transaction hook already ran with no tenant set.
             tenantRlsTransactionListener.applyCurrentTenant(entityManager);
+            // SchoolTenantResolver only resolves once per Hibernate Session, at this
+            // @Transactional method's entry — before the tenant above was known. A plain
+            // findByEmail() would still filter by "no tenant" regardless of the TenantContext.set()
+            // call above (see that resolver's Javadoc); RLS, just re-applied, is what actually
+            // protects this bypass read.
+            return userRepository.findByEmailBypassingTenantFilter(email)
+                    .orElseThrow(() -> new UsernameNotFoundException("No user found with email " + email));
         }
 
         return userRepository.findByEmail(email)

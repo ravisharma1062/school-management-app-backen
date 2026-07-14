@@ -35,6 +35,18 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByIdBypassingTenantFilter(UUID id);
 
     /**
+     * Bypasses the {@code @TenantId} filter — for login. {@code UserDetailsServiceImpl} discovers
+     * the tenant mid-method (there's no JWT yet to seed it before the Session opens), so per
+     * {@link com.school.app.common.security.SchoolTenantResolver}'s Javadoc, a plain {@code
+     * findByEmail} would still filter by whatever tenant was current when the enclosing
+     * {@code @Transactional} method's Session was created — i.e. none. RLS (not this bypass) is
+     * what actually protects this read; {@code TenantRlsTransactionListener.applyCurrentTenant}
+     * must already have been called with the resolved tenant before this runs.
+     */
+    @Query(value = "SELECT * FROM users WHERE email = :email", nativeQuery = true)
+    Optional<User> findByEmailBypassingTenantFilter(String email);
+
+    /**
      * Bypasses the {@code @TenantId} filter — for MT-6b's self-service trial signup, a public
      * (no-JWT, no-tenant) caller that must check the {@code email} column's cross-tenant UNIQUE
      * constraint (V1) before insert, since the normal {@link #existsByEmail} would only see
