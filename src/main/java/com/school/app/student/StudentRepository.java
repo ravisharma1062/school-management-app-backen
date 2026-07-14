@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,4 +25,11 @@ public interface StudentRepository extends JpaRepository<Student, UUID>, JpaSpec
     boolean existsByStudentClassAndSectionAndRollNo(String studentClass, String section, String rollNo);
 
     long countByActiveTrue();
+
+    /**
+     * Bypasses the {@code @TenantId} filter — for platform (MT-6c usage metering) callers, whose
+     * token carries no tenant at all, mirroring {@code BusRouteRepository.findByIdBypassingTenantFilter}.
+     */
+    @Query(value = "SELECT COUNT(*) FROM students WHERE school_id = :schoolId AND is_active = true", nativeQuery = true)
+    long countActiveBySchoolIdBypassingTenantFilter(UUID schoolId);
 }

@@ -1,6 +1,7 @@
 package com.school.app.platform;
 
 import com.school.app.common.exception.ResourceNotFoundException;
+import com.school.app.student.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ public class PlatformSubscriptionService {
     private final SubscriptionPlanRepository subscriptionPlanRepository;
     private final EntitlementRepository entitlementRepository;
     private final AuditService auditService;
+    private final StudentRepository studentRepository;
 
     @Transactional(readOnly = true)
     public SubscriptionAdminDto get(UUID schoolId) {
@@ -60,8 +62,12 @@ public class PlatformSubscriptionService {
     }
 
     private SubscriptionAdminDto toDto(Subscription subscription) {
+        UUID schoolId = subscription.getSchool().getId();
+        long activeStudentCount = studentRepository.countActiveBySchoolIdBypassingTenantFilter(schoolId);
         var entitlements = entitlementRepository.findBySubscriptionId(subscription.getId()).stream()
-                .map(e -> new EntitlementDto(e.getFeatureKey(), e.isEnabled(), e.getLimitValue()))
+                .map(e -> new EntitlementDto(
+                        e.getFeatureKey(), e.isEnabled(), e.getLimitValue(),
+                        e.getFeatureKey() == FeatureKey.MAX_STUDENTS ? activeStudentCount : null))
                 .toList();
         return new SubscriptionAdminDto(
                 subscription.getSchool().getId(),
