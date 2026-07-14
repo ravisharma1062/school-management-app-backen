@@ -8,6 +8,7 @@ public record UserDto(
         String email,
         Role role,
         String phone,
-        LanguageCode preferredLanguage
+        LanguageCode preferredLanguage,
+        boolean billingOwner
 ) {
 }
