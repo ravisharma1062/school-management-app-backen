@@ -11,4 +11,8 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/school-app-backend.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Startup-speed tuning for Render's constrained free-tier CPU: SerialGC is far cheaper to warm up
+# than the default G1 for a small heap, TieredStopAtLevel=1 skips C2 JIT compilation (a steady-state
+# throughput optimization we don't need for a short cold-start window), and MaxRAMPercentage gives
+# the JVM a sane heap size relative to the container's actual memory instead of guessing.
+ENTRYPOINT ["java", "-XX:+UseSerialGC", "-XX:TieredStopAtLevel=1", "-XX:MaxRAMPercentage=75.0", "-jar", "app.jar"]
