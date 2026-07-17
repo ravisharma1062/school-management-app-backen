@@ -33,8 +33,15 @@ public interface PaymentClaimRepository extends JpaRepository<PaymentClaim, UUID
      * whether Hibernate's {@code @TenantId} session filter would apply to a fetch-then-save on an
      * entity a platform (no-tenant) caller doesn't itself belong to, same reasoning as
      * {@code UserRepository.activateBypassingTenantFilter}.
+     * <p>
+     * {@code clearAutomatically = true} matters here: {@code PlatformPaymentService.verify()}/
+     * {@code reject()} both load the claim via {@code findByIdBypassingTenantFilter} (populating
+     * the first-level cache with the pre-update entity) before calling this update, then re-load
+     * it by id again afterward to build the response DTO. Without clearing the persistence
+     * context, that second load returns the stale cached instance instead of the freshly-updated
+     * row — a native bulk UPDATE never touches Hibernate's session cache on its own.
      */
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Query(value = "UPDATE payment_claims SET status = :status, verified_by = :verifiedBy, verified_at = :verifiedAt, notes = :notes WHERE id = :id",
             nativeQuery = true)
     int updateVerificationBypassingTenantFilter(
