@@ -59,6 +59,12 @@ app:
   platform:
     # Notified (email) whenever the public signup form (MT-4) gets a new submission.
     team-email: ${PLATFORM_TEAM_EMAIL:platform-team@school.app}
+  rate-limit:
+    # Per-caller (authenticated user, or IP if unauthenticated) ceiling for the general API,
+    # via RateLimitFilter. Deliberately generous — this catches abuse, not legitimate heavy use
+    # (bulk CSV import, report-card PDF generation). Doesn't apply to /api/v1/public/**, which
+    # has its own tighter, endpoint-specific limiters.
+    requests-per-minute: ${RATE_LIMIT_PER_MINUTE:300}
 
 springdoc:
   swagger-ui:
