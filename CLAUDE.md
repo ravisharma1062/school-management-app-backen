@@ -4,6 +4,16 @@ Spring Boot REST API for the School Management App — a multi-tenant SaaS platf
 
 **Sibling repos** (same backend, different clients): `school-management-app-ui` (web), `school-management-app-android`, `school-management-app-operator` (internal platform console), `school-management-app-marketing` (public site). None share code; each hand-mirrors this API's DTOs independently.
 
+## Cross-repo checklist — when you change a DTO or endpoint here
+
+No shared schema/codegen exists. A change here doesn't take effect for a client until someone manually mirrors it there — check the scoped list below rather than assuming "update everything":
+
+- **Core school-domain DTOs** (Student, Attendance, Homework, Fee, ExamResult, LeaveRequest, Notice, Timetable, Event, Library, Transport, Conversation, User, NotificationPreference) → `web/src/types/index.ts` and Android's `domain/model/Models.kt`. `operator` and `marketing` never touch these.
+- **Platform/subscription DTOs** (`SubscriptionDto`, `EntitlementDto`, `SchoolUsageDto`, `PlatformAnalyticsDto`, `AuditLogDto`, `SignupRequestDto`, `PlatformSettingsDto`, etc.) → `operator/src/types/index.ts` owns most of these. `web/src/types/index.ts` and Android's `domain/model/Models.kt` also need the subset they consume (`SubscriptionDto`/`EntitlementDto` for the Account page/screen, branding DTOs).
+- **Billing DTOs** (`PaymentClaimDto`, `PlatformPaymentDto`) → `operator/src/types/index.ts` (verify/reject queue) and `web/src/types/index.ts` (Billing section on Account page). Android only shows a read-only billing note — no DTO consumption there.
+- **Public signup/plan DTOs** (`PublicSignupRequest`, `PublicTrialSignupRequest`, plan pricing shape) → `marketing/src/types/index.ts` and `marketing/src/data/plans.ts` (manually kept in sync with `PlanDefaults.java` — nothing enforces this).
+- Re-export `api-docs/openapi.json` after any endpoint change — it's the reference contract, even though nothing auto-syncs clients against it.
+
 ## Stack
 
 Spring Boot 3.3.4, Java 21, Maven, PostgreSQL. `spring-boot-starter-{web,data-jpa,security,validation,mail,actuator}`, **Flyway** (`ddl-auto: validate` — schema changes go through migrations only, never Hibernate auto-DDL), **JJWT 0.12.6**, **springdoc-openapi 2.6.0** (Swagger UI `/swagger-ui.html`, spec `/v3/api-docs`), **OpenPDF** (report cards), **Apache Commons CSV** (bulk import), **Lombok**, **Testcontainers** + **Cucumber 7** for tests.
