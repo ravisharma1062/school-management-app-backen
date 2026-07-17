@@ -100,6 +100,11 @@ class BillingOwnerIntegrationTest extends AbstractIntegrationTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody().get("billingOwner")).isEqualTo(true);
 
+        // The @BeforeEach resets this thread's TenantContext to the default school (matching what
+        // a real request thread looks like before JwtAuthFilter applies a JWT's tenant) — direct
+        // repository reads of this test's own school need it set back explicitly, same pattern as
+        // EntitlementIntegrationTest's post-HTTP assertions.
+        TenantContext.set(school.getId());
         assertThat(userRepository.findById(otherAdmin.getId()).orElseThrow().isBillingOwner()).isTrue();
         assertThat(userRepository.findById(billingOwnerAdmin.getId()).orElseThrow().isBillingOwner()).isFalse();
     }
@@ -111,6 +116,7 @@ class BillingOwnerIntegrationTest extends AbstractIntegrationTest {
                 new HttpEntity<>(authHeaders(otherAdmin)), String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
+        TenantContext.set(school.getId());
         assertThat(userRepository.findById(billingOwnerAdmin.getId()).orElseThrow().isBillingOwner()).isTrue();
     }
 
@@ -134,6 +140,7 @@ class BillingOwnerIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     void aSchoolWithNoBillingOwnerLetsAnyAdminClaimIt() {
+        TenantContext.set(school.getId());
         billingOwnerAdmin.setBillingOwner(false);
         userRepository.save(billingOwnerAdmin);
 
@@ -142,6 +149,7 @@ class BillingOwnerIntegrationTest extends AbstractIntegrationTest {
                 new HttpEntity<>(authHeaders(otherAdmin)), Map.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        TenantContext.set(school.getId());
         assertThat(userRepository.findById(otherAdmin.getId()).orElseThrow().isBillingOwner()).isTrue();
     }
 

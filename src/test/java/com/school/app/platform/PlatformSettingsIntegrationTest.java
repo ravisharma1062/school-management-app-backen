@@ -33,6 +33,8 @@ class PlatformSettingsIntegrationTest extends AbstractIntegrationTest {
     @Autowired
     private SubscriptionRepository subscriptionRepository;
     @Autowired
+    private SubscriptionPlanRepository subscriptionPlanRepository;
+    @Autowired
     private AuditLogRepository auditLogRepository;
 
     @AfterEach
@@ -92,7 +94,11 @@ class PlatformSettingsIntegrationTest extends AbstractIntegrationTest {
                 .filter(s -> s.getName().equals("Auto Provisioned School"))
                 .findFirst().orElseThrow();
         assertThat(school.getStatus()).isEqualTo(SchoolStatus.ACTIVE);
-        assertThat(subscriptionRepository.findBySchoolId(school.getId()).orElseThrow().getPlan().getCode())
+        Subscription subscription = subscriptionRepository.findBySchoolId(school.getId()).orElseThrow();
+        // subscription.getPlan() is a lazy proxy; the repository call above already closed its
+        // session, so reading anything but the (session-independent) identifier off it here would
+        // throw LazyInitializationException — look the plan up by that id instead.
+        assertThat(subscriptionPlanRepository.findById(subscription.getPlan().getId()).orElseThrow().getCode())
                 .isEqualTo(PlanCode.STANDARD);
 
         assertThat(auditLogRepository.findAll())

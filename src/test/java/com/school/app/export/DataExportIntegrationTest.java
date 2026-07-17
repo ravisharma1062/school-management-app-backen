@@ -92,7 +92,7 @@ class DataExportIntegrationTest extends AbstractIntegrationTest {
         }
 
         String adminEmail = "export-admin-" + UUID.randomUUID() + "@school.app";
-        userRepository.save(User.builder()
+        User admin = userRepository.save(User.builder()
                 .name("Export Admin").email(adminEmail)
                 .passwordHash(passwordEncoder.encode(TEST_PASSWORD)).role(Role.ADMIN).build());
         String teacherEmail = "export-teacher-" + UUID.randomUUID() + "@school.app";
@@ -104,7 +104,8 @@ class DataExportIntegrationTest extends AbstractIntegrationTest {
                 .name("Riya Sharma").rollNo("R1").studentClass("5").section("A")
                 .dob(LocalDate.of(2014, 3, 20)).active(true).build());
         noticeRepository.save(Notice.builder()
-                .title("Independence Day").description("School closed").targetRole(TargetRole.ALL).active(true).build());
+                .title("Independence Day").description("School closed").targetRole(TargetRole.ALL)
+                .createdBy(admin).active(true).build());
 
         School defaultSchool = schoolRepository.findBySlug("default-school").orElseThrow();
         TenantContext.set(defaultSchool.getId());

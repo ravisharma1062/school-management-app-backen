@@ -3,6 +3,7 @@ package com.school.app.platform;
 import com.school.app.auth.AuthResponse;
 import com.school.app.auth.LoginRequest;
 import com.school.app.common.AbstractIntegrationTest;
+import com.school.app.common.security.TenantContext;
 import com.school.app.school.School;
 import com.school.app.school.SchoolRepository;
 import com.school.app.school.SchoolStatus;
@@ -30,6 +31,8 @@ class SelfServiceTrialIntegrationTest extends AbstractIntegrationTest {
     private SchoolRepository schoolRepository;
     @Autowired
     private SubscriptionRepository subscriptionRepository;
+    @Autowired
+    private SubscriptionPlanRepository subscriptionPlanRepository;
     @Autowired
     private EntitlementRepository entitlementRepository;
     @Autowired
@@ -62,7 +65,11 @@ class SelfServiceTrialIntegrationTest extends AbstractIntegrationTest {
         assertThat(school.getStatus()).isEqualTo(SchoolStatus.TRIAL);
 
         Subscription subscription = subscriptionRepository.findBySchoolId(result.schoolId()).orElseThrow();
-        assertThat(subscription.getPlan().getCode()).isEqualTo(PlanCode.BASIC);
+        // subscription.getPlan() is a lazy proxy; the repository call above already closed its
+        // session, so reading anything but the (session-independent) identifier off it here would
+        // throw LazyInitializationException — look the plan up by that id instead.
+        assertThat(subscriptionPlanRepository.findById(subscription.getPlan().getId()).orElseThrow().getCode())
+                .isEqualTo(PlanCode.BASIC);
         assertThat(subscription.getStatus()).isEqualTo(SchoolStatus.TRIAL);
         assertThat(subscription.getTrialEndsAt()).isNotNull();
         long daysUntilTrialEnds = Duration.between(Instant.now(), subscription.getTrialEndsAt()).toDays();
@@ -77,6 +84,10 @@ class SelfServiceTrialIntegrationTest extends AbstractIntegrationTest {
                 .filteredOn(e -> e.getFeatureKey() == FeatureKey.SMS_NOTIFICATIONS)
                 .singleElement().satisfies(e -> assertThat(e.isEnabled()).isFalse());
 
+        // As with subscription/plan above: this thread's TenantContext is back at the default
+        // school by now (the @BeforeEach convention, see AbstractIntegrationTest), but the new
+        // admin belongs to the just-provisioned trial school — findByEmail is @TenantId-filtered.
+        TenantContext.set(school.getId());
         User admin = userRepository.findByEmail(email).orElseThrow();
         assertThat(admin.getStatus()).isEqualTo(UserStatus.PENDING_ACTIVATION);
 
