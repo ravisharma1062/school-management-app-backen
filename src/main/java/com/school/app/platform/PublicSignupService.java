@@ -44,7 +44,7 @@ public class PublicSignupService {
 
         String normalizedEmail = request.contactEmail().trim().toLowerCase(Locale.ROOT);
         if (signupRequestRepository.findByContactEmailAndStatus(normalizedEmail, SignupRequestStatus.NEW).isPresent()) {
-            throw new DuplicateResourceException("A signup request for this email is already pending review.");
+            throw new DuplicateResourceException("A signup request for this email is already pending review.", "DUPLICATE_SIGNUP_EMAIL");
         }
 
         SignupRequest saved = signupRequestRepository.save(SignupRequest.builder()

@@ -34,7 +34,7 @@ public class PublicTrialSignupService {
 
         String normalizedEmail = request.contactEmail().trim().toLowerCase(Locale.ROOT);
         if (userRepository.existsByEmailBypassingTenantFilter(normalizedEmail)) {
-            throw new DuplicateResourceException("An account with this email already exists.");
+            throw new DuplicateResourceException("An account with this email already exists.", "DUPLICATE_SIGNUP_EMAIL");
         }
 
         return provisioningService.provisionSelfServiceTrial(request).result();

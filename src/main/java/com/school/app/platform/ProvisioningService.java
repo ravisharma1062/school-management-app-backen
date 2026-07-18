@@ -124,11 +124,29 @@ public class ProvisioningService {
         SubscriptionPlan plan = subscriptionPlanRepository.findByCode(input.planCode())
                 .orElseThrow(() -> new ResourceNotFoundException("Plan " + input.planCode() + " not found"));
 
-        School school = schoolRepository.save(School.builder()
-                .name(input.schoolName())
-                .slug(uniqueSlug(input.schoolName()))
-                .status(input.startAsTrial() ? SchoolStatus.TRIAL : SchoolStatus.ACTIVE)
-                .build());
+        // uniqueSlug()'s own check-then-act (read, then insert) isn't atomic: two near-simultaneous
+        // signups deriving the same base slug (i.e. the same School Name text) can both see it as
+        // free before either commits, and the second insert then collides on schools.slug's UNIQUE
+        // constraint. Distinct from the users.email race below — a genuine naming collision, not a
+        // duplicate account — so it gets its own message and no code, rather than reusing
+        // DUPLICATE_SIGNUP_EMAIL and misleading the caller about what actually happened.
+        School school;
+        try {
+            // saveAndFlush, not save — a plain save() only schedules the INSERT in Hibernate's
+            // persistence context; it doesn't necessarily execute yet, so a constraint violation
+            // here wouldn't actually surface until whatever LATER statement forces the next flush
+            // (in this method, that's the native query below, auto-flushed before it runs) — which
+            // would then get caught by that unrelated try/catch and mislabeled as an email
+            // duplicate. Flushing immediately makes the violation surface at the right call site.
+            school = schoolRepository.saveAndFlush(School.builder()
+                    .name(input.schoolName())
+                    .slug(uniqueSlug(input.schoolName()))
+                    .status(input.startAsTrial() ? SchoolStatus.TRIAL : SchoolStatus.ACTIVE)
+                    .build());
+        } catch (DataIntegrityViolationException e) {
+            throw new DuplicateResourceException(
+                    "A school with a very similar name was just registered. Please try again in a moment.");
+        }
 
         Instant now = Instant.now();
         Subscription subscription = subscriptionRepository.save(Subscription.builder()
@@ -184,7 +202,7 @@ public class ProvisioningService {
                     adminId, school.getId(), input.contactName(), input.contactEmail(),
                     placeholderPasswordHash, Role.ADMIN.name(), LanguageCode.EN.name(), UserStatus.PENDING_ACTIVATION.name());
         } catch (DataIntegrityViolationException e) {
-            throw new DuplicateResourceException("An account with this email already exists.");
+            throw new DuplicateResourceException("An account with this email already exists.", "DUPLICATE_SIGNUP_EMAIL");
         }
 
         String rawToken = ActivationTokens.generateRaw();

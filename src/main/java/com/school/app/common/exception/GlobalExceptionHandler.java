@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DuplicateResourceException.class)
     public ResponseEntity<ErrorResponse> handleDuplicate(DuplicateResourceException ex, HttpServletRequest request) {
-        return build(HttpStatus.CONFLICT, ex.getMessage(), request);
+        return build(HttpStatus.CONFLICT, ex.getMessage(), request, ex.getCode());
     }
 
     // Defense in depth: any other native insert bypassing the @TenantId-populated JPA path (see

@@ -126,6 +126,53 @@ class SelfServiceTrialIntegrationTest extends AbstractIntegrationTest {
                 .hasMessage("An account with this email already exists.");
     }
 
+    // Same shape of bug as the email race above, but on schools.slug — and unlike that one, this
+    // race can't be reproduced with two sequential calls: uniqueSlug()'s check-then-act correctly
+    // avoids a collision once the first call's transaction has already committed (it just picks
+    // the next free suffix). The actual bug only fires when both transactions' findBySlug reads
+    // happen before either has committed, which needs genuine concurrent threads — a CyclicBarrier
+    // forces both to reach their read at the same instant, so the second one's insert reliably
+    // collides on the DB's UNIQUE constraint instead of the two racing purely by luck.
+    @Test
+    void concurrentProvisionsWithTheSameSchoolNameRacingPastSlugGenerationRejectOneWithADistinctMessage() throws Exception {
+        String schoolName = "Race Slug School " + UUID.randomUUID();
+        java.util.concurrent.CyclicBarrier barrier = new java.util.concurrent.CyclicBarrier(2);
+        java.util.concurrent.ExecutorService pool = java.util.concurrent.Executors.newFixedThreadPool(2);
+        try {
+            java.util.List<java.util.concurrent.Future<Object>> futures = new java.util.ArrayList<>();
+            for (char suffix : new char[] {'a', 'b'}) {
+                PublicTrialSignupRequest request = new PublicTrialSignupRequest(
+                        schoolName, "Kavya Contact", "race-slug-" + suffix + "-" + UUID.randomUUID() + "@mapleleaf.example",
+                        "+911234567890", true, false, "any-token-since-captcha-is-unconfigured");
+                futures.add(pool.submit(() -> {
+                    barrier.await();
+                    try {
+                        return provisioningService.provisionSelfServiceTrial(request);
+                    } catch (Exception e) {
+                        return e;
+                    }
+                }));
+            }
+
+            java.util.List<Object> results = new java.util.ArrayList<>();
+            for (var future : futures) {
+                results.add(future.get());
+            }
+
+            long successes = results.stream().filter(r -> r instanceof ProvisioningService.ProvisionOutcome).count();
+            long rejections = results.stream().filter(r -> r instanceof DuplicateResourceException).count();
+            assertThat(successes).isEqualTo(1);
+            assertThat(rejections).isEqualTo(1);
+
+            DuplicateResourceException rejection = (DuplicateResourceException) results.stream()
+                    .filter(r -> r instanceof DuplicateResourceException).findFirst().orElseThrow();
+            assertThat(rejection).hasMessage("A school with a very similar name was just registered. Please try again in a moment.");
+            assertThat(rejection.getCode()).isNull();
+        } finally {
+            pool.shutdown();
+        }
+    }
+
     @Test
     void missingRequiredFieldsIsRejectedAsBadRequest() {
         PublicTrialSignupRequest blank = new PublicTrialSignupRequest("", "", "not-an-email", null, false, false, "");
