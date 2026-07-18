@@ -47,6 +47,12 @@ public class SesEmailProvider implements EmailProvider {
         sender.setPassword(password);
         sender.getJavaMailProperties().put("mail.smtp.auth", "true");
         sender.getJavaMailProperties().put("mail.smtp.starttls.enable", "true");
+        // JavaMail's default for all three is infinite when unset — a blocked/filtered outbound
+        // port (common on PaaS free tiers) or any network-level stall would otherwise hang the
+        // request thread forever instead of failing with a clear error.
+        sender.getJavaMailProperties().put("mail.smtp.connectiontimeout", "10000");
+        sender.getJavaMailProperties().put("mail.smtp.timeout", "10000");
+        sender.getJavaMailProperties().put("mail.smtp.writetimeout", "10000");
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(fromAddress);
