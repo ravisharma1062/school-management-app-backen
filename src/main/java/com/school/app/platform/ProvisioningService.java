@@ -1,6 +1,7 @@
 package com.school.app.platform;
 
 import com.school.app.common.exception.BadRequestException;
+import com.school.app.common.exception.DuplicateResourceException;
 import com.school.app.common.exception.NotConfiguredException;
 import com.school.app.common.exception.ResourceNotFoundException;
 import com.school.app.common.notification.email.EmailProvider;
@@ -17,6 +18,7 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -170,9 +172,20 @@ public class ProvisioningService {
         // ActivationService sets a real one. Belt-and-suspenders alongside the PENDING_ACTIVATION
         // status, which User#isEnabled() also checks.
         String placeholderPasswordHash = passwordEncoder.encode(UUID.randomUUID().toString());
-        userRepository.insertBypassingTenantFilter(
-                adminId, school.getId(), input.contactName(), input.contactEmail(),
-                placeholderPasswordHash, Role.ADMIN.name(), LanguageCode.EN.name(), UserStatus.PENDING_ACTIVATION.name());
+        // This insert bypasses the @TenantId-populated JPA path (see the comment above), so it
+        // also bypasses any earlier existsByEmail pre-check's usefulness under concurrency: two
+        // near-simultaneous submissions for the same new email can both pass their own pre-check
+        // before either commits (plain READ COMMITTED, no locking), and the second one lands here
+        // instead. Catch it and translate to the same 409 a same-request duplicate gets, rather
+        // than letting a raw ConstraintViolationException reach GlobalExceptionHandler's generic
+        // 500 fallback.
+        try {
+            userRepository.insertBypassingTenantFilter(
+                    adminId, school.getId(), input.contactName(), input.contactEmail(),
+                    placeholderPasswordHash, Role.ADMIN.name(), LanguageCode.EN.name(), UserStatus.PENDING_ACTIVATION.name());
+        } catch (DataIntegrityViolationException e) {
+            throw new DuplicateResourceException("An account with this email already exists.");
+        }
 
         String rawToken = ActivationTokens.generateRaw();
         activationTokenRepository.save(ActivationToken.builder()

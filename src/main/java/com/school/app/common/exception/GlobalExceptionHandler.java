@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -41,6 +42,18 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DuplicateResourceException.class)
     public ResponseEntity<ErrorResponse> handleDuplicate(DuplicateResourceException ex, HttpServletRequest request) {
         return build(HttpStatus.CONFLICT, ex.getMessage(), request);
+    }
+
+    // Defense in depth: any other native insert bypassing the @TenantId-populated JPA path (see
+    // ProvisioningService's Javadoc on the tenant-resolver gotcha) has the same check-then-act
+    // race a request-level pre-check can't fully close. Most call sites should catch their own
+    // specific DataIntegrityViolationException and throw a DuplicateResourceException with a
+    // precise message (see ProvisioningService#provisionCore) — this is only the fallback for
+    // whatever isn't caught that way yet.
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorResponse> handleDataIntegrityViolation(DataIntegrityViolationException ex, HttpServletRequest request) {
+        log.warn("Uncaught constraint violation on {}: {}", request.getRequestURI(), ex.getMessage());
+        return build(HttpStatus.CONFLICT, message("error.duplicateResource"), request);
     }
 
     @ExceptionHandler(TooManyRequestsException.class)

@@ -3,6 +3,7 @@ package com.school.app.platform;
 import com.school.app.auth.AuthResponse;
 import com.school.app.auth.LoginRequest;
 import com.school.app.common.AbstractIntegrationTest;
+import com.school.app.common.exception.DuplicateResourceException;
 import com.school.app.common.security.TenantContext;
 import com.school.app.school.School;
 import com.school.app.school.SchoolRepository;
@@ -19,6 +20,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Covers Phase MT-6b's Definition of Done: self-service trial provisions instantly (no operator
@@ -107,6 +109,21 @@ class SelfServiceTrialIntegrationTest extends AbstractIntegrationTest {
         ResponseEntity<String> second = restTemplate.postForEntity(
                 "/api/v1/public/trial-signups", validRequest(email), String.class);
         assertThat(second.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+    }
+
+    // Reproduces the race PublicTrialSignupService's own pre-check can't close: two near-
+    // simultaneous requests for the same new email can both pass existsByEmailBypassingTenantFilter
+    // before either commits, so the second one only gets caught at the actual insert. Calling
+    // ProvisioningService directly (skipping PublicTrialSignupService's pre-check layer entirely)
+    // reproduces that exact window deterministically, without needing real concurrent threads.
+    @Test
+    void secondProvisionRacingPastTheDuplicateEmailPreCheckIsRejectedNotAnUnhandled500() {
+        String email = "race-trial-" + UUID.randomUUID() + "@mapleleaf.example";
+        provisioningService.provisionSelfServiceTrial(validRequest(email));
+
+        assertThatThrownBy(() -> provisioningService.provisionSelfServiceTrial(validRequest(email)))
+                .isInstanceOf(DuplicateResourceException.class)
+                .hasMessage("An account with this email already exists.");
     }
 
     @Test
